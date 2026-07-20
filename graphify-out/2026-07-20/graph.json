@@ -29,8 +29,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "app.py",
-      "id": "app",
-      "community_name": "app.py"
+      "id": "app"
     },
     {
       "label": "index()",
@@ -40,8 +39,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "index()",
-      "id": "app_index",
-      "community_name": "app.py"
+      "id": "app_index"
     },
     {
       "label": "api_meta()",
@@ -51,8 +49,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "api_meta()",
-      "id": "app_api_meta",
-      "community_name": "app.py"
+      "id": "app_api_meta"
     },
     {
       "label": "api_search()",
@@ -62,8 +59,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "api_search()",
-      "id": "app_api_search",
-      "community_name": "query"
+      "id": "app_api_search"
     },
     {
       "label": "api_stats()",
@@ -73,8 +69,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "api_stats()",
-      "id": "app_api_stats",
-      "community_name": "get_stats"
+      "id": "app_api_stats"
     },
     {
       "label": "api_batch()",
@@ -84,8 +79,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "api_batch()",
-      "id": "app_api_batch",
-      "community_name": "data_loader.py"
+      "id": "app_api_batch"
     },
     {
       "label": "Arabic Poetry Mood Explorer ---------------------------- A small Flask app for b",
@@ -95,8 +89,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "arabic poetry mood explorer ---------------------------- a small flask app for b",
-      "id": "app_rationale_1",
-      "community_name": "app.py"
+      "id": "app_rationale_1"
     },
     {
       "label": "data_loader.py",
@@ -104,10 +97,9 @@
       "source_file": "data_loader.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "data_loader.py",
-      "id": "data_loader",
-      "community_name": "data_loader.py"
+      "id": "data_loader"
     },
     {
       "label": "_flatten_verses()",
@@ -115,10 +107,9 @@
       "source_file": "data_loader.py",
       "source_location": "L40",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "_flatten_verses()",
-      "id": "data_loader_flatten_verses",
-      "community_name": "data_loader.py"
+      "id": "data_loader_flatten_verses"
     },
     {
       "label": "get_meta()",
@@ -128,8 +119,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "get_meta()",
-      "id": "data_loader_get_meta",
-      "community_name": "app.py"
+      "id": "data_loader_get_meta"
     },
     {
       "label": "_tag_mask()",
@@ -139,8 +129,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": "_tag_mask()",
-      "id": "data_loader_tag_mask",
-      "community_name": "_filtered_frame"
+      "id": "data_loader_tag_mask"
     },
     {
       "label": "query()",
@@ -150,8 +139,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "query()",
-      "id": "data_loader_query",
-      "community_name": "query"
+      "id": "data_loader_query"
     },
     {
       "label": "get_stats()",
@@ -161,8 +149,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "get_stats()",
-      "id": "data_loader_get_stats",
-      "community_name": "get_stats"
+      "id": "data_loader_get_stats"
     },
     {
       "label": "_filtered_frame()",
@@ -172,8 +159,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": "_filtered_frame()",
-      "id": "data_loader_filtered_frame",
-      "community_name": "_filtered_frame"
+      "id": "data_loader_filtered_frame"
     },
     {
       "label": "get_batch()",
@@ -183,8 +169,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "get_batch()",
-      "id": "data_loader_get_batch",
-      "community_name": "data_loader.py"
+      "id": "data_loader_get_batch"
     },
     {
       "label": "_to_records()",
@@ -194,8 +179,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "_to_records()",
-      "id": "data_loader_to_records",
-      "community_name": "data_loader.py"
+      "id": "data_loader_to_records"
     },
     {
       "label": "data_loader.py -------------- Loads the mood-labeled Arabic poetry dataset once",
@@ -203,10 +187,9 @@
       "source_file": "data_loader.py",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 1,
       "norm_label": "data_loader.py -------------- loads the mood-labeled arabic poetry dataset once",
-      "id": "data_loader_rationale_1",
-      "community_name": "data_loader.py"
+      "id": "data_loader_rationale_1"
     },
     {
       "label": "Everything the filter sidebar needs to populate its controls.",
@@ -216,8 +199,7 @@
       "_origin": "ast",
       "community": 4,
       "norm_label": "everything the filter sidebar needs to populate its controls.",
-      "id": "data_loader_rationale_51",
-      "community_name": "app.py"
+      "id": "data_loader_rationale_51"
     },
     {
       "label": "Boolean mask for a list-valued column against a list of wanted tags.",
@@ -227,8 +209,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": "boolean mask for a list-valued column against a list of wanted tags.",
-      "id": "data_loader_rationale_89",
-      "community_name": "_filtered_frame"
+      "id": "data_loader_rationale_89"
     },
     {
       "label": "Filter, search, sort, and paginate the dataset according to `params`     (a plai",
@@ -238,8 +219,7 @@
       "_origin": "ast",
       "community": 9,
       "norm_label": "filter, search, sort, and paginate the dataset according to `params`     (a plai",
-      "id": "data_loader_rationale_100",
-      "community_name": "query"
+      "id": "data_loader_rationale_100"
     },
     {
       "label": "Tag-frequency breakdown per axis, honoring the current filters so the     stats",
@@ -249,8 +229,7 @@
       "_origin": "ast",
       "community": 10,
       "norm_label": "tag-frequency breakdown per axis, honoring the current filters so the     stats",
-      "id": "data_loader_rationale_201",
-      "community_name": "get_stats"
+      "id": "data_loader_rationale_201"
     },
     {
       "label": "Same filtering pipeline as query(), minus sort/paginate, returned as a     DataF",
@@ -260,8 +239,7 @@
       "_origin": "ast",
       "community": 1,
       "norm_label": "same filtering pipeline as query(), minus sort/paginate, returned as a     dataf",
-      "id": "data_loader_rationale_233",
-      "community_name": "_filtered_frame"
+      "id": "data_loader_rationale_233"
     },
     {
       "label": "Convert a DataFrame slice into plain JSON-safe dicts, reshaping the     verse li",
@@ -271,8 +249,7 @@
       "_origin": "ast",
       "community": 7,
       "norm_label": "convert a dataframe slice into plain json-safe dicts, reshaping the     verse li",
-      "id": "data_loader_rationale_301",
-      "community_name": "data_loader.py"
+      "id": "data_loader_rationale_301"
     },
     {
       "label": "app.js",
@@ -282,8 +259,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "app.js",
-      "id": "static_js_app",
-      "community_name": "app.js"
+      "id": "static_js_app"
     },
     {
       "label": "AXES",
@@ -293,8 +269,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "axes",
-      "id": "static_js_app_axes",
-      "community_name": "AXES"
+      "id": "static_js_app_axes"
     },
     {
       "label": "AXIS_META",
@@ -304,8 +279,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "axis_meta",
-      "id": "static_js_app_axis_meta",
-      "community_name": "app.js"
+      "id": "static_js_app_axis_meta"
     },
     {
       "label": "TAG_COLORS",
@@ -315,8 +289,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "tag_colors",
-      "id": "static_js_app_tag_colors",
-      "community_name": "app.js"
+      "id": "static_js_app_tag_colors"
     },
     {
       "label": "tagColor()",
@@ -326,8 +299,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "tagcolor()",
-      "id": "static_js_app_tagcolor",
-      "community_name": "escapeHtml"
+      "id": "static_js_app_tagcolor"
     },
     {
       "label": "state",
@@ -337,8 +309,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "state",
-      "id": "static_js_app_state",
-      "community_name": "app.js"
+      "id": "static_js_app_state"
     },
     {
       "label": "expandedCards",
@@ -348,8 +319,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "expandedcards",
-      "id": "static_js_app_expandedcards",
-      "community_name": "app.js"
+      "id": "static_js_app_expandedcards"
     },
     {
       "label": "fetchJSON()",
@@ -359,8 +329,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "fetchjson()",
-      "id": "static_js_app_fetchjson",
-      "community_name": "refresh"
+      "id": "static_js_app_fetchjson"
     },
     {
       "label": "buildPoetList()",
@@ -370,8 +339,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "buildpoetlist()",
-      "id": "static_js_app_buildpoetlist",
-      "community_name": "buildPoetList"
+      "id": "static_js_app_buildpoetlist"
     },
     {
       "label": "buildMeterList()",
@@ -381,8 +349,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "buildmeterlist()",
-      "id": "static_js_app_buildmeterlist",
-      "community_name": "buildPoetList"
+      "id": "static_js_app_buildmeterlist"
     },
     {
       "label": "buildAxisBlocks()",
@@ -392,8 +359,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "buildaxisblocks()",
-      "id": "static_js_app_buildaxisblocks",
-      "community_name": "AXES"
+      "id": "static_js_app_buildaxisblocks"
     },
     {
       "label": "buildPoemLengthPresets()",
@@ -403,8 +369,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "buildpoemlengthpresets()",
-      "id": "static_js_app_buildpoemlengthpresets",
-      "community_name": "refresh"
+      "id": "static_js_app_buildpoemlengthpresets"
     },
     {
       "label": "wireStaticControls()",
@@ -414,8 +379,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "wirestaticcontrols()",
-      "id": "static_js_app_wirestaticcontrols",
-      "community_name": "app.js"
+      "id": "static_js_app_wirestaticcontrols"
     },
     {
       "label": "buildParams()",
@@ -425,8 +389,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "buildparams()",
-      "id": "static_js_app_buildparams",
-      "community_name": "AXES"
+      "id": "static_js_app_buildparams"
     },
     {
       "label": "loadStateFromURL()",
@@ -436,8 +399,7 @@
       "_origin": "ast",
       "community": 8,
       "norm_label": "loadstatefromurl()",
-      "id": "static_js_app_loadstatefromurl",
-      "community_name": "AXES"
+      "id": "static_js_app_loadstatefromurl"
     },
     {
       "label": "refresh()",
@@ -447,8 +409,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "refresh()",
-      "id": "static_js_app_refresh",
-      "community_name": "refresh"
+      "id": "static_js_app_refresh"
     },
     {
       "label": "renderResults()",
@@ -458,8 +419,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "renderresults()",
-      "id": "static_js_app_renderresults",
-      "community_name": "refresh"
+      "id": "static_js_app_renderresults"
     },
     {
       "label": "renderCard()",
@@ -469,8 +429,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "rendercard()",
-      "id": "static_js_app_rendercard",
-      "community_name": "escapeHtml"
+      "id": "static_js_app_rendercard"
     },
     {
       "label": "renderPagination()",
@@ -480,8 +439,7 @@
       "_origin": "ast",
       "community": 5,
       "norm_label": "renderpagination()",
-      "id": "static_js_app_renderpagination",
-      "community_name": "refresh"
+      "id": "static_js_app_renderpagination"
     },
     {
       "label": "renderStats()",
@@ -491,8 +449,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "renderstats()",
-      "id": "static_js_app_renderstats",
-      "community_name": "escapeHtml"
+      "id": "static_js_app_renderstats"
     },
     {
       "label": "renderActiveFilters()",
@@ -502,8 +459,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "renderactivefilters()",
-      "id": "static_js_app_renderactivefilters",
-      "community_name": "escapeHtml"
+      "id": "static_js_app_renderactivefilters"
     },
     {
       "label": "toggleSetValue()",
@@ -513,8 +469,7 @@
       "_origin": "ast",
       "community": 12,
       "norm_label": "togglesetvalue()",
-      "id": "static_js_app_togglesetvalue",
-      "community_name": "buildPoetList"
+      "id": "static_js_app_togglesetvalue"
     },
     {
       "label": "debounce()",
@@ -524,8 +479,7 @@
       "_origin": "ast",
       "community": 2,
       "norm_label": "debounce()",
-      "id": "static_js_app_debounce",
-      "community_name": "app.js"
+      "id": "static_js_app_debounce"
     },
     {
       "label": "escapeHtml()",
@@ -535,8 +489,7 @@
       "_origin": "ast",
       "community": 6,
       "norm_label": "escapehtml()",
-      "id": "static_js_app_escapehtml",
-      "community_name": "escapeHtml"
+      "id": "static_js_app_escapehtml"
     },
     {
       "label": "README.md",
@@ -549,8 +502,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "readme.md",
-      "id": "README",
-      "community_name": "README.md"
+      "id": "README"
     },
     {
       "label": "requirements.txt",
@@ -564,8 +516,7 @@
       "verification": "unverified",
       "community": 11,
       "norm_label": "requirements.txt",
-      "id": "requirements_txt",
-      "community_name": "Flask"
+      "id": "requirements_txt"
     },
     {
       "label": "data/PLACEHOLDER_README.txt",
@@ -578,8 +529,7 @@
       "contributor": null,
       "community": 13,
       "norm_label": "data/placeholder_readme.txt",
-      "id": "data_placeholder_readme",
-      "community_name": "data/PLACEHOLDER_README.txt"
+      "id": "data_placeholder_readme"
     },
     {
       "label": "templates/index.html",
@@ -592,8 +542,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "templates/index.html",
-      "id": "templates_index_html",
-      "community_name": "templates/index.html"
+      "id": "templates_index_html"
     },
     {
       "label": "Flask",
@@ -606,8 +555,7 @@
       "contributor": null,
       "community": 11,
       "norm_label": "flask",
-      "id": "flask",
-      "community_name": "Flask"
+      "id": "flask"
     },
     {
       "label": "pandas",
@@ -620,8 +568,7 @@
       "contributor": null,
       "community": 11,
       "norm_label": "pandas",
-      "id": "pandas",
-      "community_name": "Flask"
+      "id": "pandas"
     },
     {
       "label": "Tailwind CSS",
@@ -634,8 +581,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "tailwind css",
-      "id": "tailwindcss",
-      "community_name": "templates/index.html"
+      "id": "tailwindcss"
     },
     {
       "label": "Google Fonts",
@@ -648,8 +594,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "google fonts",
-      "id": "google_fonts",
-      "community_name": "templates/index.html"
+      "id": "google_fonts"
     },
     {
       "label": "Amiri Font",
@@ -662,8 +607,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "amiri font",
-      "id": "amiri_font",
-      "community_name": "templates/index.html"
+      "id": "amiri_font"
     },
     {
       "label": "Inter Font",
@@ -676,8 +620,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "inter font",
-      "id": "inter_font",
-      "community_name": "templates/index.html"
+      "id": "inter_font"
     },
     {
       "label": "JetBrains Mono Font",
@@ -690,8 +633,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "jetbrains mono font",
-      "id": "jetbrains_mono_font",
-      "community_name": "templates/index.html"
+      "id": "jetbrains_mono_font"
     },
     {
       "label": "Arabic Poetry Mood Explorer",
@@ -704,8 +646,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "arabic poetry mood explorer",
-      "id": "arabic_poetry_mood_explorer",
-      "community_name": "README.md"
+      "id": "arabic_poetry_mood_explorer"
     },
     {
       "label": "TOP 100 Arabic Poets Mood Labeling Dataset",
@@ -718,8 +659,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "top 100 arabic poets mood labeling dataset",
-      "id": "mood_labeling_dataset",
-      "community_name": "README.md"
+      "id": "mood_labeling_dataset"
     },
     {
       "label": "Mood Axis",
@@ -732,8 +672,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "mood axis",
-      "id": "mood_axis",
-      "community_name": "README.md"
+      "id": "mood_axis"
     },
     {
       "label": "Genre Axis",
@@ -746,8 +685,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "genre axis",
-      "id": "genre_axis",
-      "community_name": "README.md"
+      "id": "genre_axis"
     },
     {
       "label": "Energy Axis",
@@ -760,8 +698,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "energy axis",
-      "id": "energy_axis",
-      "community_name": "README.md"
+      "id": "energy_axis"
     },
     {
       "label": "Aesthetic Axis",
@@ -774,8 +711,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "aesthetic axis",
-      "id": "aesthetic_axis",
-      "community_name": "README.md"
+      "id": "aesthetic_axis"
     },
     {
       "label": "Filter System",
@@ -788,8 +724,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "filter system",
-      "id": "filter_system",
-      "community_name": "README.md"
+      "id": "filter_system"
     },
     {
       "label": "Pagination",
@@ -802,8 +737,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "pagination",
-      "id": "pagination",
-      "community_name": "README.md"
+      "id": "pagination"
     },
     {
       "label": "Stats Panel",
@@ -816,8 +750,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "stats panel",
-      "id": "stats_panel",
-      "community_name": "README.md"
+      "id": "stats_panel"
     },
     {
       "label": "Verse Batch",
@@ -830,8 +763,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "verse batch",
-      "id": "verse_batch",
-      "community_name": "README.md"
+      "id": "verse_batch"
     },
     {
       "label": "Poet",
@@ -844,8 +776,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "poet",
-      "id": "poet",
-      "community_name": "README.md"
+      "id": "poet"
     },
     {
       "label": "Meter (bahr)",
@@ -858,8 +789,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "meter (bahr)",
-      "id": "meter",
-      "community_name": "README.md"
+      "id": "meter"
     },
     {
       "label": "akbargherbal/arabic-poetry-mood-labeling",
@@ -872,8 +802,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "akbargherbal/arabic-poetry-mood-labeling",
-      "id": "akbargherbal_arabic_poetry_mood_labeling",
-      "community_name": "README.md"
+      "id": "akbargherbal_arabic_poetry_mood_labeling"
     }
   ],
   "links": [
