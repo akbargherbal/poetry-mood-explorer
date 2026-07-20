@@ -35,14 +35,14 @@ const TAG_COLORS = {
   },
 };
 
-function tagColor(axis, tag) {
+export function tagColor(axis, tag) {
   return (TAG_COLORS[axis] && TAG_COLORS[axis][tag]) || AXIS_META[axis].accent;
 }
 
 // --------------------------------------------------------------------------
 // State
 // --------------------------------------------------------------------------
-const state = {
+export const state = {
   q: "",
   poets: new Set(),
   meters: new Set(),
@@ -359,7 +359,7 @@ function wireStaticControls() {
 // --------------------------------------------------------------------------
 // Query building + fetch + URL Sync
 // --------------------------------------------------------------------------
-function buildParams(includePagination) {
+export function buildParams(includePagination) {
   const p = new URLSearchParams();
   if (state.q) p.set("q", state.q);
   state.poets.forEach(v => p.append("poet", v));
@@ -771,16 +771,16 @@ function renderActiveFilters() {
 // --------------------------------------------------------------------------
 // Utils
 // --------------------------------------------------------------------------
-function toggleSetValue(set, value, on) {
+export function toggleSetValue(set, value, on) {
   if (on) set.add(value); else set.delete(value);
 }
 
-function debounce(fn, ms) {
+export function debounce(fn, ms) {
   let t;
   return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
 }
 
-function escapeHtml(str) {
+export function escapeHtml(str) {
   if (str == null) return "";
   return String(str)
     .replace(/&/g, "&amp;")
