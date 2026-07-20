@@ -1,0 +1,1194 @@
+{
+  "nodes": [
+    {
+      "id": "app",
+      "label": "app.py",
+      "file_type": "code",
+      "source_file": "app.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_index",
+      "label": "index()",
+      "file_type": "code",
+      "source_file": "app.py",
+      "source_location": "L21",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_api_meta",
+      "label": "api_meta()",
+      "file_type": "code",
+      "source_file": "app.py",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_api_search",
+      "label": "api_search()",
+      "file_type": "code",
+      "source_file": "app.py",
+      "source_location": "L31",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_api_stats",
+      "label": "api_stats()",
+      "file_type": "code",
+      "source_file": "app.py",
+      "source_location": "L43",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_api_batch",
+      "label": "api_batch()",
+      "file_type": "code",
+      "source_file": "app.py",
+      "source_location": "L48",
+      "_origin": "ast"
+    },
+    {
+      "id": "app_rationale_1",
+      "label": "Arabic Poetry Mood Explorer ---------------------------- A small Flask app for b",
+      "file_type": "rationale",
+      "source_file": "app.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader",
+      "label": "data_loader.py",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_flatten_verses",
+      "label": "_flatten_verses()",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L40",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_get_meta",
+      "label": "get_meta()",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L50",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_tag_mask",
+      "label": "_tag_mask()",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L88",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_query",
+      "label": "query()",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L99",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_get_stats",
+      "label": "get_stats()",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L200",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_filtered_frame",
+      "label": "_filtered_frame()",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L232",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_get_batch",
+      "label": "get_batch()",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L293",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_to_records",
+      "label": "_to_records()",
+      "file_type": "code",
+      "source_file": "data_loader.py",
+      "source_location": "L300",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_rationale_1",
+      "label": "data_loader.py -------------- Loads the mood-labeled Arabic poetry dataset once",
+      "file_type": "rationale",
+      "source_file": "data_loader.py",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_rationale_51",
+      "label": "Everything the filter sidebar needs to populate its controls.",
+      "file_type": "rationale",
+      "source_file": "data_loader.py",
+      "source_location": "L51",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_rationale_89",
+      "label": "Boolean mask for a list-valued column against a list of wanted tags.",
+      "file_type": "rationale",
+      "source_file": "data_loader.py",
+      "source_location": "L89",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_rationale_100",
+      "label": "Filter, search, sort, and paginate the dataset according to `params`     (a plai",
+      "file_type": "rationale",
+      "source_file": "data_loader.py",
+      "source_location": "L100",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_rationale_201",
+      "label": "Tag-frequency breakdown per axis, honoring the current filters so the     stats",
+      "file_type": "rationale",
+      "source_file": "data_loader.py",
+      "source_location": "L201",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_rationale_233",
+      "label": "Same filtering pipeline as query(), minus sort/paginate, returned as a     DataF",
+      "file_type": "rationale",
+      "source_file": "data_loader.py",
+      "source_location": "L233",
+      "_origin": "ast"
+    },
+    {
+      "id": "data_loader_rationale_301",
+      "label": "Convert a DataFrame slice into plain JSON-safe dicts, reshaping the     verse li",
+      "file_type": "rationale",
+      "source_file": "data_loader.py",
+      "source_location": "L301",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app",
+      "label": "app.js",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_axes",
+      "label": "AXES",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_axis_meta",
+      "label": "AXIS_META",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L7",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_tag_colors",
+      "label": "TAG_COLORS",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L16",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_tagcolor",
+      "label": "tagColor()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_state",
+      "label": "state",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_expandedcards",
+      "label": "expandedCards",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L64",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_fetchjson",
+      "label": "fetchJSON()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L78",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_buildpoetlist",
+      "label": "buildPoetList()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L87",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_buildmeterlist",
+      "label": "buildMeterList()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L113",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_buildaxisblocks",
+      "label": "buildAxisBlocks()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L130",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_wirestaticcontrols",
+      "label": "wireStaticControls()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L181",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_buildparams",
+      "label": "buildParams()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L239",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_refresh",
+      "label": "refresh()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L264",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_renderresults",
+      "label": "renderResults()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L285",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_rendercard",
+      "label": "renderCard()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L298",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_renderpagination",
+      "label": "renderPagination()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L368",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_renderstats",
+      "label": "renderStats()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L397",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_togglesetvalue",
+      "label": "toggleSetValue()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L427",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_debounce",
+      "label": "debounce()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L431",
+      "_origin": "ast"
+    },
+    {
+      "id": "static_js_app_escapehtml",
+      "label": "escapeHtml()",
+      "file_type": "code",
+      "source_file": "static/js/app.js",
+      "source_location": "L436",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "app",
+      "target": "flask",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app",
+      "target": "data_loader",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app",
+      "target": "app_index",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app",
+      "target": "app_api_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app",
+      "target": "app_api_search",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app",
+      "target": "app_api_stats",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app",
+      "target": "app_api_batch",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_rationale_1",
+      "target": "app",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "pandas",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "data_loader_flatten_verses",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "data_loader_get_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "data_loader_tag_mask",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "data_loader_query",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "data_loader_get_stats",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L200",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "data_loader_filtered_frame",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L232",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "data_loader_get_batch",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L293",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader",
+      "target": "data_loader_to_records",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L300",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_query",
+      "target": "data_loader_tag_mask",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_query",
+      "target": "data_loader_to_records",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L193",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_get_stats",
+      "target": "data_loader_filtered_frame",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L207",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_filtered_frame",
+      "target": "data_loader_tag_mask",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L271",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_get_batch",
+      "target": "data_loader_to_records",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L297",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_rationale_1",
+      "target": "data_loader",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_rationale_51",
+      "target": "data_loader_get_meta",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_rationale_89",
+      "target": "data_loader_tag_mask",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_rationale_100",
+      "target": "data_loader_query",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_rationale_201",
+      "target": "data_loader_get_stats",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_rationale_233",
+      "target": "data_loader_filtered_frame",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L233",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "data_loader_rationale_301",
+      "target": "data_loader_to_records",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "data_loader.py",
+      "source_location": "L301",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_axes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_axis_meta",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_tag_colors",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_tagcolor",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_state",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_expandedcards",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L64",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_fetchjson",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_buildpoetlist",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_buildmeterlist",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_buildaxisblocks",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_wirestaticcontrols",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L181",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_buildparams",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L239",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_refresh",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L264",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_renderresults",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L285",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_rendercard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L298",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_renderpagination",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L368",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_renderstats",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L397",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_togglesetvalue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L427",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_debounce",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L431",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app",
+      "target": "static_js_app_escapehtml",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L436",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildpoetlist",
+      "target": "static_js_app_escapehtml",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildpoetlist",
+      "target": "static_js_app_togglesetvalue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L102",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildpoetlist",
+      "target": "static_js_app_refresh",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildmeterlist",
+      "target": "static_js_app_togglesetvalue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildmeterlist",
+      "target": "static_js_app_refresh",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L124",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildaxisblocks",
+      "target": "static_js_app_tagcolor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L147",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildaxisblocks",
+      "target": "static_js_app_togglesetvalue",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L152",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildaxisblocks",
+      "target": "static_js_app_refresh",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_wirestaticcontrols",
+      "target": "static_js_app_debounce",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L182",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_wirestaticcontrols",
+      "target": "static_js_app_refresh",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L185",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_refresh",
+      "target": "static_js_app_buildparams",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L265",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_refresh",
+      "target": "static_js_app_fetchjson",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L271",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_refresh",
+      "target": "static_js_app_renderresults",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L275",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_refresh",
+      "target": "static_js_app_renderstats",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L276",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_renderresults",
+      "target": "static_js_app_rendercard",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L294",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_renderresults",
+      "target": "static_js_app_renderpagination",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L295",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_rendercard",
+      "target": "static_js_app_tagcolor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L301",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_rendercard",
+      "target": "static_js_app_escapehtml",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L309",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_rendercard",
+      "target": "static_js_app_refresh",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L351",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_renderpagination",
+      "target": "static_js_app_refresh",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L380",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_renderstats",
+      "target": "static_js_app_escapehtml",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L404",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_renderstats",
+      "target": "static_js_app_tagcolor",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "static/js/app.js",
+      "source_location": "L405",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_api_meta",
+      "target": "data_loader_get_meta",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_api_search",
+      "target": "data_loader_query",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_api_stats",
+      "target": "data_loader_get_stats",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "app_api_batch",
+      "target": "data_loader_get_batch",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildaxisblocks",
+      "target": "static_js_app_axes",
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "static/js/app.js",
+      "source_location": "L135",
+      "weight": 1.0,
+      "_origin": "ast"
+    },
+    {
+      "source": "static_js_app_buildparams",
+      "target": "static_js_app_axes",
+      "relation": "references",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "static/js/app.js",
+      "source_location": "L249",
+      "weight": 1.0,
+      "_origin": "ast"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

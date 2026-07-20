@@ -1,0 +1,4 @@
+/content/poetry-mood-explorer/README.md
+/content/poetry-mood-explorer/data/PLACEHOLDER_README.txt
+/content/poetry-mood-explorer/requirements.txt
+/content/poetry-mood-explorer/templates/index.html
