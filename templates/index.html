@@ -96,13 +96,32 @@
         <div id="meterList" class="flex flex-wrap gap-1.5"></div>
       </div>
 
-      <!-- Batch size -->
+      <hr class="border-ink-border">
+
+      <!-- Poem length (whole-poem aggregate filter) -->
       <div>
-        <label class="block text-xs text-parchment-muted mb-1.5">Verses per batch</label>
-        <div class="flex items-center gap-2">
-          <input id="batchMin" type="number" placeholder="min" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-xs text-parchment-muted font-medium">Poem length</label>
+          <button data-clear="poemLength" class="text-[10px] text-parchment-dim hover:text-gold">clear</button>
+        </div>
+        <div id="poemLengthPresets" class="flex flex-wrap gap-1.5 mb-2.5"><!-- populated by JS: Short/Medium/Long/Epic --></div>
+
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-[10px] text-parchment-dim">Total batches</span>
+        </div>
+        <div class="flex items-center gap-2 mb-2">
+          <input id="poemBatchesMin" type="number" placeholder="min" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
           <span class="text-parchment-dim text-xs">–</span>
-          <input id="batchMax" type="number" placeholder="max" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+          <input id="poemBatchesMax" type="number" placeholder="max" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+        </div>
+
+        <div class="flex items-center justify-between mb-1">
+          <span class="text-[10px] text-parchment-dim">Total verses</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <input id="poemVersesMin" type="number" placeholder="min" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+          <span class="text-parchment-dim text-xs">–</span>
+          <input id="poemVersesMax" type="number" placeholder="max" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
         </div>
       </div>
 
@@ -125,8 +144,14 @@
 
     <!-- Toolbar -->
     <div class="flex flex-wrap items-center justify-between gap-3 bg-ink-panel border border-ink-border rounded-lg px-4 py-3">
-      <div class="text-sm text-parchment-muted">
-        <span id="resultSummary">Loading…</span>
+      <div class="flex items-center gap-4 flex-wrap">
+        <div class="text-sm text-parchment-muted">
+          <span id="resultSummary">Loading…</span>
+        </div>
+        <label class="flex items-center gap-1.5 text-xs text-parchment-muted cursor-pointer select-none">
+          <input id="firstBatchOnly" type="checkbox" class="accent-gold">
+          One card per poem
+        </label>
       </div>
       <div class="flex items-center gap-2 text-xs">
         <label class="text-parchment-dim">Sort</label>
@@ -134,6 +159,8 @@
           <option value="row_id">Default order</option>
           <option value="POET_RANK">Poet rank</option>
           <option value="BATCH_SIZE">Batch size</option>
+          <option value="POEM_NUM_BATCHES">Poem length (batches)</option>
+          <option value="POEM_TOTAL_VERSES">Poem length (verses)</option>
           <option value="mood_confidence">Mood confidence</option>
           <option value="genre_confidence">Genre confidence</option>
           <option value="energy_confidence">Energy confidence</option>
@@ -147,6 +174,9 @@
         </select>
       </div>
     </div>
+
+    <!-- Active filters bar -->
+    <div id="activeFilters" class="hidden flex-wrap items-center gap-1.5 bg-ink-panel border border-ink-border rounded-lg px-4 py-2.5"></div>
 
     <!-- Results -->
     <div id="results" class="space-y-4"></div>
