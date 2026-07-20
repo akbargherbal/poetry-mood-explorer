@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ديوان الأمزجة — Arabic Poetry Mood Explorer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:      { DEFAULT: '#14110F', panel: '#1C1815', card: '#211C18', border: '#3A322A' },
+          gold:     { DEFAULT: '#B8912F', bright: '#D9AE45', dim: '#8A6E26' },
+          teal:     { DEFAULT: '#3F7A70', bright: '#57998D' },
+          parchment:{ DEFAULT: '#EDE4D3', muted: '#A8977F', dim: '#766A57' },
+        },
+        fontFamily: {
+          arabic: ['"Amiri"', 'serif'],
+          sans: ['"Inter"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="/static/css/custom.css">
+</head>
+<body class="bg-ink text-parchment font-sans min-h-screen">
+
+<!-- ============================= HEADER ============================= -->
+<header class="border-b border-ink-border bg-ink-panel sticky top-0 z-30">
+  <div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <button id="sidebarToggle" class="lg:hidden text-parchment-muted hover:text-gold p-2 -ml-2" aria-label="Toggle filters">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+      <div>
+        <h1 class="font-arabic text-2xl sm:text-3xl text-gold-bright leading-tight">ديوان الأمزجة</h1>
+        <p class="text-[11px] sm:text-xs text-parchment-dim tracking-wide uppercase mt-0.5">Arabic Poetry Mood Explorer &mdash; Top 100 Poets, mood-labeled</p>
+      </div>
+    </div>
+    <div class="hidden sm:flex items-center gap-2 font-mono text-xs text-parchment-muted">
+      <span id="headerCount" class="text-gold-bright text-sm font-semibold">—</span>
+      <span>/ <span id="headerTotal">—</span> batches shown</span>
+    </div>
+  </div>
+</header>
+
+<div class="max-w-[1400px] mx-auto px-4 sm:px-6 py-6 flex gap-6 items-start">
+
+  <!-- ============================= SIDEBAR ============================= -->
+  <aside id="sidebar" class="hidden lg:block w-[300px] shrink-0 sticky top-[88px] max-h-[calc(100vh-104px)] overflow-y-auto scrollbar-thin pr-1">
+    <div class="bg-ink-panel border border-ink-border rounded-lg p-4 space-y-6">
+
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-semibold tracking-wide text-gold-bright uppercase">Filters</h2>
+        <button id="resetFilters" class="text-xs text-parchment-dim hover:text-gold underline underline-offset-2">Reset all</button>
+      </div>
+
+      <!-- Search -->
+      <div>
+        <label class="block text-xs text-parchment-muted mb-1.5">Search verse text</label>
+        <input id="searchInput" type="text" dir="rtl" placeholder="ابحث في الأبيات…"
+          class="w-full bg-ink border border-ink-border rounded-md px-3 py-2 text-sm font-arabic focus:outline-none focus:ring-1 focus:ring-gold placeholder:text-parchment-dim">
+      </div>
+
+      <!-- Poet -->
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-xs text-parchment-muted">Poet</label>
+          <button data-clear="poet" class="text-[10px] text-parchment-dim hover:text-gold">clear</button>
+        </div>
+        <input id="poetSearch" type="text" placeholder="filter poets…" class="w-full bg-ink border border-ink-border rounded-md px-2.5 py-1.5 text-xs mb-2 focus:outline-none focus:ring-1 focus:ring-gold placeholder:text-parchment-dim">
+        <div id="poetList" class="max-h-40 overflow-y-auto scrollbar-thin space-y-0.5 text-sm"></div>
+      </div>
+
+      <!-- Poet rank range -->
+      <div>
+        <label class="block text-xs text-parchment-muted mb-1.5">Poet rank range</label>
+        <div class="flex items-center gap-2">
+          <input id="rankMin" type="number" placeholder="min" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+          <span class="text-parchment-dim text-xs">–</span>
+          <input id="rankMax" type="number" placeholder="max" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+        </div>
+      </div>
+
+      <!-- Meter -->
+      <div>
+        <label class="block text-xs text-parchment-muted mb-1.5">Meter (بحر)</label>
+        <div id="meterList" class="flex flex-wrap gap-1.5"></div>
+      </div>
+
+      <!-- Batch size -->
+      <div>
+        <label class="block text-xs text-parchment-muted mb-1.5">Verses per batch</label>
+        <div class="flex items-center gap-2">
+          <input id="batchMin" type="number" placeholder="min" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+          <span class="text-parchment-dim text-xs">–</span>
+          <input id="batchMax" type="number" placeholder="max" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+        </div>
+      </div>
+
+      <hr class="border-ink-border">
+
+      <!-- Tag axes: mood / genre / energy / aesthetic -->
+      <div id="axisFilters" class="space-y-5"><!-- populated by JS --></div>
+
+    </div>
+  </aside>
+
+  <!-- overlay for mobile sidebar -->
+  <div id="sidebarOverlay" class="hidden fixed inset-0 bg-black/60 z-20 lg:hidden"></div>
+
+  <!-- ============================= MAIN ============================= -->
+  <main class="flex-1 min-w-0 space-y-5">
+
+    <!-- Stats strip -->
+    <div id="statsPanel" class="bg-ink-panel border border-ink-border rounded-lg p-4"></div>
+
+    <!-- Toolbar -->
+    <div class="flex flex-wrap items-center justify-between gap-3 bg-ink-panel border border-ink-border rounded-lg px-4 py-3">
+      <div class="text-sm text-parchment-muted">
+        <span id="resultSummary">Loading…</span>
+      </div>
+      <div class="flex items-center gap-2 text-xs">
+        <label class="text-parchment-dim">Sort</label>
+        <select id="sortBy" class="bg-ink border border-ink-border rounded-md px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-gold">
+          <option value="row_id">Default order</option>
+          <option value="POET_RANK">Poet rank</option>
+          <option value="BATCH_SIZE">Batch size</option>
+          <option value="mood_confidence">Mood confidence</option>
+          <option value="genre_confidence">Genre confidence</option>
+          <option value="energy_confidence">Energy confidence</option>
+          <option value="aesthetic_confidence">Aesthetic confidence</option>
+        </select>
+        <button id="sortDir" data-dir="asc" class="border border-ink-border rounded-md px-2 py-1.5 hover:border-gold" title="Toggle direction">↑</button>
+        <select id="pageSize" class="bg-ink border border-ink-border rounded-md px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-gold">
+          <option value="10">10 / page</option>
+          <option value="20" selected>20 / page</option>
+          <option value="50">50 / page</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="results" class="space-y-4"></div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="flex items-center justify-center gap-2 py-6 text-sm"></div>
+
+  </main>
+</div>
+
+<template id="axisBlockTemplate">
+  <div class="axis-block">
+    <div class="flex items-center justify-between mb-1.5">
+      <label class="text-xs text-parchment-muted axis-title"></label>
+      <div class="flex items-center gap-1 text-[10px]">
+        <button data-mode="any" class="mode-btn px-1.5 py-0.5 rounded border border-ink-border">any</button>
+        <button data-mode="all" class="mode-btn px-1.5 py-0.5 rounded border border-ink-border">all</button>
+      </div>
+    </div>
+    <div class="tag-options flex flex-wrap gap-1.5 mb-2"></div>
+    <select class="confidence-select w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold">
+      <option value="">Any confidence</option>
+      <option value="true">Low-confidence only (ambiguous)</option>
+      <option value="false">High-confidence only</option>
+    </select>
+  </div>
+</template>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

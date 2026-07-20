@@ -1,0 +1,107 @@
+/* ---------------------------------------------------------------------
+   Scrollbars — thin, ink-toned, to match the manuscript palette
+--------------------------------------------------------------------- */
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #3A322A; border-radius: 3px; }
+.scrollbar-thin::-webkit-scrollbar-thumb:hover { background: #B8912F; }
+
+/* ---------------------------------------------------------------------
+   Checkbox rows in the sidebar (poet list, tag lists)
+--------------------------------------------------------------------- */
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.35rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  color: #A8977F;
+  font-size: 0.78rem;
+}
+.check-row:hover { background: #241F1A; color: #EDE4D3; }
+.check-row input { accent-color: #B8912F; }
+.check-row .count { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #766A57; }
+
+/* Meter pill toggle buttons */
+.meter-pill {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #3A322A;
+  color: #A8977F;
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background-color .15s;
+}
+.meter-pill.active {
+  border-color: #B8912F;
+  color: #14110F;
+  background: #B8912F;
+  font-weight: 600;
+}
+
+/* Tag toggle chips inside axis blocks */
+.tag-chip {
+  font-size: 0.7rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid #3A322A;
+  cursor: pointer;
+  color: #A8977F;
+  white-space: nowrap;
+  transition: border-color .15s, color .15s;
+}
+.tag-chip.active { color: #14110F; font-weight: 600; }
+
+/* Mode button state */
+.mode-btn { color: #766A57; }
+.mode-btn.active { color: #14110F; background: #A8977F; border-color: #A8977F; }
+
+/* ---------------------------------------------------------------------
+   Result cards
+--------------------------------------------------------------------- */
+.batch-card {
+  background: #1C1815;
+  border: 1px solid #3A322A;
+  border-radius: 0.6rem;
+  padding: 1.1rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+.batch-card::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 4px;
+  background: var(--dominant-color, #B8912F);
+}
+.verse-line {
+  font-family: 'Amiri', serif;
+  direction: rtl;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 2.35rem;
+  color: #EDE4D3;
+}
+.verse-line .sadr::after {
+  content: "  …  ";
+  color: #766A57;
+  font-size: 0.9rem;
+}
+
+/* small confidence bar */
+.conf-bar-track { background: #14110F; border-radius: 999px; height: 4px; overflow: hidden; }
+.conf-bar-fill { height: 100%; border-radius: 999px; }
+
+/* axis label chips in card footer */
+.axis-tag {
+  font-size: 0.68rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.3rem;
+  white-space: nowrap;
+}
+
+/* stats bar chart rows */
+.stat-row { display: grid; grid-template-columns: 92px 1fr 40px; align-items: center; gap: 0.5rem; font-size: 0.72rem; }
+.stat-track { background: #14110F; border-radius: 999px; height: 8px; overflow: hidden; }
+.stat-fill { height: 100%; border-radius: 999px; }
