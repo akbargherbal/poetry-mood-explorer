@@ -7,6 +7,8 @@ function resetState() {
   state.q = "";
   state.poets = new Set();
   state.meters = new Set();
+  state.excludePoems = new Set();
+  state.excludeRanks = new Set();
   state.rankMin = null;
   state.rankMax = null;
   state.poemBatchesMin = null;
@@ -15,10 +17,10 @@ function resetState() {
   state.poemVersesMax = null;
   state.firstBatchOnly = false;
   state.axis = {
-    mood: { tags: new Set(), mode: "any", confidence: "" },
-    genre: { tags: new Set(), mode: "any", confidence: "" },
-    energy: { tags: new Set(), mode: "any", confidence: "" },
-    aesthetic: { tags: new Set(), mode: "any", confidence: "" },
+    mood: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
+    genre: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
+    energy: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
+    aesthetic: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
   };
   state.sortBy = "row_id";
   state.sortDir = "asc";
@@ -61,6 +63,37 @@ describe("buildParams", () => {
     expect(p.get("rank_max")).toBe("10");
   });
 
+  it("maps excluded poems and ranks onto repeated params", () => {
+    let p = buildParams(false);
+    expect(p.has("exclude_poem")).toBe(false);
+    expect(p.has("exclude_rank")).toBe(false);
+
+    state.excludePoems.add("4730");
+    state.excludeRanks.add(1);
+    state.excludeRanks.add(7);
+    p = buildParams(false);
+    expect(p.getAll("exclude_poem")).toEqual(["4730"]);
+    expect(p.getAll("exclude_rank").sort()).toEqual(["1", "7"]);
+  });
+
+  it("omits poem-length (batches/verses) ranges when null, includes them when set", () => {
+    let p = buildParams(false);
+    expect(p.has("poem_batches_min")).toBe(false);
+    expect(p.has("poem_batches_max")).toBe(false);
+    expect(p.has("poem_verses_min")).toBe(false);
+    expect(p.has("poem_verses_max")).toBe(false);
+
+    state.poemBatchesMin = 1;
+    state.poemBatchesMax = 3;
+    state.poemVersesMin = 10;
+    state.poemVersesMax = 40;
+    p = buildParams(false);
+    expect(p.get("poem_batches_min")).toBe("1");
+    expect(p.get("poem_batches_max")).toBe("3");
+    expect(p.get("poem_verses_min")).toBe("10");
+    expect(p.get("poem_verses_max")).toBe("40");
+  });
+
   it("includes first_batch_only only when true", () => {
     let p = buildParams(false);
     expect(p.has("first_batch_only")).toBe(false);
@@ -88,6 +121,21 @@ describe("buildParams", () => {
     state.axis.mood.confidence = "true";
     p = buildParams(false);
     expect(p.get("mood_low_confidence")).toBe("true");
+  });
+
+  it("includes axis confidence min/max only when set, independently per axis", () => {
+    let p = buildParams(false);
+    expect(p.has("mood_confidence_min")).toBe(false);
+    expect(p.has("mood_confidence_max")).toBe(false);
+    expect(p.has("genre_confidence_min")).toBe(false);
+
+    state.axis.mood.confidenceMin = -1.5;
+    state.axis.mood.confidenceMax = 2.5;
+    p = buildParams(false);
+    expect(p.get("mood_confidence_min")).toBe("-1.5");
+    expect(p.get("mood_confidence_max")).toBe("2.5");
+    expect(p.has("genre_confidence_min")).toBe(false);
+    expect(p.has("genre_confidence_max")).toBe(false);
   });
 
   describe("includePagination flag", () => {

@@ -13,7 +13,7 @@ export default defineConfig({
   reporter: "list",
 
   use: {
-    baseURL: "http://127.0.0.1:5000",
+    baseURL: "http://127.0.0.1:5001",
     trace: "on-first-retry",
   },
 
@@ -25,7 +25,7 @@ export default defineConfig({
     ? undefined
     : {
         command: "python ../app.py",
-        url: "http://127.0.0.1:5000",
+        url: "http://127.0.0.1:5001",
         reuseExistingServer: !process.env.CI,
         timeout: 60_000,
       },
