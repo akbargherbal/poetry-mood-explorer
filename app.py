@@ -30,13 +30,15 @@ def api_meta():
 @app.route("/api/search")
 def api_search():
     records, total, page, page_size = data_loader.query(request.args)
-    return jsonify({
-        "results": records,
-        "total": total,
-        "page": page,
-        "page_size": page_size,
-        "total_pages": max(1, (total + page_size - 1) // page_size),
-    })
+    return jsonify(
+        {
+            "results": records,
+            "total": total,
+            "page": page,
+            "page_size": page_size,
+            "total_pages": max(1, (total + page_size - 1) // page_size),
+        }
+    )
 
 
 @app.route("/api/stats")
@@ -53,4 +55,4 @@ def api_batch(row_id):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5001)
