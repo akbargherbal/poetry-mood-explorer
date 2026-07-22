@@ -11,8 +11,7 @@ const AXIS_META = {
   aesthetic: { label: "Aesthetic — الجمالية", accent: "#9C7FBF" },
 };
 
-// Fixed, hand-picked colors per tag so the same mood/genre always reads the
-// same color everywhere in the UI (chips, card stripes, stats bars).
+// Fixed, hand-picked colors per tag
 const TAG_COLORS = {
   mood: {
     "فرح": "#D9AE45", "حزن": "#6E86A8", "غضب": "#B84A3E", "تشاؤم": "#7A6E8C",
@@ -46,15 +45,17 @@ export const state = {
   q: "",
   poets: new Set(),
   meters: new Set(),
+  excludePoems: new Set(),
+  excludeRanks: new Set(),
   rankMin: null, rankMax: null,
   poemBatchesMin: null, poemBatchesMax: null,
   poemVersesMin: null, poemVersesMax: null,
   firstBatchOnly: false,
   axis: {
-    mood: { tags: new Set(), mode: "any", confidence: "" },
-    genre: { tags: new Set(), mode: "any", confidence: "" },
-    energy: { tags: new Set(), mode: "any", confidence: "" },
-    aesthetic: { tags: new Set(), mode: "any", confidence: "" },
+    mood: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
+    genre: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
+    energy: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
+    aesthetic: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
   },
   sortBy: "row_id",
   sortDir: "asc",
@@ -152,7 +153,7 @@ function buildAxisBlocks(meta) {
       const chip = document.createElement("button");
       chip.className = "tag-chip";
       chip.textContent = `${tag} (${count})`;
-      
+
       const isActive = state.axis[axis].tags.has(tag);
       chip.style.borderColor = tagColor(axis, tag) + "55";
       if (isActive) {
@@ -176,7 +177,7 @@ function buildAxisBlocks(meta) {
       const isCurrentMode = state.axis[axis].mode === btn.dataset.mode;
       btn.classList.remove("active");
       if (isCurrentMode) btn.classList.add("active");
-      
+
       btn.addEventListener("click", () => {
         block.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
@@ -194,6 +195,24 @@ function buildAxisBlocks(meta) {
       refresh();
     });
 
+    const confMin = node.querySelector(".conf-min-input");
+    const confMax = node.querySelector(".conf-max-input");
+
+    if (state.axis[axis].confidenceMin != null) confMin.value = state.axis[axis].confidenceMin;
+    if (state.axis[axis].confidenceMax != null) confMax.value = state.axis[axis].confidenceMax;
+
+    confMin.addEventListener("input", debounce((e) => {
+      state.axis[axis].confidenceMin = e.target.value === "" ? null : parseFloat(e.target.value);
+      state.page = 1;
+      refresh();
+    }, 350));
+
+    confMax.addEventListener("input", debounce((e) => {
+      state.axis[axis].confidenceMax = e.target.value === "" ? null : parseFloat(e.target.value);
+      state.page = 1;
+      refresh();
+    }, 350));
+
     container.appendChild(node);
   });
 }
@@ -202,22 +221,22 @@ function buildPoemLengthPresets(poemLengthMeta) {
   const container = document.getElementById("poemLengthPresets");
   if (!container) return;
   container.innerHTML = "";
-  
+
   if (!poemLengthMeta || !poemLengthMeta.batches || !poemLengthMeta.batches.presets) return;
-  
+
   poemLengthMeta.batches.presets.forEach(p => {
     const btn = document.createElement("button");
     btn.className = "length-pill";
     btn.innerHTML = `${p.label} <span class="range">${p.min}-${p.max}</span>`;
-    
+
     if (state.poemBatchesMin === p.min && state.poemBatchesMax === p.max) {
       btn.classList.add("active");
     }
-    
+
     btn.addEventListener("click", () => {
       const wasActive = btn.classList.contains("active");
       container.querySelectorAll(".length-pill").forEach(b => b.classList.remove("active"));
-      
+
       if (wasActive) {
         state.poemBatchesMin = null;
         state.poemBatchesMax = null;
@@ -229,8 +248,7 @@ function buildPoemLengthPresets(poemLengthMeta) {
         state.poemBatchesMax = p.max;
         document.getElementById("poemBatchesMin").value = p.min;
         document.getElementById("poemBatchesMax").value = p.max;
-        
-        // Clear verses manual settings since we activated a batches preset
+
         state.poemVersesMin = null;
         state.poemVersesMax = null;
         document.getElementById("poemVersesMin").value = "";
@@ -239,7 +257,7 @@ function buildPoemLengthPresets(poemLengthMeta) {
       state.page = 1;
       refresh();
     });
-    
+
     container.appendChild(btn);
   });
 }
@@ -264,13 +282,45 @@ function wireStaticControls() {
     }
   });
 
+  // Exclusion inputs
+  const addExcludePoem = () => {
+    const input = document.getElementById("excludePoemInput");
+    const val = (input.value || "").trim();
+    if (val) {
+      state.excludePoems.add(val);
+      input.value = "";
+      state.page = 1;
+      refresh();
+    }
+  };
+
+  const addExcludeRank = () => {
+    const input = document.getElementById("excludeRankInput");
+    const val = parseInt((input.value || "").trim(), 10);
+    if (!isNaN(val)) {
+      state.excludeRanks.add(val);
+      input.value = "";
+      state.page = 1;
+      refresh();
+    }
+  };
+
+  const poemBtn = document.getElementById("addExcludePoemBtn");
+  if (poemBtn) poemBtn.addEventListener("click", addExcludePoem);
+  const poemInput = document.getElementById("excludePoemInput");
+  if (poemInput) poemInput.addEventListener("keydown", (e) => { if (e.key === "Enter") addExcludePoem(); });
+
+  const rankBtn = document.getElementById("addExcludeRankBtn");
+  if (rankBtn) rankBtn.addEventListener("click", addExcludeRank);
+  const rankInput = document.getElementById("excludeRankInput");
+  if (rankInput) rankInput.addEventListener("keydown", (e) => { if (e.key === "Enter") addExcludeRank(); });
+
   ["poemBatchesMin", "poemBatchesMax", "poemVersesMin", "poemVersesMax"].forEach(id => {
     const el = document.getElementById(id);
     if (el) {
       el.addEventListener("input", debounce((e) => {
         state[id] = e.target.value === "" ? null : parseInt(e.target.value, 10);
-        
-        // Deactivate active preset chips since the user edited manually
+
         const presetsContainer = document.getElementById("poemLengthPresets");
         if (presetsContainer) {
           presetsContainer.querySelectorAll(".length-pill").forEach(b => b.classList.remove("active"));
@@ -313,7 +363,6 @@ function wireStaticControls() {
   });
 
   document.getElementById("resetFilters").addEventListener("click", () => {
-    // Standard full clear: reload page with clean parameters
     window.location.href = window.location.pathname;
   });
 
@@ -326,18 +375,29 @@ function wireStaticControls() {
     });
   });
 
+  document.querySelectorAll("[data-clear='exclusions']").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.excludePoems.clear();
+      state.excludeRanks.clear();
+      document.getElementById("excludePoemInput").value = "";
+      document.getElementById("excludeRankInput").value = "";
+      state.page = 1;
+      refresh();
+    });
+  });
+
   document.querySelectorAll("[data-clear='poemLength']").forEach(btn => {
     btn.addEventListener("click", () => {
       state.poemBatchesMin = null;
       state.poemBatchesMax = null;
       state.poemVersesMin = null;
       state.poemVersesMax = null;
-      
+
       document.getElementById("poemBatchesMin").value = "";
       document.getElementById("poemBatchesMax").value = "";
       document.getElementById("poemVersesMin").value = "";
       document.getElementById("poemVersesMax").value = "";
-      
+
       const container = document.getElementById("poemLengthPresets");
       if (container) {
         container.querySelectorAll(".length-pill").forEach(b => b.classList.remove("active"));
@@ -347,7 +407,7 @@ function wireStaticControls() {
     });
   });
 
-  // mobile sidebar
+  // Mobile sidebar
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("sidebarOverlay");
   const openSidebar = () => { sidebar.classList.remove("hidden"); overlay.classList.remove("hidden"); };
@@ -364,9 +424,12 @@ export function buildParams(includePagination) {
   if (state.q) p.set("q", state.q);
   state.poets.forEach(v => p.append("poet", v));
   state.meters.forEach(v => p.append("meter", v));
+  state.excludePoems.forEach(p_id => p.append("exclude_poem", p_id));
+  state.excludeRanks.forEach(r => p.append("exclude_rank", String(r)));
+
   if (state.rankMin != null) p.set("rank_min", state.rankMin);
   if (state.rankMax != null) p.set("rank_max", state.rankMax);
-  
+
   if (state.poemBatchesMin != null) p.set("poem_batches_min", state.poemBatchesMin);
   if (state.poemBatchesMax != null) p.set("poem_batches_max", state.poemBatchesMax);
   if (state.poemVersesMin != null) p.set("poem_verses_min", state.poemVersesMin);
@@ -379,6 +442,8 @@ export function buildParams(includePagination) {
       p.set(`${axis}_mode`, state.axis[axis].mode);
     }
     if (state.axis[axis].confidence !== "") p.set(`${axis}_low_confidence`, state.axis[axis].confidence);
+    if (state.axis[axis].confidenceMin != null) p.set(`${axis}_confidence_min`, state.axis[axis].confidenceMin);
+    if (state.axis[axis].confidenceMax != null) p.set(`${axis}_confidence_max`, state.axis[axis].confidenceMax);
   });
 
   if (includePagination) {
@@ -392,15 +457,17 @@ export function buildParams(includePagination) {
 
 function loadStateFromURL() {
   const params = new URLSearchParams(window.location.search);
-  
+
   if (params.has("q")) state.q = params.get("q");
-  
+
   params.getAll("poet").forEach(p => state.poets.add(p));
   params.getAll("meter").forEach(m => state.meters.add(m));
-  
+  params.getAll("exclude_poem").forEach(p_id => state.excludePoems.add(p_id));
+  params.getAll("exclude_rank").forEach(r => state.excludeRanks.add(parseInt(r, 10)));
+
   if (params.has("rank_min")) state.rankMin = parseInt(params.get("rank_min"), 10);
   if (params.has("rank_max")) state.rankMax = parseInt(params.get("rank_max"), 10);
-  
+
   if (params.has("poem_batches_min")) state.poemBatchesMin = parseInt(params.get("poem_batches_min"), 10);
   if (params.has("poem_batches_max")) state.poemBatchesMax = parseInt(params.get("poem_batches_max"), 10);
   if (params.has("poem_verses_min")) state.poemVersesMin = parseInt(params.get("poem_verses_min"), 10);
@@ -411,6 +478,8 @@ function loadStateFromURL() {
     params.getAll(`${axis}_tags`).forEach(t => state.axis[axis].tags.add(t));
     if (params.has(`${axis}_mode`)) state.axis[axis].mode = params.get(`${axis}_mode`);
     if (params.has(`${axis}_low_confidence`)) state.axis[axis].confidence = params.get(`${axis}_low_confidence`);
+    if (params.has(`${axis}_confidence_min`)) state.axis[axis].confidenceMin = parseFloat(params.get(`${axis}_confidence_min`));
+    if (params.has(`${axis}_confidence_max`)) state.axis[axis].confidenceMax = parseFloat(params.get(`${axis}_confidence_max`));
   });
 
   if (params.has("sort_by")) state.sortBy = params.get("sort_by");
@@ -418,7 +487,7 @@ function loadStateFromURL() {
   if (params.has("page")) state.page = parseInt(params.get("page"), 10);
   if (params.has("page_size")) state.pageSize = parseInt(params.get("page_size"), 10);
 
-  // Prefill sidebar fields on boot if state dictates
+  // Prefill sidebar fields
   if (state.rankMin != null) document.getElementById("rankMin").value = state.rankMin;
   if (state.rankMax != null) document.getElementById("rankMax").value = state.rankMax;
   if (state.poemBatchesMin != null) document.getElementById("poemBatchesMin").value = state.poemBatchesMin;
@@ -431,7 +500,6 @@ async function refresh() {
   const searchParams = buildParams(true);
   const statsParams = buildParams(false);
 
-  // Sync state to URL address bar
   const urlSearch = searchParams.toString();
   const newURL = window.location.pathname + (urlSearch ? "?" + urlSearch : "");
   window.history.replaceState(null, "", newURL);
@@ -496,7 +564,6 @@ function renderCard(batch) {
       </div>`;
   }).join("");
 
-  // Render readable batch index and poem length scales
   const batchDisplay = `batch ${batch.batch_no + 1} of ${batch.poem_num_batches}`;
   const totalVersesDisplay = `${batch.poem_total_verses} verses total`;
 
@@ -512,7 +579,12 @@ function renderCard(batch) {
           <span class="text-parchment-dim">· ${totalVersesDisplay}</span>
         </span>
       </div>
-      <span class="text-[10px] font-mono text-parchment-dim">poem #${escapeHtml(batch.poem_no)}</span>
+      <div class="flex items-center gap-2">
+        <button class="exclude-poem-btn text-[10px] font-mono text-parchment-dim hover:text-red-400 border border-ink-border rounded px-1.5 py-0.5" title="Exclude poem #${escapeHtml(batch.poem_no)}">
+          🚫 Exclude poem
+        </button>
+        <span class="text-[10px] font-mono text-parchment-dim">poem #${escapeHtml(batch.poem_no)}</span>
+      </div>
     </div>
 
     <div class="space-y-0.5 mb-3 pr-2">${versesHtml}</div>
@@ -531,6 +603,15 @@ function renderCard(batch) {
     refresh();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  const exclBtn = card.querySelector(".exclude-poem-btn");
+  if (exclBtn) {
+    exclBtn.addEventListener("click", () => {
+      state.excludePoems.add(String(batch.poem_no));
+      state.page = 1;
+      refresh();
+    });
+  }
 
   const expandBtn = card.querySelector(".expand-btn");
   if (expandBtn) {
@@ -637,7 +718,7 @@ function renderActiveFilters() {
     });
   });
 
-  // 3. Meter (بحر) Filters
+  // 3. Meter Filters
   state.meters.forEach(m => {
     addChip("Meter", m, () => {
       state.meters.delete(m);
@@ -649,7 +730,25 @@ function renderActiveFilters() {
     });
   });
 
-  // 4. Poet Rank range
+  // 4. Excluded Poem IDs
+  state.excludePoems.forEach(p_id => {
+    addChip("Exclude Poem", `#${p_id}`, () => {
+      state.excludePoems.delete(p_id);
+      state.page = 1;
+      refresh();
+    });
+  });
+
+  // 5. Excluded Poet Ranks
+  state.excludeRanks.forEach(rank => {
+    addChip("Exclude Rank", `#${rank}`, () => {
+      state.excludeRanks.delete(rank);
+      state.page = 1;
+      refresh();
+    });
+  });
+
+  // 6. Poet Rank range
   if (state.rankMin != null || state.rankMax != null) {
     const label = state.rankMin != null && state.rankMax != null
       ? `#${state.rankMin} – #${state.rankMax}`
@@ -664,7 +763,7 @@ function renderActiveFilters() {
     });
   }
 
-  // 5. Poem Length (Batches) Range
+  // 7. Poem Length (Batches) Range
   if (state.poemBatchesMin != null || state.poemBatchesMax != null) {
     const label = state.poemBatchesMin != null && state.poemBatchesMax != null
       ? `${state.poemBatchesMin} – ${state.poemBatchesMax} batches`
@@ -674,16 +773,16 @@ function renderActiveFilters() {
       state.poemBatchesMax = null;
       document.getElementById("poemBatchesMin").value = "";
       document.getElementById("poemBatchesMax").value = "";
-      
+
       const pres = document.getElementById("poemLengthPresets");
       if (pres) pres.querySelectorAll(".length-pill").forEach(b => b.classList.remove("active"));
-      
+
       state.page = 1;
       refresh();
     });
   }
 
-  // 6. Poem Length (Verses) Range
+  // 8. Poem Length (Verses) Range
   if (state.poemVersesMin != null || state.poemVersesMax != null) {
     const label = state.poemVersesMin != null && state.poemVersesMax != null
       ? `${state.poemVersesMin} – ${state.poemVersesMax} verses`
@@ -698,7 +797,7 @@ function renderActiveFilters() {
     });
   }
 
-  // 7. Browsing Mode (First batch only / One card per poem)
+  // 9. Browsing Mode
   if (state.firstBatchOnly) {
     addChip("Browsing", "One card per poem", () => {
       state.firstBatchOnly = false;
@@ -709,7 +808,7 @@ function renderActiveFilters() {
     });
   }
 
-  // 8. Categorical axis tags
+  // 10. Categorical tags & confidence ranges
   AXES.forEach(axis => {
     state.axis[axis].tags.forEach(tag => {
       addChip(axis, tag, () => {
@@ -725,9 +824,19 @@ function renderActiveFilters() {
         refresh();
       });
     });
+
+    if (state.axis[axis].confidenceMin != null || state.axis[axis].confidenceMax != null) {
+      const cMin = state.axis[axis].confidenceMin != null ? state.axis[axis].confidenceMin : 0;
+      const cMax = state.axis[axis].confidenceMax != null ? state.axis[axis].confidenceMax : 1;
+      addChip(`${axis} conf`, `${cMin} – ${cMax}`, () => {
+        state.axis[axis].confidenceMin = null;
+        state.axis[axis].confidenceMax = null;
+        state.page = 1;
+        refresh();
+      });
+    }
   });
 
-  // Hide container if there are no filters
   if (activeChips.length === 0) {
     container.classList.add("hidden");
     container.classList.remove("flex");
@@ -737,13 +846,11 @@ function renderActiveFilters() {
   container.classList.remove("hidden");
   container.classList.add("flex");
 
-  // Prefix title
   const title = document.createElement("span");
   title.className = "text-xs text-parchment-dim mr-1.5 font-semibold self-center";
   title.textContent = "Active filters:";
   container.appendChild(title);
 
-  // Generate tags
   activeChips.forEach(c => {
     const tagNode = document.createElement("div");
     tagNode.className = "filter-chip";
@@ -756,7 +863,6 @@ function renderActiveFilters() {
     container.appendChild(tagNode);
   });
 
-  // Reset all button
   if (activeChips.length > 1) {
     const resetBtn = document.createElement("button");
     resetBtn.className = "text-xs text-teal-bright hover:underline hover:text-gold ml-2 underline-offset-2 self-center";

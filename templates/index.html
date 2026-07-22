@@ -98,13 +98,39 @@
 
       <hr class="border-ink-border">
 
+      <!-- Exclusions (Excluding poems or ranks) -->
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-xs text-parchment-muted font-medium">Exclusions</label>
+          <button data-clear="exclusions" class="text-[10px] text-parchment-dim hover:text-gold">clear</button>
+        </div>
+        <div class="space-y-2">
+          <div>
+            <span class="text-[10px] text-parchment-dim block mb-1">Exclude Poem ID</span>
+            <div class="flex gap-1.5">
+              <input id="excludePoemInput" type="text" placeholder="e.g. 4730" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+              <button id="addExcludePoemBtn" class="px-2.5 py-1 bg-ink border border-ink-border hover:border-gold rounded-md text-xs font-mono text-parchment-muted">+</button>
+            </div>
+          </div>
+          <div>
+            <span class="text-[10px] text-parchment-dim block mb-1">Exclude Poet Rank</span>
+            <div class="flex gap-1.5">
+              <input id="excludeRankInput" type="number" placeholder="e.g. 7" class="w-full bg-ink border border-ink-border rounded-md px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+              <button id="addExcludeRankBtn" class="px-2.5 py-1 bg-ink border border-ink-border hover:border-gold rounded-md text-xs font-mono text-parchment-muted">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-ink-border">
+
       <!-- Poem length (whole-poem aggregate filter) -->
       <div>
         <div class="flex items-center justify-between mb-1.5">
           <label class="block text-xs text-parchment-muted font-medium">Poem length</label>
           <button data-clear="poemLength" class="text-[10px] text-parchment-dim hover:text-gold">clear</button>
         </div>
-        <div id="poemLengthPresets" class="flex flex-wrap gap-1.5 mb-2.5"><!-- populated by JS: Short/Medium/Long/Epic --></div>
+        <div id="poemLengthPresets" class="flex flex-wrap gap-1.5 mb-2.5"></div>
 
         <div class="flex items-center justify-between mb-1">
           <span class="text-[10px] text-parchment-dim">Total batches</span>
@@ -128,7 +154,7 @@
       <hr class="border-ink-border">
 
       <!-- Tag axes: mood / genre / energy / aesthetic -->
-      <div id="axisFilters" class="space-y-5"><!-- populated by JS --></div>
+      <div id="axisFilters" class="space-y-5"></div>
 
     </div>
   </aside>
@@ -159,8 +185,8 @@
           <option value="row_id">Default order</option>
           <option value="POET_RANK">Poet rank</option>
           <option value="BATCH_SIZE">Batch size</option>
-          <option value="POEM_NUM_BATCHES">Poem length (batches)</option>
-          <option value="POEM_TOTAL_VERSES">Poem length (verses)</option>
+          <option value="poem_n_batches">Poem length (batches)</option>
+          <option value="poem_n_verses">Poem length (verses)</option>
           <option value="mood_confidence">Mood confidence</option>
           <option value="genre_confidence">Genre confidence</option>
           <option value="energy_confidence">Energy confidence</option>
@@ -197,11 +223,17 @@
       </div>
     </div>
     <div class="tag-options flex flex-wrap gap-1.5 mb-2"></div>
-    <select class="confidence-select w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold">
-      <option value="">Any confidence</option>
+    <select class="confidence-select w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold mb-1.5">
+      <option value="">Any confidence flag</option>
       <option value="true">Low-confidence only (ambiguous)</option>
       <option value="false">High-confidence only</option>
     </select>
+    <div class="flex items-center gap-1.5">
+      <span class="text-[10px] text-parchment-dim shrink-0">Conf range:</span>
+      <input type="number" step="0.05" min="0" max="1" placeholder="min" class="conf-min-input w-full bg-ink border border-ink-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+      <span class="text-parchment-dim text-xs">–</span>
+      <input type="number" step="0.05" min="0" max="1" placeholder="max" class="conf-max-input w-full bg-ink border border-ink-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
+    </div>
   </div>
 </template>
 

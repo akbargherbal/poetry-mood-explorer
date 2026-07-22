@@ -45,6 +45,41 @@ _df["verse_text"] = _df["DATA"].apply(_flatten_verses)
 
 
 # ---------------------------------------------------------------------------
+# Poem-level aggregates (batches-per-poem, verses-per-poem).
+# ---------------------------------------------------------------------------
+def _poem_stats():
+    return _df.groupby("poem_no").agg(
+        poem_n_batches=("batch_no", "count"),
+        poem_n_verses=("BATCH_SIZE", "sum"),
+    )
+
+
+def _poem_length_meta(col):
+    """Min/max plus Short/Medium/Long/Epic presets, built from the actual
+    quartiles of the current dataset rather than hardcoded, so the presets
+    stay meaningful even if the dataset changes size/shape."""
+    stats = _poem_stats()
+    series = stats[col]
+    lo, hi = int(series.min()), int(series.max())
+    q25, q50, q75 = (int(v) for v in series.quantile([0.25, 0.5, 0.75]))
+
+    # Build monotonically increasing preset boundaries even when quartiles
+    # collapse together (e.g. a small/uniform dataset) by clamping each
+    # boundary to be at least one more than the previous.
+    b1 = max(q25, lo)
+    b2 = max(q50, b1 + 1 if b1 < hi else b1)
+    b3 = max(q75, b2 + 1 if b2 < hi else b2)
+
+    presets = [
+        {"label": "Short", "min": lo, "max": min(b1, hi)},
+        {"label": "Medium", "min": min(b1 + 1, hi), "max": min(b2, hi)},
+        {"label": "Long", "min": min(b2 + 1, hi), "max": min(b3, hi)},
+        {"label": "Epic", "min": min(b3 + 1, hi), "max": hi},
+    ]
+    return {"min": lo, "max": hi, "presets": presets}
+
+
+# ---------------------------------------------------------------------------
 # Metadata for building the frontend's filter controls
 # ---------------------------------------------------------------------------
 def get_meta():
@@ -63,6 +98,19 @@ def get_meta():
         .to_dict(orient="records")
     )
 
+    confidence = {
+        axis: {
+            "min": float(round(_df[f"{axis}_confidence"].min(), 3)),
+            "max": float(round(_df[f"{axis}_confidence"].max(), 3)),
+        }
+        for axis in AXES
+    }
+
+    poem_length = {
+        "batches": _poem_length_meta("poem_n_batches"),
+        "verses": _poem_length_meta("poem_n_verses"),
+    }
+
     return {
         "poets": poets,
         "meters": sorted(_df["meter"].dropna().unique().tolist()),
@@ -78,6 +126,8 @@ def get_meta():
             "min": int(_df["POET_RANK"].min()),
             "max": int(_df["POET_RANK"].max()),
         },
+        "confidence": confidence,
+        "poem_length": poem_length,
         "total_batches": int(len(_df)),
     }
 
@@ -96,37 +146,72 @@ def _tag_mask(series, wanted, mode):
     return series.apply(lambda tags: not wanted.isdisjoint(set(tags)))
 
 
-def query(params):
-    """
-    Filter, search, sort, and paginate the dataset according to `params`
-    (a plain dict, typically flask's request.args). Returns
-    (page_of_records, total_matching_rows).
-    """
-    result = _df
+def _int(params, name):
+    v = params.get(name)
+    return int(v) if v not in (None, "") else None
+
+
+def _float(params, name):
+    v = params.get(name)
+    return float(v) if v not in (None, "") else None
+
+
+def _getlist(params, name):
+    if hasattr(params, "getlist"):
+        val = params.getlist(name)
+        return val if val else []
+    val = params.get(name)
+    if val is None or val == "":
+        return []
+    if isinstance(val, (list, tuple)):
+        return list(val)
+    return [val]
+
+
+def _apply_filters(df, params):
+    """The full filter/search pipeline, shared by query() and get_stats()."""
+    result = df.copy() if not df.empty else df
+
+    # Attach poem-level stats columns for filtering, sorting, and display
+    stats = _poem_stats()
+    result["poem_n_batches"] = result["poem_no"].map(stats["poem_n_batches"])
+    result["poem_n_verses"] = result["poem_no"].map(stats["poem_n_verses"])
 
     # ---- categorical / exact filters -------------------------------------
-    poets = params.getlist("poet") if hasattr(params, "getlist") else params.get("poet")
+    poets = _getlist(params, "poet")
     if poets:
         result = result[result["POET_NAME"].isin(poets)]
 
-    meters = (
-        params.getlist("meter") if hasattr(params, "getlist") else params.get("meter")
-    )
+    meters = _getlist(params, "meter")
     if meters:
         result = result[result["meter"].isin(meters)]
 
-    # ---- numeric range filters --------------------------------------------
-    def _int(name):
-        v = params.get(name)
-        return int(v) if v not in (None, "") else None
+    # ---- exclusion filters --------------------------------------------------
+    exclude_poems = _getlist(params, "exclude_poem")
+    if exclude_poems:
+        result = result[
+            ~result["poem_no"].astype(str).isin([str(p) for p in exclude_poems])
+        ]
 
-    rank_min, rank_max = _int("rank_min"), _int("rank_max")
+    exclude_ranks = _getlist(params, "exclude_rank")
+    if exclude_ranks:
+        parsed_ranks = []
+        for r in exclude_ranks:
+            try:
+                parsed_ranks.append(int(r))
+            except (ValueError, TypeError):
+                pass
+        if parsed_ranks:
+            result = result[~result["POET_RANK"].isin(parsed_ranks)]
+
+    # ---- numeric range filters --------------------------------------------
+    rank_min, rank_max = _int(params, "rank_min"), _int(params, "rank_max")
     if rank_min is not None:
         result = result[result["POET_RANK"] >= rank_min]
     if rank_max is not None:
         result = result[result["POET_RANK"] <= rank_max]
 
-    bs_min, bs_max = _int("batch_size_min"), _int("batch_size_max")
+    bs_min, bs_max = _int(params, "batch_size_min"), _int(params, "batch_size_max")
     if bs_min is not None:
         result = result[result["BATCH_SIZE"] >= bs_min]
     if bs_max is not None:
@@ -134,11 +219,7 @@ def query(params):
 
     # ---- tag filters (mood / genre / energy / aesthetic) ------------------
     for axis in AXES:
-        wanted = (
-            params.getlist(f"{axis}_tags")
-            if hasattr(params, "getlist")
-            else params.get(f"{axis}_tags")
-        )
+        wanted = _getlist(params, f"{axis}_tags")
         if wanted:
             mode = params.get(f"{axis}_mode", "any")
             result = result[_tag_mask(result[f"{axis}_tags"], wanted, mode)]
@@ -151,15 +232,51 @@ def query(params):
         elif flag in ("false", "0", "no"):
             result = result[result[f"{axis}_low_confidence"] == False]  # noqa: E712
 
+    # ---- confidence range filters ------------------------------------------
+    for axis in AXES:
+        cmin = _float(params, f"{axis}_confidence_min")
+        cmax = _float(params, f"{axis}_confidence_max")
+        if cmin is not None:
+            result = result[result[f"{axis}_confidence"] >= cmin]
+        if cmax is not None:
+            result = result[result[f"{axis}_confidence"] <= cmax]
+
+    # ---- poem-length filters -----------------------------------------------
+    pb_min, pb_max = _int(params, "poem_batches_min"), _int(params, "poem_batches_max")
+    pv_min, pv_max = _int(params, "poem_verses_min"), _int(params, "poem_verses_max")
+    if pb_min is not None:
+        result = result[result["poem_n_batches"] >= pb_min]
+    if pb_max is not None:
+        result = result[result["poem_n_batches"] <= pb_max]
+    if pv_min is not None:
+        result = result[result["poem_n_verses"] >= pv_min]
+    if pv_max is not None:
+        result = result[result["poem_n_verses"] <= pv_max]
+
     # ---- free text search over the verses ---------------------------------
     search = (params.get("q") or "").strip()
     if search:
-        # Simple case-sensitive substring match is enough for Arabic text
-        # (no case folding needed) and is fast via a vectorized str.contains.
         pattern = re.escape(search)
         result = result[
             result["verse_text"].str.contains(pattern, regex=True, na=False)
         ]
+
+    # ---- first-batch-only: collapse to one representative row per poem ----
+    first_batch_only = params.get("first_batch_only") in ("true", "1", "yes")
+    if first_batch_only:
+        result = result.sort_values("batch_no").drop_duplicates(
+            subset="poem_no", keep="first"
+        )
+
+    return result
+
+
+def query(params):
+    """
+    Filter, search, sort, and paginate the dataset according to `params`.
+    Returns (page_of_records, total_matching_rows).
+    """
+    result = _apply_filters(_df, params)
 
     # ---- sorting ------------------------------------------------------------
     sort_by = params.get("sort_by", "row_id")
@@ -169,6 +286,8 @@ def query(params):
         "POET_RANK",
         "BATCH_SIZE",
         "batch_no",
+        "poem_n_batches",
+        "poem_n_verses",
         "mood_confidence",
         "genre_confidence",
         "energy_confidence",
@@ -184,9 +303,9 @@ def query(params):
 
     total = len(result)
 
-    # ---- pagination -----------------------------------------------------
-    page = max(_int("page") or 1, 1)
-    page_size = min(max(_int("page_size") or 20, 1), 100)
+    # ---- pagination ---------------------------------------------------------
+    page = max(_int(params, "page") or 1, 1)
+    page_size = min(max(_int(params, "page_size") or 20, 1), 100)
     start = (page - 1) * page_size
     page_df = result.iloc[start : start + page_size]
 
@@ -198,13 +317,9 @@ def query(params):
 # Aggregate stats (for the overview / legend panel)
 # ---------------------------------------------------------------------------
 def get_stats(params=None):
-    """Tag-frequency breakdown per axis, honoring the current filters so the
-    stats panel reflects what's actually on screen (minus pagination)."""
+    """Tag-frequency breakdown per axis, honoring the current filters."""
     if params is not None:
-        # Reuse query() filtering logic but skip pagination — cheap trick:
-        # call query with a huge page_size, but that copies data twice.
-        # Instead we recompute the filtered frame directly.
-        result = _filtered_frame(params)
+        result = _apply_filters(_df, params)
     else:
         result = _df
 
@@ -229,64 +344,6 @@ def get_stats(params=None):
     }
 
 
-def _filtered_frame(params):
-    """Same filtering pipeline as query(), minus sort/paginate, returned as a
-    DataFrame for aggregate stats."""
-    result = _df
-
-    poets = params.getlist("poet") if hasattr(params, "getlist") else params.get("poet")
-    if poets:
-        result = result[result["POET_NAME"].isin(poets)]
-
-    meters = (
-        params.getlist("meter") if hasattr(params, "getlist") else params.get("meter")
-    )
-    if meters:
-        result = result[result["meter"].isin(meters)]
-
-    def _int(name):
-        v = params.get(name)
-        return int(v) if v not in (None, "") else None
-
-    rank_min, rank_max = _int("rank_min"), _int("rank_max")
-    if rank_min is not None:
-        result = result[result["POET_RANK"] >= rank_min]
-    if rank_max is not None:
-        result = result[result["POET_RANK"] <= rank_max]
-
-    bs_min, bs_max = _int("batch_size_min"), _int("batch_size_max")
-    if bs_min is not None:
-        result = result[result["BATCH_SIZE"] >= bs_min]
-    if bs_max is not None:
-        result = result[result["BATCH_SIZE"] <= bs_max]
-
-    for axis in AXES:
-        wanted = (
-            params.getlist(f"{axis}_tags")
-            if hasattr(params, "getlist")
-            else params.get(f"{axis}_tags")
-        )
-        if wanted:
-            mode = params.get(f"{axis}_mode", "any")
-            result = result[_tag_mask(result[f"{axis}_tags"], wanted, mode)]
-
-    for axis in AXES:
-        flag = params.get(f"{axis}_low_confidence")
-        if flag in ("true", "1", "yes"):
-            result = result[result[f"{axis}_low_confidence"] == True]  # noqa: E712
-        elif flag in ("false", "0", "no"):
-            result = result[result[f"{axis}_low_confidence"] == False]  # noqa: E712
-
-    search = (params.get("q") or "").strip()
-    if search:
-        pattern = re.escape(search)
-        result = result[
-            result["verse_text"].str.contains(pattern, regex=True, na=False)
-        ]
-
-    return result
-
-
 # ---------------------------------------------------------------------------
 # Single batch lookup (for a detail view / deep link)
 # ---------------------------------------------------------------------------
@@ -298,8 +355,7 @@ def get_batch(row_id):
 
 
 def _to_records(page_df):
-    """Convert a DataFrame slice into plain JSON-safe dicts, reshaping the
-    verse list into the {sadr, ajuz} pairs the frontend renders."""
+    """Convert a DataFrame slice into plain JSON-safe dicts."""
     records = []
     for row in page_df.to_dict(orient="records"):
         records.append(
@@ -311,6 +367,8 @@ def _to_records(page_df):
                 "batch_no": row["batch_no"],
                 "meter": row["meter"],
                 "batch_size": row["BATCH_SIZE"],
+                "poem_num_batches": int(row.get("poem_n_batches", 1)),
+                "poem_total_verses": int(row.get("poem_n_verses", row["BATCH_SIZE"])),
                 "verses": [
                     {
                         "sadr": v.get("sadr", "").strip(),

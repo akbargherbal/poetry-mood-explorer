@@ -4,13 +4,10 @@ Logic tests for data_loader.py, run against `synthetic_df` (see conftest.py).
 Per docs/TESTING_STRATEGY.md §2.4, this file covers:
   - _tag_mask: any/all modes, empty wanted, tag absent from every row.
   - query(): each filter independently, two filters combined, pagination
-    boundaries, sorting by each allowed column in both directions.
+    boundaries, sorting by each allowed column in both directions,
+    confidence ranges, exclude poem/rank, poem verse filtering, and first batch only.
   - get_stats(): aggregation against a hand-computed expected value.
   - get_batch(): valid row_id, out-of-range row_id.
-
-Per §2.5 (out of scope), this file does not assert exact counts against the
-real dataset, does not test pandas semantics directly, and needs no network
-access.
 """
 
 import pandas as pd
@@ -50,7 +47,9 @@ class TestTagMask:
     def test_all_mode_no_match_when_tags_split_across_rows(self, synthetic_df):
         # "joy" appears alone in rows 1/5, "sad" alone (combined w/ longing)
         # in row 0; nothing has ["joy", "longing"] together.
-        mask = data_loader._tag_mask(synthetic_df["mood_tags"], ["joy", "longing"], "all")
+        mask = data_loader._tag_mask(
+            synthetic_df["mood_tags"], ["joy", "longing"], "all"
+        )
         assert not mask.any()
 
     def test_empty_wanted_matches_everything(self, synthetic_df):
@@ -59,7 +58,9 @@ class TestTagMask:
         assert len(mask) == len(synthetic_df)
 
     def test_tag_not_present_in_any_row_matches_nothing(self, synthetic_df):
-        mask = data_loader._tag_mask(synthetic_df["mood_tags"], ["nonexistent_tag"], "any")
+        mask = data_loader._tag_mask(
+            synthetic_df["mood_tags"], ["nonexistent_tag"], "any"
+        )
         assert not mask.any()
 
 
@@ -73,7 +74,9 @@ class TestQueryFilters:
         assert {r["poet_name"] for r in records} == {"Alpha"}
 
     def test_filter_by_multiple_poets(self, synthetic_df):
-        records, total, page, page_size = data_loader.query(params(poet=["Alpha", "Gamma"]))
+        records, total, page, page_size = data_loader.query(
+            params(poet=["Alpha", "Gamma"])
+        )
         assert total == 4
         assert {r["poet_name"] for r in records} == {"Alpha", "Gamma"}
 
@@ -165,6 +168,72 @@ class TestQueryFilters:
 
 
 # ---------------------------------------------------------------------------
+# query() - confidence range filters
+# ---------------------------------------------------------------------------
+class TestQueryConfidenceRanges:
+    def test_filter_by_confidence_min(self, synthetic_df):
+        # confs across rows are 0.1, 0.2, 0.3, 0.4, 0.5, 0.6
+        records, total, *_ = data_loader.query(params(mood_confidence_min=0.4))
+        assert total == 3
+        assert {r["row_id"] for r in records} == {3, 4, 5}
+
+    def test_filter_by_confidence_max(self, synthetic_df):
+        records, total, *_ = data_loader.query(params(mood_confidence_max=0.3))
+        assert total == 3
+        assert {r["row_id"] for r in records} == {0, 1, 2}
+
+    def test_filter_by_confidence_range(self, synthetic_df):
+        records, total, *_ = data_loader.query(
+            params(mood_confidence_min=0.2, mood_confidence_max=0.4)
+        )
+        assert total == 3
+        assert {r["row_id"] for r in records} == {1, 2, 3}
+
+
+# ---------------------------------------------------------------------------
+# query() - exclusion filters
+# ---------------------------------------------------------------------------
+class TestQueryExclusions:
+    def test_exclude_poem_by_id(self, synthetic_df):
+        records, total, *_ = data_loader.query(params(exclude_poem="p2"))
+        assert total == 4
+        assert {r["poem_no"] for r in records} == {"p1", "p3"}
+
+    def test_exclude_poet_rank(self, synthetic_df):
+        # Alpha and Beta are rank 1, Gamma is rank 3
+        records, total, *_ = data_loader.query(params(exclude_rank=1))
+        assert total == 2
+        assert {r["poet_name"] for r in records} == {"Gamma"}
+
+    def test_exclude_rank_combined_with_rank_min(self, synthetic_df):
+        records, total, *_ = data_loader.query(params(rank_min=1, exclude_rank=1))
+        assert total == 2
+        assert {r["poet_name"] for r in records} == {"Gamma"}
+
+
+# ---------------------------------------------------------------------------
+# query() - poem-level filtering & first batch only
+# ---------------------------------------------------------------------------
+class TestQueryPoemLevel:
+    def test_poem_verses_min_filter(self, synthetic_df):
+        # p1: 15 verses, p2: 35 verses, p3: 33 verses
+        records, total, *_ = data_loader.query(params(poem_verses_min=30))
+        assert total == 4
+        assert {r["poem_no"] for r in records} == {"p2", "p3"}
+
+    def test_poem_verses_max_filter(self, synthetic_df):
+        records, total, *_ = data_loader.query(params(poem_verses_max=20))
+        assert total == 2
+        assert {r["poem_no"] for r in records} == {"p1"}
+
+    def test_first_batch_only(self, synthetic_df):
+        records, total, *_ = data_loader.query(params(first_batch_only="1"))
+        assert total == 3
+        assert {r["row_id"] for r in records} == {0, 2, 4}
+        assert all(r["batch_no"] == 0 for r in records)
+
+
+# ---------------------------------------------------------------------------
 # query() - pagination
 # ---------------------------------------------------------------------------
 class TestQueryPagination:
@@ -181,10 +250,6 @@ class TestQueryPagination:
         assert page_size == 100
 
     def test_page_size_zero_falls_back_to_default(self, synthetic_df):
-        # `_int("page_size") or 20` treats 0 as falsy, so page_size=0 behaves
-        # like page_size unset (default 20), not like "1". This pins down
-        # that (mildly surprising) actual behavior rather than the "clipped
-        # to 1" behavior one might naively expect.
         records, total, page, page_size = data_loader.query(params(page_size=0))
         assert page_size == 20
 
@@ -201,7 +266,7 @@ class TestQueryPagination:
         records, total, page, page_size = data_loader.query(params())
         assert page == 1
         assert page_size == 20
-        assert len(records) == len(synthetic_df)  # fewer rows than one page
+        assert len(records) == len(synthetic_df)
 
 
 # ---------------------------------------------------------------------------
@@ -209,27 +274,42 @@ class TestQueryPagination:
 # ---------------------------------------------------------------------------
 class TestQuerySorting:
     SORT_COLS = [
-        "row_id", "POET_RANK", "BATCH_SIZE", "batch_no",
-        "mood_confidence", "genre_confidence", "energy_confidence", "aesthetic_confidence",
-        "mood_top2_gap", "genre_top2_gap", "energy_top2_gap", "aesthetic_top2_gap",
+        "row_id",
+        "POET_RANK",
+        "BATCH_SIZE",
+        "batch_no",
+        "mood_confidence",
+        "genre_confidence",
+        "energy_confidence",
+        "aesthetic_confidence",
+        "mood_top2_gap",
+        "genre_top2_gap",
+        "energy_top2_gap",
+        "aesthetic_top2_gap",
     ]
 
     @pytest.mark.parametrize("col", SORT_COLS)
     def test_sort_ascending(self, synthetic_df, col):
-        records, *_ = data_loader.query(params(sort_by=col, sort_dir="asc", page_size=10))
+        records, *_ = data_loader.query(
+            params(sort_by=col, sort_dir="asc", page_size=10)
+        )
         values = [r["row_id"] for r in records]
         expected = list(synthetic_df.sort_values(by=col, ascending=True)["row_id"])
         assert values == expected
 
     @pytest.mark.parametrize("col", SORT_COLS)
     def test_sort_descending(self, synthetic_df, col):
-        records, *_ = data_loader.query(params(sort_by=col, sort_dir="desc", page_size=10))
+        records, *_ = data_loader.query(
+            params(sort_by=col, sort_dir="desc", page_size=10)
+        )
         values = [r["row_id"] for r in records]
         expected = list(synthetic_df.sort_values(by=col, ascending=False)["row_id"])
         assert values == expected
 
     def test_invalid_sort_by_falls_back_to_row_id(self, synthetic_df):
-        records, *_ = data_loader.query(params(sort_by="not_a_real_column", page_size=10))
+        records, *_ = data_loader.query(
+            params(sort_by="not_a_real_column", page_size=10)
+        )
         values = [r["row_id"] for r in records]
         assert values == sorted(values)
 
@@ -259,7 +339,11 @@ class TestGetStats:
 
         aesthetic_dist = {d["tag"]: d["count"] for d in stats["aesthetic_tags"]}
         assert aesthetic_dist == {
-            "melancholy": 1, "epic": 1, "military": 1, "spiritual": 1, "romantic": 1,
+            "melancholy": 1,
+            "epic": 1,
+            "military": 1,
+            "spiritual": 1,
+            "romantic": 1,
         }
 
         top_poets = {d["poet"]: d["count"] for d in stats["top_poets"]}
