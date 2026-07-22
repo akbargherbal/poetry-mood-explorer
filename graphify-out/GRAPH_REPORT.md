@@ -1,54 +1,41 @@
-# Graph Report - /home/akbar/Jupyter_Notebooks/AntiGravity/poetry-mood-explorer  (2026-07-20)
+# Graph Report - .  (2026-07-22)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 19 files · ~10,537 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 71 nodes · 117 edges · 14 communities (13 shown, 1 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.86)
+- 181 nodes · 254 edges · 16 communities (14 shown, 2 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.86)
 - Token cost: 0 input · 0 output
 
-## Graph Freshness
-- Built from commit: `514032b1`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
-
 ## Community Hubs (Navigation)
-- README.md
-- _filtered_frame
-- app.js
-- templates/index.html
-- app.py
-- refresh
-- escapeHtml
-- data_loader.py
-- AXES
-- query
-- get_stats
-- Flask
-- buildPoetList
+- Data Loader Unit Tests & Query Filtering
+- Frontend Utility Tests
+- Flask API Routes & Server Endpoints
+- Backend Fixtures & Dependencies
+- API Routes Test Suite
+- Data Loader Logic Test Suite
+- Project Documentation & Schema Overview
+- Frontend Package Configuration
+- Dataset Invariants & Integration Tests
+- Testing Strategy & HTML Templates
 
 ## God Nodes (most connected - your core abstractions)
-1. `refresh()` - 13 edges
-2. `query()` - 5 edges
-3. `AXES` - 5 edges
-4. `tagColor()` - 5 edges
-5. `buildAxisBlocks()` - 5 edges
-6. `renderCard()` - 5 edges
-7. `renderActiveFilters()` - 5 edges
-8. `escapeHtml()` - 5 edges
-9. `Filter System` - 5 edges
-10. `Verse Batch` - 5 edges
+1. `params()` - 29 edges
+2. `TestQueryFilters` - 17 edges
+3. `refresh()` - 13 edges
+4. `TestDatasetInvariants` - 7 edges
+5. `TestQueryPagination` - 7 edges
+6. `tagColor()` - 6 edges
+7. `escapeHtml()` - 6 edges
+8. `TestTagMask` - 6 edges
+9. `pandas` - 5 edges
+10. `Filter System` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `api_search()` --calls--> `query()`  [EXTRACTED]
-  app.py → data_loader.py
-- `api_meta()` --calls--> `get_meta()`  [EXTRACTED]
-  app.py → data_loader.py
-- `api_stats()` --calls--> `get_stats()`  [EXTRACTED]
-  app.py → data_loader.py
-- `api_batch()` --calls--> `get_batch()`  [EXTRACTED]
-  app.py → data_loader.py
+- `Testing Strategy` --references--> `Index HTML Template`  [EXTRACTED]
+  docs/TESTING_STRATEGY.md → templates/index.html
 
 ## Import Cycles
 - None detected.
@@ -56,69 +43,59 @@
 ## Hyperedges (group relationships)
 - **Filter Axes System** — mood_axis, genre_axis, energy_axis, aesthetic_axis, filter_system [INFERRED 0.80]
 
-## Communities (14 total, 1 thin omitted)
+## Communities (16 total, 2 thin omitted)
 
-### Community 0 - "README.md"
+### Community 0 - "Data Loader Unit Tests & Query Filtering"
+Cohesion: 0.11
+Nodes (5): params(), Build a MultiDict the way Flask's request.args would look, from     kwargs where, TestQueryFilters, TestQueryPagination, TestQuerySorting
+
+### Community 1 - "Frontend Utility Tests"
+Cohesion: 0.15
+Nodes (23): AXES, AXIS_META, buildAxisBlocks(), buildMeterList(), buildParams(), buildPoemLengthPresets(), buildPoetList(), debounce() (+15 more)
+
+### Community 2 - "Flask API Routes & Server Endpoints"
+Cohesion: 0.11
+Nodes (15): Arabic Poetry Mood Explorer ---------------------------- A small Flask app for b, _filtered_frame(), get_batch(), get_meta(), get_stats(), query(), data_loader.py -------------- Loads the mood-labeled Arabic poetry dataset once, Filter, search, sort, and paginate the dataset according to `params`     (a plai (+7 more)
+
+### Community 3 - "Backend Fixtures & Dependencies"
+Cohesion: 0.10
+Nodes (12): Flask, pandas, _build_synthetic_df(), _flag_axes(), Shared fixtures for the backend test suite.  Two fixtures, matching docs/TESTING, Small, hand-built frame for isolated logic tests. See module docstring     and t, Small helper mirroring how flagged_axes would be derived: any axis     marked lo, synthetic_df() (+4 more)
+
+### Community 4 - "API Routes Test Suite"
+Cohesion: 0.12
+Nodes (6): Flask route tests, per docs/TESTING_STRATEGY.md §2.4 ("app.py"). Uses the sessio, TestBatchRoute, TestIndexRoute, TestMetaRoute, TestSearchRoute, TestStatsRoute
+
+### Community 5 - "Data Loader Logic Test Suite"
+Cohesion: 0.12
+Nodes (4): Logic tests for data_loader.py, run against `synthetic_df` (see conftest.py).  P, TestGetBatch, TestGetStats, TestTagMask
+
+### Community 6 - "Project Documentation & Schema Overview"
 Cohesion: 0.26
 Nodes (13): Aesthetic Axis, akbargherbal/arabic-poetry-mood-labeling, Arabic Poetry Mood Explorer, Energy Axis, Filter System, Genre Axis, Meter (bahr), Mood Axis (+5 more)
 
-### Community 1 - "_filtered_frame"
-Cohesion: 0.50
-Nodes (4): _filtered_frame(), Same filtering pipeline as query(), minus sort/paginate, returned as a     DataF, Boolean mask for a list-valued column against a list of wanted tags., _tag_mask()
-
-### Community 2 - "app.js"
-Cohesion: 0.33
-Nodes (6): AXIS_META, debounce(), expandedCards, state, TAG_COLORS, wireStaticControls()
-
-### Community 3 - "templates/index.html"
-Cohesion: 0.33
-Nodes (5): Amiri Font, Google Fonts, Inter Font, JetBrains Mono Font, Tailwind CSS
-
-### Community 4 - "app.py"
-Cohesion: 0.33
-Nodes (4): api_meta(), Arabic Poetry Mood Explorer ---------------------------- A small Flask app for b, get_meta(), Everything the filter sidebar needs to populate its controls.
-
-### Community 5 - "refresh"
-Cohesion: 0.50
-Nodes (5): buildPoemLengthPresets(), fetchJSON(), refresh(), renderPagination(), renderResults()
-
-### Community 6 - "escapeHtml"
-Cohesion: 0.60
-Nodes (5): escapeHtml(), renderActiveFilters(), renderCard(), renderStats(), tagColor()
-
-### Community 7 - "data_loader.py"
-Cohesion: 0.33
-Nodes (5): api_batch(), get_batch(), data_loader.py -------------- Loads the mood-labeled Arabic poetry dataset once, Convert a DataFrame slice into plain JSON-safe dicts, reshaping the     verse li, _to_records()
-
-### Community 8 - "AXES"
-Cohesion: 0.50
-Nodes (4): AXES, buildAxisBlocks(), buildParams(), loadStateFromURL()
-
-### Community 9 - "query"
-Cohesion: 0.67
-Nodes (3): api_search(), query(), Filter, search, sort, and paginate the dataset according to `params`     (a plai
-
-### Community 10 - "get_stats"
-Cohesion: 0.67
-Nodes (3): api_stats(), get_stats(), Tag-frequency breakdown per axis, honoring the current filters so the     stats
-
-### Community 12 - "buildPoetList"
-Cohesion: 0.67
-Nodes (3): buildMeterList(), buildPoetList(), toggleSetValue()
+### Community 7 - "Frontend Package Configuration"
+Cohesion: 0.14
+Nodes (13): devDependencies, jsdom, @playwright/test, vitest, name, private, scripts, test:e2e (+5 more)
 
 ## Knowledge Gaps
-- **12 isolated node(s):** `AXIS_META`, `TAG_COLORS`, `state`, `expandedCards`, `Tailwind CSS` (+7 more)
+- **16 isolated node(s):** `Arabic Poetry Mood Explorer`, `Pagination`, `Stats Panel`, `name`, `private` (+11 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **2 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `query()` connect `query` to `_filtered_frame`, `data_loader.py`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `get_stats()` connect `get_stats` to `_filtered_frame`, `data_loader.py`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **Why does `get_meta()` connect `app.py` to `data_loader.py`?**
-  _High betweenness centrality (0.013) - this node is a cross-community bridge._
-- **What connects `AXIS_META`, `TAG_COLORS`, `state` to the rest of the system?**
-  _12 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `params()` connect `Data Loader Unit Tests & Query Filtering` to `Data Loader Logic Test Suite`?**
+  _High betweenness centrality (0.083) - this node is a cross-community bridge._
+- **Why does `pandas` connect `Backend Fixtures & Dependencies` to `Flask API Routes & Server Endpoints`, `Data Loader Logic Test Suite`?**
+  _High betweenness centrality (0.050) - this node is a cross-community bridge._
+- **Why does `TestQueryFilters` connect `Data Loader Unit Tests & Query Filtering` to `Data Loader Logic Test Suite`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **What connects `Arabic Poetry Mood Explorer`, `Pagination`, `Stats Panel` to the rest of the system?**
+  _16 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Data Loader Unit Tests & Query Filtering` be split into smaller, more focused modules?**
+  _Cohesion score 0.11397849462365592 - nodes in this community are weakly interconnected._
+- **Should `Frontend Utility Tests` be split into smaller, more focused modules?**
+  _Cohesion score 0.14942528735632185 - nodes in this community are weakly interconnected._
+- **Should `Flask API Routes & Server Endpoints` be split into smaller, more focused modules?**
+  _Cohesion score 0.1067193675889328 - nodes in this community are weakly interconnected._

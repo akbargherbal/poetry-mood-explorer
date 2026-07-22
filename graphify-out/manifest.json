@@ -1,8 +1,8 @@
 {
   "app.py": {
-    "mtime": 1784569807.0602598,
-    "ast_hash": "f953a7aff970f919bd15e1795286e4f8",
-    "semantic_hash": "f953a7aff970f919bd15e1795286e4f8"
+    "mtime": 1784741326.3259265,
+    "ast_hash": "caa19322921d149f10c5cd4d20877be0",
+    "semantic_hash": "caa19322921d149f10c5cd4d20877be0"
   },
   "data_loader.py": {
     "mtime": 1784569807.2479427,
@@ -10,9 +10,9 @@
     "semantic_hash": "a5dc903912e238dfc6c980ade24a33da"
   },
   "static/js/app.js": {
-    "mtime": 1784569807.2551467,
-    "ast_hash": "2e772357fbc01303226a98c8a727b862",
-    "semantic_hash": "2e772357fbc01303226a98c8a727b862"
+    "mtime": 1784741326.3315513,
+    "ast_hash": "cf32fdfcb53ecfbe6bc633b24cb827f0",
+    "semantic_hash": "cf32fdfcb53ecfbe6bc633b24cb827f0"
   },
   "README.md": {
     "mtime": 1784569807.0602598,
@@ -30,8 +30,88 @@
     "semantic_hash": "f24f0ad7e4d82fe8d066893f8a71e078"
   },
   "templates/index.html": {
-    "mtime": 1784569807.2551467,
-    "ast_hash": "e3459bf7b83e3b0511b8e5be4843df1e",
-    "semantic_hash": "e3459bf7b83e3b0511b8e5be4843df1e"
+    "mtime": 1784741326.3315513,
+    "ast_hash": "60a44911240e30558d58c7c32d29d895",
+    "semantic_hash": "60a44911240e30558d58c7c32d29d895"
+  },
+  "frontend/package.json": {
+    "mtime": 1784741326.3310947,
+    "ast_hash": "173e2e506ea87b5edc4a801438b646bd",
+    "semantic_hash": "173e2e506ea87b5edc4a801438b646bd"
+  },
+  "frontend/playwright.config.js": {
+    "mtime": 1784741326.3310947,
+    "ast_hash": "d553945baf4ef9c4c9191395e5e48d48",
+    "semantic_hash": "d553945baf4ef9c4c9191395e5e48d48"
+  },
+  "frontend/tests/e2e/filters.spec.js": {
+    "mtime": 1784741326.3313239,
+    "ast_hash": "4e018e264ae3a58718c3be7fef391975",
+    "semantic_hash": "4e018e264ae3a58718c3be7fef391975"
+  },
+  "frontend/tests/e2e/pagination.spec.js": {
+    "mtime": 1784741326.3313723,
+    "ast_hash": "2fa75a8ae25f10bee934142f95bca1f2",
+    "semantic_hash": "2fa75a8ae25f10bee934142f95bca1f2"
+  },
+  "frontend/tests/e2e/search.spec.js": {
+    "mtime": 1784741326.3313723,
+    "ast_hash": "0e54ffa81259f41382d82d21416d54cf",
+    "semantic_hash": "0e54ffa81259f41382d82d21416d54cf"
+  },
+  "frontend/tests/unit/buildParams.test.js": {
+    "mtime": 1784741326.3313723,
+    "ast_hash": "33e40e2af13e399973ba955e40e9dd73",
+    "semantic_hash": "33e40e2af13e399973ba955e40e9dd73"
+  },
+  "frontend/tests/unit/debounce.test.js": {
+    "mtime": 1784741326.3315513,
+    "ast_hash": "059ddb30609a48db18fb49b2c027b159",
+    "semantic_hash": "059ddb30609a48db18fb49b2c027b159"
+  },
+  "frontend/tests/unit/escapeHtml.test.js": {
+    "mtime": 1784741326.3315513,
+    "ast_hash": "89d81efe3027fcc92926077280b787d2",
+    "semantic_hash": "89d81efe3027fcc92926077280b787d2"
+  },
+  "frontend/tests/unit/tagColor.test.js": {
+    "mtime": 1784741326.3315513,
+    "ast_hash": "76cdd5be8411dd27fdd90b3e6b7d260e",
+    "semantic_hash": "76cdd5be8411dd27fdd90b3e6b7d260e"
+  },
+  "frontend/tests/unit/toggleSetValue.test.js": {
+    "mtime": 1784741326.3315513,
+    "ast_hash": "1032992ae54662a7e79ad75ca3902011",
+    "semantic_hash": "1032992ae54662a7e79ad75ca3902011"
+  },
+  "frontend/vitest.config.js": {
+    "mtime": 1784741326.3315513,
+    "ast_hash": "a809476f0234e0939a2a068487e1a672",
+    "semantic_hash": "a809476f0234e0939a2a068487e1a672"
+  },
+  "tests/conftest.py": {
+    "mtime": 1784741326.3315513,
+    "ast_hash": "c3710920dac5fdd8155966614170dff9",
+    "semantic_hash": "c3710920dac5fdd8155966614170dff9"
+  },
+  "tests/test_api_routes.py": {
+    "mtime": 1784741326.3321846,
+    "ast_hash": "7dd13e04eb7babce8ce842353028d8c2",
+    "semantic_hash": "7dd13e04eb7babce8ce842353028d8c2"
+  },
+  "tests/test_data_loader_integration.py": {
+    "mtime": 1784741326.3321846,
+    "ast_hash": "6b8cd092bfb420717be03f0fd3df74c6",
+    "semantic_hash": "6b8cd092bfb420717be03f0fd3df74c6"
+  },
+  "tests/test_data_loader_unit.py": {
+    "mtime": 1784741326.3321846,
+    "ast_hash": "c221f6197884fd97d7ac62a7423d8425",
+    "semantic_hash": "c221f6197884fd97d7ac62a7423d8425"
+  },
+  "docs/TESTING_STRATEGY.md": {
+    "mtime": 1784741326.3259265,
+    "ast_hash": "51d76763b3f5d016f9c28fc9614e07e0",
+    "semantic_hash": "51d76763b3f5d016f9c28fc9614e07e0"
   }
 }
