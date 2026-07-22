@@ -59,7 +59,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 10,
+      "community": 11,
       "norm_label": "data/placeholder_readme.txt",
       "community_name": "data/PLACEHOLDER_README.txt",
       "id": "data_placeholder_readme"
@@ -483,16 +483,6 @@
       "community": 7,
       "norm_label": "@playwright/test",
       "id": "playwright_test"
-    },
-    {
-      "label": "playwright.config.js",
-      "file_type": "code",
-      "source_file": "frontend/playwright.config.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 11,
-      "norm_label": "playwright.config.js",
-      "id": "frontend_playwright_config"
     },
     {
       "label": "vitest.config.js",
@@ -2014,13 +2004,63 @@
       "id": "concept_poetry_mood_explorer_ui"
     },
     {
+      "label": "debounce.test.js",
+      "file_type": "code",
+      "source_file": "frontend/tests/unit/debounce.test.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 15,
+      "norm_label": "debounce.test.js",
+      "id": "frontend_tests_unit_debounce_test"
+    },
+    {
+      "label": "escapeHtml.test.js",
+      "file_type": "code",
+      "source_file": "frontend/tests/unit/escapeHtml.test.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 16,
+      "norm_label": "escapehtml.test.js",
+      "id": "frontend_tests_unit_escapehtml_test"
+    },
+    {
+      "label": "tagColor.test.js",
+      "file_type": "code",
+      "source_file": "frontend/tests/unit/tagColor.test.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 17,
+      "norm_label": "tagcolor.test.js",
+      "id": "frontend_tests_unit_tagcolor_test"
+    },
+    {
+      "label": "toggleSetValue.test.js",
+      "file_type": "code",
+      "source_file": "frontend/tests/unit/toggleSetValue.test.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "community": 18,
+      "norm_label": "togglesetvalue.test.js",
+      "id": "frontend_tests_unit_togglesetvalue_test"
+    },
+    {
+      "label": "playwright.config.js",
+      "file_type": "code",
+      "source_file": "frontend/playwright.config.js",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "frontend_playwright_config",
+      "community": 12,
+      "norm_label": "playwright.config.js"
+    },
+    {
       "label": "filters.spec.js",
       "file_type": "code",
       "source_file": "frontend/tests/e2e/filters.spec.js",
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_tests_e2e_filters_spec",
-      "community": 12,
+      "community": 13,
       "norm_label": "filters.spec.js"
     },
     {
@@ -2030,8 +2070,18 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_tests_e2e_pagination_spec",
-      "community": 13,
+      "community": 9,
       "norm_label": "pagination.spec.js"
+    },
+    {
+      "label": "gotoAndWaitForLoad()",
+      "file_type": "code",
+      "source_file": "frontend/tests/e2e/pagination.spec.js",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "frontend_tests_e2e_pagination_spec_gotoandwaitforload",
+      "community": 9,
+      "norm_label": "gotoandwaitforload()"
     },
     {
       "label": "search.spec.js",
@@ -2050,7 +2100,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "frontend_tests_unit_buildparams_test",
-      "community": 9,
+      "community": 10,
       "norm_label": "buildparams.test.js"
     },
     {
@@ -2060,48 +2110,8 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "frontend_tests_unit_buildparams_test_resetstate",
-      "community": 9,
+      "community": 10,
       "norm_label": "resetstate()"
-    },
-    {
-      "label": "debounce.test.js",
-      "file_type": "code",
-      "source_file": "frontend/tests/unit/debounce.test.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "frontend_tests_unit_debounce_test",
-      "community": 15,
-      "norm_label": "debounce.test.js"
-    },
-    {
-      "label": "escapeHtml.test.js",
-      "file_type": "code",
-      "source_file": "frontend/tests/unit/escapeHtml.test.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "frontend_tests_unit_escapehtml_test",
-      "community": 16,
-      "norm_label": "escapehtml.test.js"
-    },
-    {
-      "label": "tagColor.test.js",
-      "file_type": "code",
-      "source_file": "frontend/tests/unit/tagColor.test.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "frontend_tests_unit_tagcolor_test",
-      "community": 17,
-      "norm_label": "tagcolor.test.js"
-    },
-    {
-      "label": "toggleSetValue.test.js",
-      "file_type": "code",
-      "source_file": "frontend/tests/unit/toggleSetValue.test.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "frontend_tests_unit_togglesetvalue_test",
-      "community": 18,
-      "norm_label": "togglesetvalue.test.js"
     }
   ],
   "links": [
@@ -5241,6 +5251,17 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "frontend/tests/e2e/pagination.spec.js",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "frontend_tests_e2e_pagination_spec",
+      "target": "frontend_tests_e2e_pagination_spec_gotoandwaitforload",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "frontend/tests/unit/buildParams.test.js",
       "source_location": "L6",
       "weight": 1.0,
@@ -5267,5 +5288,5 @@
       "source_file": "README.md"
     }
   ],
-  "built_at_commit": "feb4500eb14d417d081725dc556f74834b1f4f0d"
+  "built_at_commit": "4f5c711751cdcd20da3b085c52ad062f81dce976"
 }

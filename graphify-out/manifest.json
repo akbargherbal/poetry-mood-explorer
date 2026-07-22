@@ -40,29 +40,29 @@
     "semantic_hash": "173e2e506ea87b5edc4a801438b646bd"
   },
   "frontend/playwright.config.js": {
-    "mtime": 1784741326.3310947,
-    "ast_hash": "d553945baf4ef9c4c9191395e5e48d48",
-    "semantic_hash": "d553945baf4ef9c4c9191395e5e48d48"
+    "mtime": 1784746316.9568584,
+    "ast_hash": "b32502b975c9bcfee13f6d781d093dfc",
+    "semantic_hash": "b32502b975c9bcfee13f6d781d093dfc"
   },
   "frontend/tests/e2e/filters.spec.js": {
-    "mtime": 1784741326.3313239,
-    "ast_hash": "4e018e264ae3a58718c3be7fef391975",
-    "semantic_hash": "4e018e264ae3a58718c3be7fef391975"
+    "mtime": 1784746316.9568584,
+    "ast_hash": "1919ecda4b409307f8e560153ebbf7fd",
+    "semantic_hash": "1919ecda4b409307f8e560153ebbf7fd"
   },
   "frontend/tests/e2e/pagination.spec.js": {
-    "mtime": 1784741326.3313723,
-    "ast_hash": "2fa75a8ae25f10bee934142f95bca1f2",
-    "semantic_hash": "2fa75a8ae25f10bee934142f95bca1f2"
+    "mtime": 1784746316.9568584,
+    "ast_hash": "eff2c98b485f5800516b392f9d9a0425",
+    "semantic_hash": "eff2c98b485f5800516b392f9d9a0425"
   },
   "frontend/tests/e2e/search.spec.js": {
-    "mtime": 1784741326.3313723,
-    "ast_hash": "0e54ffa81259f41382d82d21416d54cf",
-    "semantic_hash": "0e54ffa81259f41382d82d21416d54cf"
+    "mtime": 1784746316.9568584,
+    "ast_hash": "436cbabf5cb89a132d25dde99652e7bf",
+    "semantic_hash": "436cbabf5cb89a132d25dde99652e7bf"
   },
   "frontend/tests/unit/buildParams.test.js": {
-    "mtime": 1784741326.3313723,
-    "ast_hash": "33e40e2af13e399973ba955e40e9dd73",
-    "semantic_hash": "33e40e2af13e399973ba955e40e9dd73"
+    "mtime": 1784746316.9568584,
+    "ast_hash": "526b3a85b78f0703a265cf56dd3b1509",
+    "semantic_hash": "526b3a85b78f0703a265cf56dd3b1509"
   },
   "frontend/tests/unit/debounce.test.js": {
     "mtime": 1784741326.3315513,
