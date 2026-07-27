@@ -1,0 +1,1814 @@
+[
+  {
+    "name":"ابراهيم اليازجي",
+    "other_names":[
+      "إبراهيم اليازجي",
+      "إبراهيم بن ناصيف اليازجي"
+    ],
+    "birth_year_gregorian":1847,
+    "birth_year_hijri":1264,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1906,
+    "death_year_hijri":1325,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"ابراهيم طوقان",
+    "other_names":[
+      "إبراهيم طوقان",
+      "إبراهيم عبد الفتاح طوقان",
+      "شاعر فلسطين"
+    ],
+    "birth_year_gregorian":1905,
+    "birth_year_hijri":1324,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":20,
+    "birth_century_hijri":14,
+    "death_year_gregorian":1941,
+    "death_year_hijri":1361,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"ابراهيم عبد القادر المازني",
+    "other_names":[
+      "إبراهيم عبد القادر المازني",
+      "إبراهيم المازني"
+    ],
+    "birth_year_gregorian":1889,
+    "birth_year_hijri":1308,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":14,
+    "death_year_gregorian":1949,
+    "death_year_hijri":1369,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"ابراهيم ناجي",
+    "other_names":[
+      "إبراهيم ناجي",
+      "شاعر الأطلال"
+    ],
+    "birth_year_gregorian":1898,
+    "birth_year_hijri":1317,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":14,
+    "death_year_gregorian":1953,
+    "death_year_hijri":1374,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"ابن الرومي",
+    "other_names":[
+      "أبو الحسن علي بن العباس بن جريج",
+      "علي بن العباس بن جريج"
+    ],
+    "birth_year_gregorian":836,
+    "birth_year_hijri":222,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":9,
+    "birth_century_hijri":3,
+    "death_year_gregorian":896,
+    "death_year_hijri":284,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":3
+  },
+  {
+    "name":"ابن الفارض",
+    "other_names":[
+      "عمر بن الفارض",
+      "أبو حفص شرف الدين عمر بن علي بن مرشد الحموي",
+      "سلطان العاشقين"
+    ],
+    "birth_year_gregorian":1181,
+    "birth_year_hijri":577,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1235,
+    "death_year_hijri":633,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"ابن المعتز",
+    "other_names":[
+      "عبد الله بن المعتز",
+      "أبو العباس عبد الله بن المعتز بن العباسي",
+      "الشاعر الخليفة"
+    ],
+    "birth_year_gregorian":861,
+    "birth_year_hijri":247,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":9,
+    "birth_century_hijri":3,
+    "death_year_gregorian":908,
+    "death_year_hijri":296,
+    "death_is_approximate":false,
+    "death_century_gregorian":10,
+    "death_century_hijri":3
+  },
+  {
+    "name":"ابن النبيه",
+    "other_names":[
+      "ابن النبيه المصري",
+      "علي بن محمد بن النبيه",
+      "كمال الدين علي بن محمد بن الحسن الأسنوي"
+    ],
+    "birth_year_gregorian":1165,
+    "birth_year_hijri":561,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1222,
+    "death_year_hijri":620,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"ابن حزم الاندلسي",
+    "other_names":[
+      "ابن حزم الأندلسي",
+      "علي بن حزم",
+      "أبو محمد علي بن أحمد بن سعيد بن حزم الظاهري",
+      "ابن حزم القرطبي"
+    ],
+    "birth_year_gregorian":994,
+    "birth_year_hijri":385,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1064,
+    "death_year_hijri":457,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"ابن حمديس",
+    "other_names":[
+      "ابن حمديس الصقلي",
+      "عبد الجبار بن أبي بكر الصقلي",
+      "أبو محمد عبد الجبار بن أبي بكر بن محمد الأزدي"
+    ],
+    "birth_year_gregorian":1056,
+    "birth_year_hijri":449,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":11,
+    "birth_century_hijri":5,
+    "death_year_gregorian":1133,
+    "death_year_hijri":528,
+    "death_is_approximate":false,
+    "death_century_gregorian":12,
+    "death_century_hijri":6
+  },
+  {
+    "name":"ابن خاتمه الاندلسي",
+    "other_names":[
+      "ابن خاتمة الأندلسي",
+      "أحمد بن خاتمة الأندلسي",
+      "أبو جعفر أحمد بن علي بن محمد بن خاتمة الأنصاري"
+    ],
+    "birth_year_gregorian":1324,
+    "birth_year_hijri":725,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":14,
+    "birth_century_hijri":8,
+    "death_year_gregorian":1369,
+    "death_year_hijri":771,
+    "death_is_approximate":false,
+    "death_century_gregorian":14,
+    "death_century_hijri":8
+  },
+  {
+    "name":"ابن خفاجه",
+    "other_names":[
+      "ابن خفاجة",
+      "إبراهيم بن خفاجة",
+      "أبو إسحاق إبراهيم بن أبي الفتح بن خفاجة الأندلسي",
+      "شاعر الطبيعة"
+    ],
+    "birth_year_gregorian":1058,
+    "birth_year_hijri":451,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":11,
+    "birth_century_hijri":5,
+    "death_year_gregorian":1138,
+    "death_year_hijri":533,
+    "death_is_approximate":false,
+    "death_century_gregorian":12,
+    "death_century_hijri":6
+  },
+  {
+    "name":"ابن دراج القسطلي",
+    "other_names":[
+      "أحمد بن دراج القسطلي",
+      "أبو عمر أحمد بن محمد بن العاصي بن دراج القسطلي"
+    ],
+    "birth_year_gregorian":958,
+    "birth_year_hijri":347,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1030,
+    "death_year_hijri":422,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"ابن رشيق القيرواني",
+    "other_names":[
+      "ابن رشيق",
+      "الحسن بن رشيق",
+      "أبو علي الحسن بن رشيق المسيلي"
+    ],
+    "birth_year_gregorian":1000,
+    "birth_year_hijri":391,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1064,
+    "death_year_hijri":457,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"ابن زيدون",
+    "other_names":[
+      "أحمد بن زيدون",
+      "أبو الوليد أحمد بن عبد الله بن أحمد بن غالب المخزومي",
+      "بحتر الأندلس"
+    ],
+    "birth_year_gregorian":1003,
+    "birth_year_hijri":394,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":11,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1071,
+    "death_year_hijri":464,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"ابن سناء الملك",
+    "other_names":[
+      "هبة الله بن سناء الملك",
+      "أبو القاسم هبة الله بن جعفر بن سناء الملك",
+      "القاضي السعيد"
+    ],
+    "birth_year_gregorian":1150,
+    "birth_year_hijri":545,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1211,
+    "death_year_hijri":608,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"ابن سهل الاندلسي",
+    "other_names":[
+      "ابن سهل الأندلسي",
+      "إبراهيم بن سهل الأندلسي",
+      "أبو إسحاق إبراهيم بن سهل الإشبيلي"
+    ],
+    "birth_year_gregorian":1212,
+    "birth_year_hijri":609,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":13,
+    "birth_century_hijri":7,
+    "death_year_gregorian":1251,
+    "death_year_hijri":650,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"ابن شهيد",
+    "other_names":[
+      "أحمد بن شهيد",
+      "أبو عامر أحمد بن عبد الملك بن شهيد الأشجعي"
+    ],
+    "birth_year_gregorian":992,
+    "birth_year_hijri":383,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1035,
+    "death_year_hijri":427,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"ابن عبد ربه الاندلسي",
+    "other_names":[
+      "ابن عبد ربه الأندلسي",
+      "أحمد بن عبد ربه",
+      "أبو عمر أحمد بن محمد بن عبد ربه القرطبي",
+      "صاحب العقد الفريد"
+    ],
+    "birth_year_gregorian":860,
+    "birth_year_hijri":246,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":9,
+    "birth_century_hijri":3,
+    "death_year_gregorian":940,
+    "death_year_hijri":329,
+    "death_is_approximate":false,
+    "death_century_gregorian":10,
+    "death_century_hijri":4
+  },
+  {
+    "name":"ابن قلاقس",
+    "other_names":[
+      "ابن قلاقس الإسكندري",
+      "نصر الله بن قلاقس",
+      "أبو الفتح نصر الله بن عبد الله بن مخلوف اللخمي",
+      "القاضي المعز"
+    ],
+    "birth_year_gregorian":1137,
+    "birth_year_hijri":532,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1172,
+    "death_year_hijri":568,
+    "death_is_approximate":false,
+    "death_century_gregorian":12,
+    "death_century_hijri":6
+  },
+  {
+    "name":"ابن هانء الاندلسي",
+    "other_names":[
+      "ابن هانئ الأندلسي",
+      "محمد بن هانئ الأندلسي",
+      "أبو القاسم محمد بن هانئ الأزدي",
+      "متنبي المغرب"
+    ],
+    "birth_year_gregorian":936,
+    "birth_year_hijri":325,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":973,
+    "death_year_hijri":363,
+    "death_is_approximate":false,
+    "death_century_gregorian":10,
+    "death_century_hijri":4
+  },
+  {
+    "name":"ابو اسحاق الالبيري",
+    "other_names":[
+      "أبو إسحاق الإلبيري",
+      "إبراهيم بن مسعود التجيبي الإلبيري",
+      "أبو إسحاق التجيبي"
+    ],
+    "birth_year_gregorian":985,
+    "birth_year_hijri":375,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1067,
+    "death_year_hijri":460,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"ابو الطيب المتنبي",
+    "other_names":[
+      "أبو الطيب المتنبي",
+      "المتنبي",
+      "أحمد بن الحسين بن الحسن بن عبد الصمد الجعفي",
+      "شاعر العرب"
+    ],
+    "birth_year_gregorian":915,
+    "birth_year_hijri":303,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":965,
+    "death_year_hijri":355,
+    "death_is_approximate":false,
+    "death_century_gregorian":10,
+    "death_century_hijri":4
+  },
+  {
+    "name":"ابو العتاهيه",
+    "other_names":[
+      "أبو العتاهية",
+      "إسماعيل بن القاسم",
+      "أبو إسحاق إسماعيل بن القاسم بن سويد العيني",
+      "شاعر الزهد"
+    ],
+    "birth_year_gregorian":748,
+    "birth_year_hijri":131,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":8,
+    "birth_century_hijri":2,
+    "death_year_gregorian":826,
+    "death_year_hijri":211,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":3
+  },
+  {
+    "name":"ابو العلاء المعري",
+    "other_names":[
+      "أبو العلاء المعري",
+      "المعري",
+      "أحمد بن عبد الله بن سليمان التنوخي",
+      "رهين المحبسين"
+    ],
+    "birth_year_gregorian":973,
+    "birth_year_hijri":363,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1057,
+    "death_year_hijri":450,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"ابو القاسم الشابي",
+    "other_names":[
+      "أبو القاسم الشابي",
+      "أبو القاسم بن محمد الشابي",
+      "شاعر الخضراء"
+    ],
+    "birth_year_gregorian":1909,
+    "birth_year_hijri":1328,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":20,
+    "birth_century_hijri":14,
+    "death_year_gregorian":1934,
+    "death_year_hijri":1354,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"ابو تمام",
+    "other_names":[
+      "أبو تمام",
+      "حبيب بن أوس",
+      "أبو تمام حبيب بن أوس الطائي"
+    ],
+    "birth_year_gregorian":804,
+    "birth_year_hijri":189,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":9,
+    "birth_century_hijri":2,
+    "death_year_gregorian":846,
+    "death_year_hijri":232,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":3
+  },
+  {
+    "name":"ابو فراس الحمداني",
+    "other_names":[
+      "أبو فراس الحمداني",
+      "الحارث بن سعيد بن حمدان الحمداني"
+    ],
+    "birth_year_gregorian":932,
+    "birth_year_hijri":321,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":968,
+    "death_year_hijri":358,
+    "death_is_approximate":false,
+    "death_century_gregorian":10,
+    "death_century_hijri":4
+  },
+  {
+    "name":"ابو مدين التلمساني",
+    "other_names":[
+      "أبو مدين التلمساني",
+      "شعيب بن الحسين الأنصاري",
+      "أبو مدين الغوث",
+      "سيدي بومدين"
+    ],
+    "birth_year_gregorian":1115,
+    "birth_year_hijri":509,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1198,
+    "death_year_hijri":595,
+    "death_is_approximate":false,
+    "death_century_gregorian":12,
+    "death_century_hijri":6
+  },
+  {
+    "name":"ابو نواس",
+    "other_names":[
+      "أبو نواس",
+      "الحسن بن هانئ",
+      "أبو علي الحسن بن هانئ الحكمي",
+      "شاعر الخمرة"
+    ],
+    "birth_year_gregorian":756,
+    "birth_year_hijri":139,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":8,
+    "birth_century_hijri":2,
+    "death_year_gregorian":814,
+    "death_year_hijri":199,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":2
+  },
+  {
+    "name":"احمد زكي ابو شادي",
+    "other_names":[
+      "أحمد زكي أبو شادي",
+      "مؤسس جماعة أبوللو"
+    ],
+    "birth_year_gregorian":1892,
+    "birth_year_hijri":1311,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":14,
+    "death_year_gregorian":1955,
+    "death_year_hijri":1376,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"احمد شوقي",
+    "other_names":[
+      "أحمد شوقي",
+      "أحمد شوقي علي أحمد شوقي",
+      "أمير الشعراء"
+    ],
+    "birth_year_gregorian":1868,
+    "birth_year_hijri":1286,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1932,
+    "death_year_hijri":1352,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"احمد محرم",
+    "other_names":[
+      "أحمد محرم",
+      "أحمد محرم بن حسن بن عبد الله",
+      "شاعر الإسلام"
+    ],
+    "birth_year_gregorian":1877,
+    "birth_year_hijri":1295,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1945,
+    "death_year_hijri":1365,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"اسامه بن منقذ",
+    "other_names":[
+      "أسامة بن منقذ",
+      "مؤيد الدولة أبو المظفر أسامة بن مرشد الكناني"
+    ],
+    "birth_year_gregorian":1095,
+    "birth_year_hijri":489,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":11,
+    "birth_century_hijri":5,
+    "death_year_gregorian":1188,
+    "death_year_hijri":585,
+    "death_is_approximate":false,
+    "death_century_gregorian":12,
+    "death_century_hijri":6
+  },
+  {
+    "name":"اسماعيل صبري باشا",
+    "other_names":[
+      "إسماعيل صبري باشا",
+      "إسماعيل صبري",
+      "شاعر السيف والقلم"
+    ],
+    "birth_year_gregorian":1854,
+    "birth_year_hijri":1271,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1923,
+    "death_year_hijri":1343,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"الاخطل",
+    "other_names":[
+      "الأخطل",
+      "الأخطل التغلبي",
+      "غياث بن غوث",
+      "أبو مالك غياث بن غوث التغلبي"
+    ],
+    "birth_year_gregorian":640,
+    "birth_year_hijri":20,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":710,
+    "death_year_hijri":92,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":1
+  },
+  {
+    "name":"الاعشا",
+    "other_names":[
+      "الأعشى",
+      "الأعشى الكبير",
+      "ميمون بن قيس",
+      "صناجة العرب",
+      "أبو بصير ميمون بن قيس"
+    ],
+    "birth_year_gregorian":570,
+    "birth_year_hijri":-54,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":629,
+    "death_year_hijri":8,
+    "death_is_approximate":false,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"الامام الشافعي",
+    "other_names":[
+      "الإمام الشافعي",
+      "محمد بن إدريس الشافعي",
+      "أبو عبد الله محمد بن إدريس الشافعي المطلبي",
+      "ناصر الحديث"
+    ],
+    "birth_year_gregorian":767,
+    "birth_year_hijri":151,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":8,
+    "birth_century_hijri":2,
+    "death_year_gregorian":820,
+    "death_year_hijri":205,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":3
+  },
+  {
+    "name":"البحتري",
+    "other_names":[
+      "الوليد بن عبيد",
+      "أبو عبادة الوليد بن عبيد بن يحيى الطائي"
+    ],
+    "birth_year_gregorian":821,
+    "birth_year_hijri":206,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":9,
+    "birth_century_hijri":3,
+    "death_year_gregorian":897,
+    "death_year_hijri":285,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":3
+  },
+  {
+    "name":"الحارث بن حلزه",
+    "other_names":[
+      "الحارث بن حلزة",
+      "الحارث بن حلزة اليشكري",
+      "الحارث بن حلزة بن مكروه اليشكري البكري",
+      "صاحب المعلقة"
+    ],
+    "birth_year_gregorian":510,
+    "birth_year_hijri":-116,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":2,
+    "death_year_gregorian":570,
+    "death_year_hijri":-54,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"الحطيءه",
+    "other_names":[
+      "الحطيئة",
+      "جرول بن أوس",
+      "أبو مليكة جرول بن أوس العبسي"
+    ],
+    "birth_year_gregorian":582,
+    "birth_year_hijri":-41,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":661,
+    "death_year_hijri":41,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"الخنساء",
+    "other_names":[
+      "تماضر بنت عمرو",
+      "تماضر بنت عمرو بن الحارث السلمية",
+      "أم الشهداء"
+    ],
+    "birth_year_gregorian":575,
+    "birth_year_hijri":-48,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":645,
+    "death_year_hijri":25,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"الرصافي البلنسي",
+    "other_names":[
+      "محمد بن غالب البلنسي",
+      "أبو عبد الله محمد بن غالب الرفاء الرصافي"
+    ],
+    "birth_year_gregorian":1117,
+    "birth_year_hijri":511,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1177,
+    "death_year_hijri":573,
+    "death_is_approximate":false,
+    "death_century_gregorian":12,
+    "death_century_hijri":6
+  },
+  {
+    "name":"السيد الحميري",
+    "other_names":[
+      "السيد الحميري",
+      "إسماعيل بن محمد",
+      "أبو هاشم إسماعيل بن محمد الحميري"
+    ],
+    "birth_year_gregorian":723,
+    "birth_year_hijri":105,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":8,
+    "birth_century_hijri":2,
+    "death_year_gregorian":789,
+    "death_year_hijri":173,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":2
+  },
+  {
+    "name":"الشاب الظريف",
+    "other_names":[
+      "محمد بن سليمان",
+      "شمس الدين محمد بن سليمان التلمساني",
+      "ابن العفيف"
+    ],
+    "birth_year_gregorian":1263,
+    "birth_year_hijri":662,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":13,
+    "birth_century_hijri":7,
+    "death_year_gregorian":1289,
+    "death_year_hijri":689,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"الشريف الرضي",
+    "other_names":[
+      "الشريف الرضي",
+      "محمد بن الحسين الرضي",
+      "أبو الحسن محمد بن الحسين الموسوي",
+      "جامع نهج البلاغة"
+    ],
+    "birth_year_gregorian":970,
+    "birth_year_hijri":360,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1015,
+    "death_year_hijri":406,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"الشريف المرتضا",
+    "other_names":[
+      "الشريف المرتضى",
+      "علي بن الحسين المرتضى",
+      "أبو القاسم علي بن الحسين الموسوي",
+      "علم الهدى"
+    ],
+    "birth_year_gregorian":966,
+    "birth_year_hijri":356,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1044,
+    "death_year_hijri":436,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"الطغراءي",
+    "other_names":[
+      "الطغرائي",
+      "الحسين بن علي الطغرائي",
+      "مؤيد الدين أبو إسماعيل الحسين بن علي الأصفهاني",
+      "صاحب لامية العجم"
+    ],
+    "birth_year_gregorian":1061,
+    "birth_year_hijri":454,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":11,
+    "birth_century_hijri":5,
+    "death_year_gregorian":1121,
+    "death_year_hijri":516,
+    "death_is_approximate":false,
+    "death_century_gregorian":12,
+    "death_century_hijri":6
+  },
+  {
+    "name":"العباس بن الاحنف",
+    "other_names":[
+      "العباس بن الأحنف",
+      "أبو الفضل العباس بن الأحنف الحنفي",
+      "شاعر الغزل العفيف"
+    ],
+    "birth_year_gregorian":750,
+    "birth_year_hijri":133,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":8,
+    "birth_century_hijri":2,
+    "death_year_gregorian":808,
+    "death_year_hijri":193,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":2
+  },
+  {
+    "name":"الفرزدق",
+    "other_names":[
+      "همام بن غالب",
+      "أبو فراس همام بن غالب بن صعصعة التميمي"
+    ],
+    "birth_year_gregorian":641,
+    "birth_year_hijri":21,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":728,
+    "death_year_hijri":110,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":2
+  },
+  {
+    "name":"الكميت بن زيد الاسدي",
+    "other_names":[
+      "الكميت بن زيد الأسدي",
+      "الكميت بن زيد",
+      "أبو المستهل الكميت بن زيد الأسدي",
+      "صاحب الهاشميات"
+    ],
+    "birth_year_gregorian":679,
+    "birth_year_hijri":60,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":743,
+    "death_year_hijri":126,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":2
+  },
+  {
+    "name":"المتلمس الضبعي",
+    "other_names":[
+      "المتلمس",
+      "جرير بن عبد المسيح الضبعي",
+      "جرير بن عبد العزى"
+    ],
+    "birth_year_gregorian":520,
+    "birth_year_hijri":-105,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":2,
+    "death_year_gregorian":580,
+    "death_year_hijri":-43,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"المرقش الاكبر",
+    "other_names":[
+      "المرقش الأكبر",
+      "عمرو بن سعد",
+      "عمرو بن سعد بن مالك بن ضبيعة البكري"
+    ],
+    "birth_year_gregorian":490,
+    "birth_year_hijri":-136,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":5,
+    "birth_century_hijri":2,
+    "death_year_gregorian":550,
+    "death_year_hijri":-74,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"المعتمد بن عباد",
+    "other_names":[
+      "المعتمد بن عباد",
+      "محمد بن عباد",
+      "أبو القاسم المعتمد على الله محمد بن عباد اللخمي",
+      "ملك إشبيلية"
+    ],
+    "birth_year_gregorian":1040,
+    "birth_year_hijri":432,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":11,
+    "birth_century_hijri":5,
+    "death_year_gregorian":1095,
+    "death_year_hijri":489,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"النابغه الذبياني",
+    "other_names":[
+      "النابغة الذبياني",
+      "النابغة",
+      "زياد بن معاوية",
+      "أبو أمامة زياد بن معاوية الذبياني"
+    ],
+    "birth_year_gregorian":544,
+    "birth_year_hijri":-80,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":604,
+    "death_year_hijri":-19,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"الياس ابو شبكه",
+    "other_names":[
+      "إلياس أبو شبكة",
+      "إلياس يوسف أبو شبكة"
+    ],
+    "birth_year_gregorian":1903,
+    "birth_year_hijri":1322,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":20,
+    "birth_century_hijri":14,
+    "death_year_gregorian":1947,
+    "death_year_hijri":1367,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"امرء القيس",
+    "other_names":[
+      "امرؤ القيس",
+      "حندج بن حجر",
+      "الملك الضليل",
+      "ذو القروح",
+      "صاحب المعلقة"
+    ],
+    "birth_year_gregorian":496,
+    "birth_year_hijri":-130,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":5,
+    "birth_century_hijri":2,
+    "death_year_gregorian":544,
+    "death_year_hijri":-80,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"اوس بن حجر",
+    "other_names":[
+      "أوس بن حجر",
+      "أوس بن حجر بن مالك التميمي",
+      "شاعر تميم"
+    ],
+    "birth_year_gregorian":530,
+    "birth_year_hijri":-95,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":590,
+    "death_year_hijri":-33,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"بشار بن برد",
+    "other_names":[
+      "بشار بن برد",
+      "أبو معاذ بشار بن برد العقيلي"
+    ],
+    "birth_year_gregorian":714,
+    "birth_year_hijri":96,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":8,
+    "birth_century_hijri":1,
+    "death_year_gregorian":783,
+    "death_year_hijri":167,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":2
+  },
+  {
+    "name":"بهاء الدين زهير",
+    "other_names":[
+      "البهاء زهير",
+      "زهير بن محمد",
+      "أبو الفضل زهير بن محمد المهلبي"
+    ],
+    "birth_year_gregorian":1185,
+    "birth_year_hijri":582,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1258,
+    "death_year_hijri":657,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"تابط شرا",
+    "other_names":[
+      "تأبط شراً",
+      "ثابت بن سفيان",
+      "ثابت بن جابر الفهمي"
+    ],
+    "birth_year_gregorian":510,
+    "birth_year_hijri":-116,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":2,
+    "death_year_gregorian":570,
+    "death_year_hijri":-54,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"جرير",
+    "other_names":[
+      "جرير بن عطية",
+      "أبو حزرة جرير بن عطية بن حذيفة الخطفي التميمي"
+    ],
+    "birth_year_gregorian":653,
+    "birth_year_hijri":33,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":728,
+    "death_year_hijri":110,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":2
+  },
+  {
+    "name":"جميل بن معمر",
+    "other_names":[
+      "جميل بثينة",
+      "جميل بن عبد الله بن معمر العذري"
+    ],
+    "birth_year_gregorian":659,
+    "birth_year_hijri":39,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":701,
+    "death_year_hijri":82,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":1
+  },
+  {
+    "name":"جميل صدقي الزهاوي",
+    "other_names":[
+      "جميل صدقي الزهاوي",
+      "شاعر العراق"
+    ],
+    "birth_year_gregorian":1863,
+    "birth_year_hijri":1281,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1936,
+    "death_year_hijri":1356,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"حاتم الطاءي",
+    "other_names":[
+      "حاتم الطائي",
+      "حاتم بن عبد الله الطائي",
+      "أبو سفانة حاتم بن عبد الله بن سعد الطائي",
+      "رمز الكرم"
+    ],
+    "birth_year_gregorian":545,
+    "birth_year_hijri":-79,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":605,
+    "death_year_hijri":-18,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"حافظ ابراهيم",
+    "other_names":[
+      "حافظ إبراهيم",
+      "محمد حافظ إبراهيم",
+      "شاعر النيل"
+    ],
+    "birth_year_gregorian":1872,
+    "birth_year_hijri":1290,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1932,
+    "death_year_hijri":1352,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"حسان بن ثابت",
+    "other_names":[
+      "حسان بن ثابت",
+      "أبو الوليد حسان بن ثابت الخزرجي",
+      "شاعر الرسول"
+    ],
+    "birth_year_gregorian":563,
+    "birth_year_hijri":-61,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":674,
+    "death_year_hijri":55,
+    "death_is_approximate":false,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"خليل مطران",
+    "other_names":[
+      "خليل مطران",
+      "خليل بن عبده مطران",
+      "شاعر القطرين"
+    ],
+    "birth_year_gregorian":1872,
+    "birth_year_hijri":1290,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1949,
+    "death_year_hijri":1369,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"خليل ناصيف اليازجي",
+    "other_names":[
+      "خليل اليازجي",
+      "خليل بن ناصيف اليازجي"
+    ],
+    "birth_year_gregorian":1856,
+    "birth_year_hijri":1274,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1889,
+    "death_year_hijri":1308,
+    "death_is_approximate":false,
+    "death_century_gregorian":19,
+    "death_century_hijri":14
+  },
+  {
+    "name":"دريد بن الصمه",
+    "other_names":[
+      "دريد بن الصمة",
+      "أبو قرة دريد بن الصمة الجشمي الهوازني"
+    ],
+    "birth_year_gregorian":530,
+    "birth_year_hijri":-95,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":630,
+    "death_year_hijri":9,
+    "death_is_approximate":false,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"دعبل الخزاعي",
+    "other_names":[
+      "دعبل الخزاعي",
+      "دعبل بن علي",
+      "أبو علي دعبل بن علي بن رزين الخزاعي"
+    ],
+    "birth_year_gregorian":765,
+    "birth_year_hijri":148,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":8,
+    "birth_century_hijri":2,
+    "death_year_gregorian":860,
+    "death_year_hijri":246,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":3
+  },
+  {
+    "name":"ديك الجن",
+    "other_names":[
+      "ديك الجن الحمصي",
+      "عبد السلام بن رغبان",
+      "أبو محمد عبد السلام بن رغبان الحمصي"
+    ],
+    "birth_year_gregorian":777,
+    "birth_year_hijri":161,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":8,
+    "birth_century_hijri":2,
+    "death_year_gregorian":849,
+    "death_year_hijri":235,
+    "death_is_approximate":false,
+    "death_century_gregorian":9,
+    "death_century_hijri":3
+  },
+  {
+    "name":"ذو الاصبع العدواني",
+    "other_names":[
+      "ذو الإصبع العدواني",
+      "حرثان بن الحارث العدواني",
+      "حرثان بن محرث العدواني"
+    ],
+    "birth_year_gregorian":540,
+    "birth_year_hijri":-85,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":600,
+    "death_year_hijri":-23,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"ذو الرمه",
+    "other_names":[
+      "ذو الرمة",
+      "غيلان بن عقبة",
+      "أبو الحارث غيلان بن عقبة العدوي التميمي"
+    ],
+    "birth_year_gregorian":696,
+    "birth_year_hijri":77,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":735,
+    "death_year_hijri":118,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":2
+  },
+  {
+    "name":"زهير بن ابي سلما",
+    "other_names":[
+      "زهير بن أبي سلمى",
+      "زهير بن أبي سلمى المزني",
+      "حكيم الشعراء",
+      "صاحب المعلقة"
+    ],
+    "birth_year_gregorian":520,
+    "birth_year_hijri":-105,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":2,
+    "death_year_gregorian":609,
+    "death_year_hijri":-13,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"شرف الدين البوصيري",
+    "other_names":[
+      "البوصيري",
+      "محمد بن سعيد البوصيري",
+      "أبو عبد الله محمد بن سعيد بن حماد البوصيري",
+      "صاحب البردة"
+    ],
+    "birth_year_gregorian":1213,
+    "birth_year_hijri":610,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":13,
+    "birth_century_hijri":7,
+    "death_year_gregorian":1294,
+    "death_year_hijri":694,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"شرف الدين الحلي",
+    "other_names":[
+      "راجح الحلي",
+      "أبو الوفاء راجح بن إسماعيل الأسدي الحلي"
+    ],
+    "birth_year_gregorian":1174,
+    "birth_year_hijri":570,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1230,
+    "death_year_hijri":628,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"صفي الدين الحلي",
+    "other_names":[
+      "صفي الدين الحلي",
+      "عبد العزيز بن سرايا",
+      "أبو المحاسن عبد العزيز بن سرايا بن علي الحلي"
+    ],
+    "birth_year_gregorian":1278,
+    "birth_year_hijri":677,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":13,
+    "birth_century_hijri":7,
+    "death_year_gregorian":1349,
+    "death_year_hijri":751,
+    "death_is_approximate":false,
+    "death_century_gregorian":14,
+    "death_century_hijri":8
+  },
+  {
+    "name":"طرفه بن العبد",
+    "other_names":[
+      "طرفة بن العبد",
+      "طرفة بن العبد بن سفيان البكري",
+      "أبو عمرو",
+      "صاحب المعلقة"
+    ],
+    "birth_year_gregorian":543,
+    "birth_year_hijri":-81,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":569,
+    "death_year_hijri":-55,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"عبد المحسن الكاظمي",
+    "other_names":[
+      "عبد المحسن الكاظمي",
+      "عبد المحسن بن محمد سعيد الكاظمي",
+      "شاعر الكاظمية"
+    ],
+    "birth_year_gregorian":1871,
+    "birth_year_hijri":1289,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1935,
+    "death_year_hijri":1355,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"عبيد بن الابرص",
+    "other_names":[
+      "عبيد بن الأبرص",
+      "عبيد بن الأبرص بن جشم الأسدي",
+      "أبو زياد",
+      "صاحب المعلقة"
+    ],
+    "birth_year_gregorian":494,
+    "birth_year_hijri":-132,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":5,
+    "birth_century_hijri":2,
+    "death_year_gregorian":554,
+    "death_year_hijri":-70,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"عروه بن الورد",
+    "other_names":[
+      "عروة بن الورد",
+      "عروة بن الورد بن زيد العبسي",
+      "أبو الصعاليك",
+      "عروة الصعاليك"
+    ],
+    "birth_year_gregorian":547,
+    "birth_year_hijri":-77,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":607,
+    "death_year_hijri":-15,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"علقمه الفحل",
+    "other_names":[
+      "علقمة الفحل",
+      "علقمة بن عبيدة",
+      "علقمة بن عبيدة بن الحارث التميمي"
+    ],
+    "birth_year_gregorian":538,
+    "birth_year_hijri":-87,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":598,
+    "death_year_hijri":-25,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"علي الجارم",
+    "other_names":[
+      "علي الجارم",
+      "علي بن صالح بن عبد الفتاح الجارم"
+    ],
+    "birth_year_gregorian":1881,
+    "birth_year_hijri":1299,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1949,
+    "death_year_hijri":1369,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"عمر بن ابي ربيعه",
+    "other_names":[
+      "عمر بن أبي ربيعة",
+      "أبو الخطاب عمر بن عبد الله بن أبي ربيعة المخزومي",
+      "شاعر الغزل الصريح"
+    ],
+    "birth_year_gregorian":644,
+    "birth_year_hijri":24,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":712,
+    "death_year_hijri":94,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":1
+  },
+  {
+    "name":"عمرو بن كلثوم",
+    "other_names":[
+      "عمرو بن كلثوم",
+      "عمرو بن كلثوم بن مالك التغلبي",
+      "أبو الأسود",
+      "صاحب المعلقة"
+    ],
+    "birth_year_gregorian":526,
+    "birth_year_hijri":-99,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":584,
+    "death_year_hijri":-39,
+    "death_is_approximate":true,
+    "death_century_gregorian":6,
+    "death_century_hijri":1
+  },
+  {
+    "name":"عنتره بن شداد",
+    "other_names":[
+      "عنترة بن شداد",
+      "عنترة بن شداد بن عمرو العبسي",
+      "عنترة الفوارس",
+      "صاحب المعلقة"
+    ],
+    "birth_year_gregorian":525,
+    "birth_year_hijri":-100,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":608,
+    "death_year_hijri":-14,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"قيس بن الخطيم",
+    "other_names":[
+      "قيس بن الخطيم",
+      "أبو يزيد قيس بن الخطيم بن عدي الأوسي"
+    ],
+    "birth_year_gregorian":575,
+    "birth_year_hijri":-48,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":620,
+    "death_year_hijri":-2,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"قيس بن الملوح",
+    "other_names":[
+      "مجنون ليلى",
+      "قيس بن الملوح العامري",
+      "مجنون بني عامر"
+    ],
+    "birth_year_gregorian":645,
+    "birth_year_hijri":25,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":688,
+    "death_year_hijri":69,
+    "death_is_approximate":false,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"كثير عزه",
+    "other_names":[
+      "كثير عزة",
+      "كُثَيِّر بن عبد الرحمن",
+      "أبو صخر كُثَيِّر بن عبد الرحمن الخزاعي"
+    ],
+    "birth_year_gregorian":660,
+    "birth_year_hijri":40,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":723,
+    "death_year_hijri":105,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":2
+  },
+  {
+    "name":"كعب بن زهير",
+    "other_names":[
+      "كعب بن زهير",
+      "كعب بن زهير بن أبي سلمى المزني",
+      "أبو المضرب",
+      "صاحب بانت سعاد"
+    ],
+    "birth_year_gregorian":580,
+    "birth_year_hijri":-43,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":662,
+    "death_year_hijri":42,
+    "death_is_approximate":true,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"لبيد بن ربيعه العامري",
+    "other_names":[
+      "لبيد بن ربيعة",
+      "لبيد بن ربيعة العامري",
+      "أبو عقيل لبيد بن ربيعة العامري",
+      "صاحب المعلقة"
+    ],
+    "birth_year_gregorian":560,
+    "birth_year_hijri":-64,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":6,
+    "birth_century_hijri":1,
+    "death_year_gregorian":661,
+    "death_year_hijri":41,
+    "death_is_approximate":false,
+    "death_century_gregorian":7,
+    "death_century_hijri":1
+  },
+  {
+    "name":"لسان الدين بن الخطيب",
+    "other_names":[
+      "ابن الخطيب الأندلسي",
+      "لسان الدين بن الخطيب",
+      "أبو عبد الله محمد بن عبد الله السلماني",
+      "ذو الوزارتين"
+    ],
+    "birth_year_gregorian":1313,
+    "birth_year_hijri":714,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":14,
+    "birth_century_hijri":8,
+    "death_year_gregorian":1374,
+    "death_year_hijri":777,
+    "death_is_approximate":false,
+    "death_century_gregorian":14,
+    "death_century_hijri":8
+  },
+  {
+    "name":"ليلا الاخيليه",
+    "other_names":[
+      "ليلى الأخيلية",
+      "ليلى بنت عبد الله الأخيلية"
+    ],
+    "birth_year_gregorian":644,
+    "birth_year_hijri":24,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":7,
+    "birth_century_hijri":1,
+    "death_year_gregorian":704,
+    "death_year_hijri":86,
+    "death_is_approximate":false,
+    "death_century_gregorian":8,
+    "death_century_hijri":1
+  },
+  {
+    "name":"محمد مهدي الجواهري",
+    "other_names":[
+      "الجواهري",
+      "محمد مهدي الجواهري",
+      "شاعر العرب الأكبر"
+    ],
+    "birth_year_gregorian":1899,
+    "birth_year_hijri":1318,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":14,
+    "death_year_gregorian":1997,
+    "death_year_hijri":1419,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":15
+  },
+  {
+    "name":"محمود سامي البارودي",
+    "other_names":[
+      "محمود سامي البارودي",
+      "رب السيف والقلم",
+      "رائد مدرسة البعث والإحياء"
+    ],
+    "birth_year_gregorian":1839,
+    "birth_year_hijri":1256,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1904,
+    "death_year_hijri":1323,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"محيي الدين بن عربي",
+    "other_names":[
+      "ابن عربي",
+      "محيي الدين بن عربي",
+      "الشيخ الأكبر",
+      "أبو عبد الله محمد بن علي الحاتمي الطائي"
+    ],
+    "birth_year_gregorian":1165,
+    "birth_year_hijri":561,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":12,
+    "birth_century_hijri":6,
+    "death_year_gregorian":1240,
+    "death_year_hijri":638,
+    "death_is_approximate":false,
+    "death_century_gregorian":13,
+    "death_century_hijri":7
+  },
+  {
+    "name":"معروف الرصافي",
+    "other_names":[
+      "معروف الرصافي",
+      "معروف بن عبد الغني الرصافي",
+      "شاعر العراق"
+    ],
+    "birth_year_gregorian":1875,
+    "birth_year_hijri":1293,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":19,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1945,
+    "death_year_hijri":1365,
+    "death_is_approximate":false,
+    "death_century_gregorian":20,
+    "death_century_hijri":14
+  },
+  {
+    "name":"مهيار الديلمي",
+    "other_names":[
+      "مهيار الديلمي",
+      "مهيار بن مرزويه",
+      "أبو الحسن مهيار بن مرزويه الكسروي"
+    ],
+    "birth_year_gregorian":977,
+    "birth_year_hijri":367,
+    "birth_is_approximate":true,
+    "birth_century_gregorian":10,
+    "birth_century_hijri":4,
+    "death_year_gregorian":1037,
+    "death_year_hijri":429,
+    "death_is_approximate":false,
+    "death_century_gregorian":11,
+    "death_century_hijri":5
+  },
+  {
+    "name":"ناصيف اليازجي",
+    "other_names":[
+      "ناصيف اليازجي",
+      "الشيخ ناصيف اليازجي",
+      "ناصيف بن عبد الله اليازجي"
+    ],
+    "birth_year_gregorian":1800,
+    "birth_year_hijri":1216,
+    "birth_is_approximate":false,
+    "birth_century_gregorian":18,
+    "birth_century_hijri":13,
+    "death_year_gregorian":1871,
+    "death_year_hijri":1289,
+    "death_is_approximate":false,
+    "death_century_gregorian":19,
+    "death_century_hijri":13
+  }
+]
