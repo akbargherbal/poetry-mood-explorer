@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   buildPoemLengthPresets(META.poem_length);
   wireStaticControls();
   refresh();
+  openSharedBatchFromURL();
 });
 
 async function fetchJSON(url) {
@@ -580,6 +581,9 @@ function renderCard(batch) {
         </span>
       </div>
       <div class="flex items-center gap-2">
+        <button class="copy-link-btn text-[10px] font-mono text-parchment-dim hover:text-teal-bright border border-ink-border rounded px-1.5 py-0.5" title="Copy link to this verse">
+          🔗 Copy link
+        </button>
         <button class="exclude-poem-btn text-[10px] font-mono text-parchment-dim hover:text-red-400 border border-ink-border rounded px-1.5 py-0.5" title="Exclude poem #${escapeHtml(batch.poem_no)}">
           🚫 Exclude poem
         </button>
@@ -603,6 +607,13 @@ function renderCard(batch) {
     refresh();
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  const copyBtn = card.querySelector(".copy-link-btn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", () => {
+      copyBatchLink(batch.row_id, copyBtn);
+    });
+  }
 
   const exclBtn = card.querySelector(".exclude-poem-btn");
   if (exclBtn) {
@@ -872,6 +883,101 @@ function renderActiveFilters() {
     });
     container.appendChild(resetBtn);
   }
+}
+
+// --------------------------------------------------------------------------
+// Sharing: single-batch permalinks
+// --------------------------------------------------------------------------
+function buildBatchLink(rowId) {
+  return `${window.location.origin}${window.location.pathname}?batch=${rowId}`;
+}
+
+async function copyBatchLink(rowId, triggerBtn) {
+  const link = buildBatchLink(rowId);
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(link);
+    } else {
+      // Fallback for non-secure contexts / older browsers
+      const ta = document.createElement("textarea");
+      ta.value = link;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    flashCopyFeedback(triggerBtn, "✅ Copied!");
+  } catch (err) {
+    flashCopyFeedback(triggerBtn, "⚠️ Copy failed");
+  }
+}
+
+function flashCopyFeedback(btn, message) {
+  if (!btn) return;
+  const original = btn.innerHTML;
+  btn.innerHTML = message;
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = original;
+    btn.disabled = false;
+  }, 1400);
+}
+
+async function openSharedBatchFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has("batch")) return;
+
+  const rowId = parseInt(params.get("batch"), 10);
+  if (isNaN(rowId)) return;
+
+  try {
+    const res = await fetch(`/api/batch/${rowId}`);
+    if (!res.ok) {
+      showSharedBatchModal(null);
+      return;
+    }
+    const batch = await res.json();
+    showSharedBatchModal(batch);
+  } catch (err) {
+    showSharedBatchModal(null);
+  }
+}
+
+function showSharedBatchModal(batch) {
+  const overlay = document.createElement("div");
+  overlay.className = "shared-batch-overlay";
+
+  const panel = document.createElement("div");
+  panel.className = "shared-batch-panel";
+
+  const header = document.createElement("div");
+  header.className = "shared-batch-header";
+  header.innerHTML = `<span>🔗 Shared verse</span>`;
+  const closeBtn = document.createElement("button");
+  closeBtn.className = "shared-batch-close";
+  closeBtn.textContent = "✕";
+  closeBtn.addEventListener("click", () => overlay.remove());
+  header.appendChild(closeBtn);
+
+  panel.appendChild(header);
+
+  if (batch) {
+    panel.appendChild(renderCard(batch));
+  } else {
+    const msg = document.createElement("p");
+    msg.className = "shared-batch-missing";
+    msg.textContent = "This verse could not be found — it may have been removed from the dataset.";
+    panel.appendChild(msg);
+  }
+
+  overlay.appendChild(panel);
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) overlay.remove();
+  });
+  document.body.appendChild(overlay);
 }
 
 // --------------------------------------------------------------------------

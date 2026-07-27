@@ -105,3 +105,52 @@
 .stat-row { display: grid; grid-template-columns: 92px 1fr 40px; align-items: center; gap: 0.5rem; font-size: 0.72rem; }
 .stat-track { background: #14110F; border-radius: 999px; height: 8px; overflow: hidden; }
 .stat-fill { height: 100%; border-radius: 999px; }
+
+/* ---------------------------------------------------------------------
+   Shared-batch permalink modal (Phase 1)
+--------------------------------------------------------------------- */
+.shared-batch-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 8, 6, 0.78);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 4rem 1rem;
+  z-index: 100;
+  overflow-y: auto;
+}
+.shared-batch-panel {
+  background: #14110F;
+  border: 1px solid #B8912F;
+  border-radius: 0.7rem;
+  padding: 1.25rem;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+.shared-batch-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #D9AE45;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.shared-batch-close {
+  color: #A8977F;
+  background: transparent;
+  border: 1px solid #3A322A;
+  border-radius: 0.35rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: pointer;
+}
+.shared-batch-close:hover { color: #EDE4D3; border-color: #B8912F; }
+.shared-batch-missing {
+  color: #A8977F;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1.5rem 0;
+}
