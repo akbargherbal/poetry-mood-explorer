@@ -10,6 +10,7 @@ Everything the Flask routes need lives here so app.py stays a thin
 HTTP layer.
 """
 
+import json
 import os
 import re
 import pandas as pd
@@ -20,7 +21,18 @@ DATA_PATH = os.path.join(
     "TOP_100_ARABIC_POETS_OF_ALL_TIME_STAGE_02_mood_labeled.pkl",
 )
 
+POETS_ERA_PATH = os.path.join(
+    os.path.dirname(__file__),
+    "data",
+    "top_100_arabic_poets_dob_dod.json",
+)
+
 AXES = ["mood", "genre", "energy", "aesthetic"]
+
+# Era systems this app filters by. Each entry names the JSON field prefixes
+# ("birth_century_hijri" / "death_century_hijri", etc.) and the request
+# param the frontend will send ("century_hijri" / "century_gregorian").
+ERA_SYSTEMS = ["hijri", "gregorian"]
 
 # ---------------------------------------------------------------------------
 # Load once, keep in memory. 24k rows of mostly short strings/lists is small.
@@ -42,6 +54,20 @@ def _flatten_verses(verses):
 
 
 _df["verse_text"] = _df["DATA"].apply(_flatten_verses)
+
+
+# ---------------------------------------------------------------------------
+# Poet birth/death era lookup (name -> century info), loaded once.
+# Verified 100% direct-name match against POET_NAME (see exploratory match
+# report) — no normalization or other_names fallback needed.
+# ---------------------------------------------------------------------------
+def _load_poet_era_map():
+    with open(POETS_ERA_PATH, encoding="utf-8") as f:
+        entries = json.load(f)
+    return {entry["name"]: entry for entry in entries}
+
+
+_POET_ERA = _load_poet_era_map()
 
 
 # ---------------------------------------------------------------------------
@@ -77,6 +103,22 @@ def _poem_length_meta(col):
         {"label": "Epic", "min": min(b3 + 1, hi), "max": hi},
     ]
     return {"min": lo, "max": hi, "presets": presets}
+
+
+def _century_options():
+    """Sorted list of every century (birth or death, either era system)
+    that actually appears among the loaded poets — for populating the
+    filter's century choices."""
+    options = {}
+    for system in ERA_SYSTEMS:
+        centuries = set()
+        for entry in _POET_ERA.values():
+            for bound in ("birth", "death"):
+                c = entry.get(f"{bound}_century_{system}")
+                if c is not None:
+                    centuries.add(int(c))
+        options[system] = sorted(centuries)
+    return options
 
 
 # ---------------------------------------------------------------------------
@@ -128,6 +170,7 @@ def get_meta():
         },
         "confidence": confidence,
         "poem_length": poem_length,
+        "century_options": _century_options(),
         "total_batches": int(len(_df)),
     }
 
@@ -144,6 +187,28 @@ def _tag_mask(series, wanted, mode):
         return series.apply(lambda tags: wanted.issubset(set(tags)))
     # default: "any"
     return series.apply(lambda tags: not wanted.isdisjoint(set(tags)))
+
+
+def _century_mask(birth_col, death_col, wanted_centuries):
+    """Boolean mask matching rows whose poet's lifespan overlaps any of the
+    wanted centuries. A poet "belongs" to every century between their birth
+    and death (inclusive), not just their birth century — e.g. a poet born
+    in century 13 and who died in century 14 overlaps both. Rows for poets
+    missing era data (not found in the lookup) never match."""
+    if not wanted_centuries:
+        return pd.Series(True, index=birth_col.index)
+    wanted = set(wanted_centuries)
+
+    def matches(birth, death):
+        if pd.isna(birth) or pd.isna(death):
+            return False
+        lo, hi = int(min(birth, death)), int(max(birth, death))
+        return any(lo <= c <= hi for c in wanted)
+
+    return pd.Series(
+        [matches(b, d) for b, d in zip(birth_col, death_col)],
+        index=birth_col.index,
+    )
 
 
 def _int(params, name):
@@ -176,6 +241,23 @@ def _apply_filters(df, params):
     stats = _poem_stats()
     result["poem_n_batches"] = result["poem_no"].map(stats["poem_n_batches"])
     result["poem_n_verses"] = result["poem_no"].map(stats["poem_n_verses"])
+
+    # ---- era / century filters (hijri and/or gregorian) -------------------
+    for system in ERA_SYSTEMS:
+        wanted = _getlist(params, f"century_{system}")
+        if not wanted:
+            continue
+        birth_col = result["POET_NAME"].map(
+            lambda n: _POET_ERA.get(n, {}).get(f"birth_century_{system}")
+        )
+        death_col = result["POET_NAME"].map(
+            lambda n: _POET_ERA.get(n, {}).get(f"death_century_{system}")
+        )
+        try:
+            parsed = [int(c) for c in wanted]
+        except (TypeError, ValueError):
+            parsed = []
+        result = result[_century_mask(birth_col, death_col, parsed)]
 
     # ---- categorical / exact filters -------------------------------------
     poets = _getlist(params, "poet")

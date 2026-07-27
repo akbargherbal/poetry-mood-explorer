@@ -24,6 +24,9 @@ class TestMetaRoute:
             "aesthetic_tags", "batch_size", "poet_rank", "total_batches",
         }
         assert expected_keys.issubset(data.keys())
+        assert "century_options" in data
+        assert "hijri" in data["century_options"]
+        assert "gregorian" in data["century_options"]
 
 
 class TestSearchRoute:
@@ -46,6 +49,14 @@ class TestSearchRoute:
         data = resp.get_json()
         assert data["results"] == []
         assert data["total"] == 0
+
+    def test_search_with_century_hijri_filter_returns_200(self, client):
+        meta = client.get("/api/meta").get_json()
+        century = meta["century_options"]["hijri"][0]
+        resp = client.get(f"/api/search?century_hijri={century}")
+        assert resp.status_code == 200
+        data = resp.get_json()
+        assert 0 < data["total"] <= meta["total_batches"]
 
     def test_search_non_numeric_rank_min_currently_500s(self, client):
         # KNOWN ISSUE (found while writing this suite, not in the testing

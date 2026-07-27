@@ -134,12 +134,42 @@ def _build_synthetic_df():
     return df
 
 
+# ---------------------------------------------------------------------------
+# Synthetic poet-era lookup, matching the same three poets as _ROWS.
+# Deliberately built so century ranges overlap in testable ways:
+#   - hijri 13: Alpha only        hijri 14: Alpha AND Gamma (boundary touch)
+#   - hijri 12: Beta only         hijri 15: Gamma only
+#   - gregorian 19: Alpha AND Beta (boundary touch)
+#   - gregorian 20: Alpha AND Gamma
+# ---------------------------------------------------------------------------
+_SYNTHETIC_ERA = {
+    "Alpha": {
+        "name": "Alpha",
+        "birth_century_hijri": 13, "death_century_hijri": 14,
+        "birth_century_gregorian": 19, "death_century_gregorian": 20,
+    },
+    "Beta": {
+        "name": "Beta",
+        "birth_century_hijri": 12, "death_century_hijri": 12,
+        "birth_century_gregorian": 18, "death_century_gregorian": 19,
+    },
+    "Gamma": {
+        "name": "Gamma",
+        "birth_century_hijri": 14, "death_century_hijri": 15,
+        "birth_century_gregorian": 20, "death_century_gregorian": 20,
+    },
+}
+
+
 @pytest.fixture
 def synthetic_df(monkeypatch):
     """Small, hand-built frame for isolated logic tests. See module docstring
-    and the design notes above `_ROWS` for exactly what it covers."""
+    and the design notes above `_ROWS` for exactly what it covers. Also
+    monkeypatches the poet-era lookup so century-filter tests have real data
+    to match against (see `_SYNTHETIC_ERA` above)."""
     df = _build_synthetic_df()
     monkeypatch.setattr(data_loader, "_df", df)
+    monkeypatch.setattr(data_loader, "_POET_ERA", _SYNTHETIC_ERA)
     return df
 
 

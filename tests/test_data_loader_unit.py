@@ -234,6 +234,105 @@ class TestQueryPoemLevel:
 
 
 # ---------------------------------------------------------------------------
+# _century_mask
+# ---------------------------------------------------------------------------
+class TestCenturyMask:
+    def test_single_century_within_range_matches(self):
+        birth = pd.Series([13, 12, 14])
+        death = pd.Series([14, 12, 15])
+        mask = data_loader._century_mask(birth, death, [13])
+        assert list(mask) == [True, False, False]
+
+    def test_century_matching_upper_boundary_matches(self):
+        # a poet's death century is an inclusive boundary
+        birth = pd.Series([13])
+        death = pd.Series([14])
+        mask = data_loader._century_mask(birth, death, [14])
+        assert list(mask) == [True]
+
+    def test_multiple_wanted_centuries_is_any_match(self):
+        birth = pd.Series([12, 13, 20])
+        death = pd.Series([12, 14, 20])
+        mask = data_loader._century_mask(birth, death, [12, 20])
+        assert list(mask) == [True, False, True]
+
+    def test_empty_wanted_matches_everything(self):
+        birth = pd.Series([12, 13])
+        death = pd.Series([12, 14])
+        mask = data_loader._century_mask(birth, death, [])
+        assert mask.all()
+
+    def test_missing_era_data_never_matches(self):
+        birth = pd.Series([13, None])
+        death = pd.Series([14, None])
+        mask = data_loader._century_mask(birth, death, [13])
+        assert list(mask) == [True, False]
+
+
+# ---------------------------------------------------------------------------
+# query() - era / century filters
+# ---------------------------------------------------------------------------
+class TestQueryEraFilters:
+    def test_filter_by_single_hijri_century(self, synthetic_df):
+        # Beta's hijri range is [12,12]; only Beta qualifies for century 12
+        records, total, *_ = data_loader.query(params(century_hijri=12))
+        assert total == 2
+        assert {r["poet_name"] for r in records} == {"Beta"}
+
+    def test_filter_by_hijri_century_at_range_boundary(self, synthetic_df):
+        # century 14 is Alpha's death century AND Gamma's birth century ->
+        # both should match (inclusive boundary on both ends)
+        records, total, *_ = data_loader.query(params(century_hijri=14))
+        assert total == 4
+        assert {r["poet_name"] for r in records} == {"Alpha", "Gamma"}
+
+    def test_filter_by_multiple_hijri_centuries_is_any_match(self, synthetic_df):
+        records, total, *_ = data_loader.query(params(century_hijri=[12, 15]))
+        assert total == 4
+        assert {r["poet_name"] for r in records} == {"Beta", "Gamma"}
+
+    def test_filter_by_gregorian_century(self, synthetic_df):
+        # gregorian 19 overlaps Alpha [19,20] and Beta [18,19]
+        records, total, *_ = data_loader.query(params(century_gregorian=19))
+        assert total == 4
+        assert {r["poet_name"] for r in records} == {"Alpha", "Beta"}
+
+    def test_combining_hijri_and_gregorian_century_filters(self, synthetic_df):
+        # hijri=14 -> Alpha, Gamma ; gregorian=20 -> Alpha, Gamma -> both agree
+        records, total, *_ = data_loader.query(
+            params(century_hijri=14, century_gregorian=20)
+        )
+        assert total == 4
+        assert {r["poet_name"] for r in records} == {"Alpha", "Gamma"}
+
+    def test_combining_contradictory_century_filters_returns_empty(self, synthetic_df):
+        # hijri=12 -> Beta only ; gregorian=20 -> Alpha, Gamma -> no overlap
+        records, total, *_ = data_loader.query(
+            params(century_hijri=12, century_gregorian=20)
+        )
+        assert total == 0
+
+    def test_poet_missing_from_era_lookup_is_excluded(self, synthetic_df):
+        # Add a row for a poet with no era data and confirm it never
+        # matches any century filter.
+        extra = synthetic_df.iloc[[0]].copy()
+        extra["POET_NAME"] = "Unknown Poet"
+        extra["row_id"] = 999
+        combined = pd.concat([synthetic_df, extra], ignore_index=True)
+        original_df = data_loader._df
+        data_loader._df = combined
+        try:
+            records, total, *_ = data_loader.query(params(century_hijri=13))
+            assert "Unknown Poet" not in {r["poet_name"] for r in records}
+        finally:
+            data_loader._df = original_df
+
+    def test_no_century_param_does_not_filter(self, synthetic_df):
+        records, total, *_ = data_loader.query(params())
+        assert total == len(synthetic_df)
+
+
+# ---------------------------------------------------------------------------
 # query() - pagination
 # ---------------------------------------------------------------------------
 class TestQueryPagination:

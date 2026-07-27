@@ -55,6 +55,34 @@ class TestGetMetaSanity:
         assert meta["batch_size"]["min"] <= meta["batch_size"]["max"]
         assert meta["poet_rank"]["min"] <= meta["poet_rank"]["max"]
 
+    def test_get_meta_century_options_present_and_sorted(self):
+        meta = data_loader.get_meta()
+        assert "century_options" in meta
+        for system in ("hijri", "gregorian"):
+            centuries = meta["century_options"][system]
+            assert len(centuries) > 0
+            assert centuries == sorted(centuries)
+            assert len(centuries) == len(set(centuries))
+
+
+class TestEraFilterOnRealData:
+    def test_filter_by_a_real_hijri_century_returns_subset(self):
+        # Every poet in the real dataset has era data (100% match, per the
+        # exploratory report), so any century present in century_options
+        # must return at least one batch and never the full dataset.
+        meta = data_loader.get_meta()
+        century = meta["century_options"]["hijri"][0]
+        records, total, *_ = data_loader.query(
+            MultiDict({"century_hijri": str(century)})
+        )
+        assert 0 < total <= len(data_loader._df)
+
+    def test_filter_by_nonexistent_century_returns_empty(self):
+        records, total, *_ = data_loader.query(
+            MultiDict({"century_hijri": "999"})
+        )
+        assert total == 0
+
 
 class TestQuerySanityOnRealData:
     def test_query_no_params_returns_a_page(self):
