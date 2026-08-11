@@ -33,7 +33,7 @@ Routes exposed by `app.py`: `/`, `/api/meta`, `/api/search`, `/api/stats`,
 ### 2.1 The load-at-import problem — read this first
 
 `data_loader.py` runs `_df = pd.read_pickle(DATA_PATH)` **at module import
-time**, against the real 59MB dataset. This has two consequences:
+time**, against the real dataset. This has two consequences:
 
 1. Any test that does `import data_loader` or `from app import app` pays the
    full load cost, and does so **once per pytest session** if you import at
@@ -50,10 +50,10 @@ Recommended split — use both, don't pick one:
   lists, ties in rank, missing optional fields). Use these for `_tag_mask`,
   `query()` filter combinations, `get_stats()` aggregation, `_flatten_verses`.
 - **Integration sanity tests (slower, real data):** a session-scoped fixture
-  that imports `data_loader` as-is (real 24k-row dataset) and asserts on
-  shape/invariants only (e.g. "every row has a mood tag", "row_id is unique
-  and dense"), plus a handful of Flask test-client calls against real
-  endpoints. Don't assert on exact counts here — the dataset can change.
+  that imports `data_loader` as-is (real dataset) and asserts on
+  shape/invariants only (e.g. "row_id is unique and dense"), plus a handful
+  of Flask test-client calls against real endpoints. Don't assert on exact
+  counts here — the dataset can change.
 
 ### 2.2 Directory layout
 
@@ -76,9 +76,9 @@ import data_loader
 def synthetic_df(monkeypatch):
     """Small, hand-built frame for isolated logic tests."""
     df = pd.DataFrame([
-        # include: multiple poets, at least one row with an empty tag list
-        # per axis, at least one duplicate rank, ascii-safe placeholder text
-        # (do not hand-author Arabic test fixtures unless asked to)
+        # include: multiple poets, at least one duplicate rank,
+        # ascii-safe placeholder text (do not hand-author Arabic test
+        # fixtures unless asked to)
         ...
     ])
     df["row_id"] = df.index
@@ -95,10 +95,8 @@ def client():
 ### 2.4 What to cover
 
 **`data_loader.py`** (use `synthetic_df`):
-- `_tag_mask`: `mode="any"` vs `mode="all"`, empty `wanted` set, tag not
-  present in any row.
 - `query()`: each filter independently (poet, meter, rank range, poem-length
-  range, per-axis tags + confidence), then two filters combined. Pagination
+  range, exclusions, era/century), then two filters combined. Pagination
   math at boundaries (`page` beyond last page, `page_size` edge values).
   Sorting by each allowed `sortBy` value, both directions.
 - `get_stats()`: aggregation matches a hand-computed expected value on the
@@ -134,7 +132,7 @@ cannot `import` anything from it as-is.** Before writing any unit test, do
 one small, non-breaking prep step:
 
 - Add `export` in front of the pure, DOM-free functions you intend to unit
-  test: `buildParams`, `toggleSetValue`, `debounce`, `escapeHtml`, `tagColor`.
+  test: `buildParams`, `toggleSetValue`, `debounce`, `escapeHtml`.
   (Leave DOM-touching functions — `renderCard`, `renderResults`, etc. —
   alone; they're covered by Playwright instead, see §3.3.)
 - Change the script tag in `templates/index.html` to
@@ -163,7 +161,6 @@ frontend/
     toggleSetValue.test.js
     debounce.test.js
     escapeHtml.test.js
-    tagColor.test.js
 ```
 
 What to cover:
@@ -171,8 +168,6 @@ What to cover:
   `includePagination` flag branch, empty sets/ranges omitted from output.
 - `toggleSetValue`: add, remove, no-op on missing value.
 - `escapeHtml`: standard HTML-special-char cases; passthrough of plain text.
-- `tagColor`: known tag returns its fixed color, unknown tag falls back to
-  `AXIS_META[axis].accent`.
 - `debounce`: fake timers (`vi.useFakeTimers()`), assert the wrapped fn fires
   once after the delay even with multiple rapid calls.
 
@@ -194,7 +189,7 @@ Run against the real Flask dev server (`python app.py`), not a mock backend
 more trustworthy than mocking it.
 
 **Selector policy:** use the existing element `id`s (`#searchInput`,
-`#poetList`, `#rankMin`, `#resetFilters`, `#axisFilters`, etc. — confirmed
+`#poetList`, `#rankMin`, `#resetFilters`, `#hijriCenturyList`, etc. — confirmed
 present in `templates/index.html`). Do not select on Tailwind utility classes
 or on Arabic text content, both of which are more likely to change than the
 IDs.
@@ -202,8 +197,8 @@ IDs.
 What to cover:
 - Typing in `#searchInput` narrows `#headerCount` (debounced — wait for it).
 - Selecting a poet in `#poetList` filters results; `#resetFilters` clears it.
-- An axis tag filter (mood/genre/energy/aesthetic) changes result count and
-  updates `renderActiveFilters` chips.
+- Era/century pills, exclusions, and poem-length filters update results and
+  `renderActiveFilters` chips.
 - Pagination controls move between pages and stay in sync with the URL
   (`loadStateFromURL` / `buildParams` round-trip).
 - A poem-length preset (Short/Medium/Long/Epic) sets the min/max batch

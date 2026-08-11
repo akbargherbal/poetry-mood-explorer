@@ -4,27 +4,20 @@ Shared fixtures for the backend test suite.
 Two fixtures, matching docs/TESTING_STRATEGY.md §2.3:
 
 - `synthetic_df`: a small (6-row), hand-built DataFrame that is monkeypatched
-  onto `data_loader._df` *after* import (the real 59MB dataset has already
+  onto `data_loader._df` *after* import (the real dataset has already
   been loaded at import time, so this is the only way to substitute it).
   Used by the "unit" tests that exercise filtering/sorting/aggregation logic
   in isolation, without paying the real-data load cost and without being
   sensitive to changes in the real dataset.
 
 - `client`: a session-scoped Flask test client wired to the app as-is
-  (real 24k-row dataset). Used by the "integration" and API-route tests.
+  (real dataset). Used by the "integration" and API-route tests.
 """
 
 import pandas as pd
 import pytest
 
 import data_loader
-
-
-def _flag_axes(row_low_conf):
-    """Small helper mirroring how flagged_axes would be derived: any axis
-    marked low-confidence is 'flagged'. Not exercised by data_loader.py
-    directly, but needs to be a plausible list for _to_records to serialize."""
-    return [axis for axis, low in row_low_conf.items() if low]
 
 
 # ---------------------------------------------------------------------------
@@ -34,14 +27,8 @@ def _flag_axes(row_low_conf):
 # satisfies):
 #   - 3 poets (Alpha, Beta, Gamma), 2 rows each -> multiple poets covered.
 #   - Alpha and Beta share POET_RANK == 1 -> a duplicate rank.
-#   - Each axis (mood/genre/energy/aesthetic) has exactly one row with an
-#     empty tag list: mood -> row 3, genre -> row 0, energy -> row 1,
-#     aesthetic -> row 2.
 #   - "nightingale" appears in the verse text of rows 0 and 5 (two hits);
 #     "desert" appears only in row 2 (one hit) -- used for search tests.
-#   - confidence / top2_gap columns are monotonically increasing with row
-#     index (0.1, 0.2, ..., 0.6) across all four axes, purely so ascending /
-#     descending sort tests have an unambiguous expected order.
 #   - BATCH_SIZE and POET_RANK are deliberately *not* monotonic with row
 #     index, so sorting by them is a real test of the sort, not a coincidence
 #     of insertion order.
@@ -49,52 +36,25 @@ def _flag_axes(row_low_conf):
 #     author Arabic fixtures" note in the testing strategy.
 
 _ROWS = [
-    # (poet, poem_no, batch_no, rank, meter, batch_size, sadr, ajuz,
-    #  mood_tags, genre_tags, energy_tags, aesthetic_tags,
-    #  mood_low, genre_low, energy_low, aesthetic_low)
+    # (poet, poem_no, batch_no, rank, meter, batch_size, sadr, ajuz)
     ("Alpha", "p1", 0, 1, "tawil", 10,
-     "the nightingale weeps", "softly at dusk",
-     ["sad", "longing"], [], ["calm"], ["melancholy"],
-     True, False, False, False),
+     "the nightingale weeps", "softly at dusk"),
     ("Alpha", "p1", 1, 1, "tawil", 5,
-     "gardens bloom bright", "golden in the sun",
-     ["joy"], ["praise"], [], ["epic"],
-     False, False, True, False),
+     "gardens bloom bright", "golden in the sun"),
     ("Beta", "p2", 0, 1, "kamil", 20,
-     "desert winds carry", "dust across the plain",
-     ["joy", "sad"], ["love"], ["energetic"], [],
-     False, True, False, True),
+     "desert winds carry", "dust across the plain"),
     ("Beta", "p2", 1, 1, "kamil", 15,
-     "the king mocks", "his rival loudly",
-     [], ["satire"], ["moderate"], ["military"],
-     True, False, False, False),
+     "the king mocks", "his rival loudly"),
     ("Gamma", "p3", 0, 3, "wafir", 8,
-     "shadows fall upon", "the silent tomb",
-     ["pessimism"], ["elegy"], ["intense"], ["spiritual"],
-     False, False, True, False),
+     "shadows fall upon", "the silent tomb"),
     ("Gamma", "p3", 1, 3, "wafir", 25,
-     "love blooms like", "the nightingale sings",
-     ["joy"], ["love"], ["calm"], ["romantic"],
-     False, False, False, False),
+     "love blooms like", "the nightingale sings"),
 ]
 
 
 def _build_synthetic_df():
     records = []
-    for i, (poet, poem_no, batch_no, rank, meter, batch_size, sadr, ajuz,
-            mood_tags, genre_tags, energy_tags, aesthetic_tags,
-            mood_low, genre_low, energy_low, aesthetic_low) in enumerate(_ROWS):
-
-        conf = round(0.1 * (i + 1), 2)  # 0.1, 0.2, ..., 0.6 - shared by all axes
-
-        def scores_for(tags):
-            return {t: 0.5 for t in tags} if tags else {}
-
-        low_conf_map = {
-            "mood": mood_low, "genre": genre_low,
-            "energy": energy_low, "aesthetic": aesthetic_low,
-        }
-
+    for i, (poet, poem_no, batch_no, rank, meter, batch_size, sadr, ajuz) in enumerate(_ROWS):
         records.append({
             "POET_NAME": poet,
             "poem_no": poem_no,
@@ -103,34 +63,20 @@ def _build_synthetic_df():
             "meter": meter,
             "DATA": [{"verse_id": f"{poem_no}_{batch_no}_0", "sadr": sadr, "ajuz": ajuz}],
             "BATCH_SIZE": batch_size,
-            "mood_tags": mood_tags,
-            "mood_scores": scores_for(mood_tags),
-            "mood_confidence": conf,
-            "mood_top2_gap": conf,
-            "mood_low_confidence": mood_low,
-            "genre_tags": genre_tags,
-            "genre_scores": scores_for(genre_tags),
-            "genre_confidence": conf,
-            "genre_top2_gap": conf,
-            "genre_low_confidence": genre_low,
-            "energy_tags": energy_tags,
-            "energy_scores": scores_for(energy_tags),
-            "energy_confidence": conf,
-            "energy_top2_gap": conf,
-            "energy_low_confidence": energy_low,
-            "aesthetic_tags": aesthetic_tags,
-            "aesthetic_scores": scores_for(aesthetic_tags),
-            "aesthetic_confidence": conf,
-            "aesthetic_top2_gap": conf,
-            "aesthetic_low_confidence": aesthetic_low,
-            "flagged_axes": _flag_axes(low_conf_map),
-            "suno_tags": {"mood": "placeholder", "genre": "placeholder",
-                          "energy": "placeholder", "aesthetic": "placeholder"},
         })
 
     df = pd.DataFrame.from_records(records)
     df["row_id"] = df.index
     df["verse_text"] = df["DATA"].apply(data_loader._flatten_verses)
+
+    # Poem-level aggregate columns, mirroring what _apply_filters() attaches
+    # so sort tests can compare against the raw frame.
+    stats = df.groupby("poem_no").agg(
+        poem_n_batches=("batch_no", "count"),
+        poem_n_verses=("BATCH_SIZE", "sum"),
+    )
+    df["poem_n_batches"] = df["poem_no"].map(stats["poem_n_batches"])
+    df["poem_n_verses"] = df["poem_no"].map(stats["poem_n_verses"])
     return df
 
 

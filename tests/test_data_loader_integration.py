@@ -21,19 +21,6 @@ class TestDatasetInvariants:
         row_ids = sorted(data_loader._df["row_id"].tolist())
         assert row_ids == list(range(len(data_loader._df)))
 
-    def test_every_row_has_a_mood_tag_list(self):
-        # mood_tags may legitimately be empty for some rows, but the column
-        # itself must be present and list-typed for every row.
-        assert data_loader._df["mood_tags"].apply(lambda t: isinstance(t, list)).all()
-
-    def test_every_axis_confidence_column_is_present_and_populated(self):
-        # Despite the name, these are z-score-derived values and can be
-        # negative, so we only assert presence/dtype here, not a range.
-        for axis in data_loader.AXES:
-            col = data_loader._df[f"{axis}_confidence"]
-            assert col.notna().all()
-            assert pd.api.types.is_float_dtype(col)
-
     def test_verse_text_column_exists_and_is_string(self):
         assert "verse_text" in data_loader._df.columns
         assert data_loader._df["verse_text"].apply(lambda s: isinstance(s, str)).all()
@@ -46,8 +33,7 @@ class TestGetMetaSanity:
     def test_get_meta_shape(self):
         meta = data_loader.get_meta()
         expected_keys = {
-            "poets", "meters", "mood_tags", "genre_tags", "energy_tags",
-            "aesthetic_tags", "batch_size", "poet_rank", "total_batches",
+            "poets", "meters", "batch_size", "poet_rank", "total_batches",
         }
         assert expected_keys.issubset(meta.keys())
         assert meta["total_batches"] == len(data_loader._df)

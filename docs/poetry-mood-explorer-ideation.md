@@ -1,5 +1,14 @@
 # Product Ideation: ديوان الأمزجة — Arabic Poetry Mood Explorer
 
+> **Note:** The mood/genre/energy/aesthetic labeling system — the four tag
+> axes, their confidence scores, `flagged_axes`, and `suno_tags` — was
+> **removed on 11 August 2026** due to low labeling accuracy (e.g. غزل verses
+> labeled as غضب). The app is now a plain Arabic Poetry Explorer over the
+> core columns only (poet, rank, meter, poem/verse text, era). Everything
+> below is a historical snapshot written against the mood-labeled version and
+> is kept for context only; see `mood-system-removal-plan.md` for the removal
+> rationale.
+
 **Reviewed:** `app.py`, `data_loader.py`, `templates/index.html`, `static/js/app.js`, `static/css/custom.css`, dataset schema (21,868 rows × 33 columns).
 
 ## Context: what the product actually does today

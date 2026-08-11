@@ -14,12 +14,6 @@ export const state = {
   firstBatchOnly: false,
   centuryHijri: new Set(),
   centuryGregorian: new Set(),
-  axis: {
-    mood: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
-    genre: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
-    energy: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
-    aesthetic: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
-  },
   sortBy: "row_id",
   sortDir: "asc",
   page: 1,

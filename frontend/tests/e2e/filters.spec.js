@@ -28,26 +28,6 @@ test.describe("filters", () => {
     await expect(headerCount).toHaveText(initialCountText, { timeout: 10000 });
   });
 
-  test("an axis tag filter changes the result count and adds an active-filter chip", async ({ page }) => {
-    const headerCount = page.locator("#headerCount");
-    const initialCountText = await headerCount.textContent();
-
-    const firstTagChip = page.locator("#axisFilters .tag-chip").first();
-    await firstTagChip.click();
-
-    await expect(headerCount).not.toHaveText(initialCountText, { timeout: 10000 });
-    await expect(firstTagChip).toHaveClass(/active/);
-
-    // renderActiveFilters() should have added a corresponding chip
-    const activeChips = page.locator("#activeFilters .filter-chip");
-    await expect(activeChips).toHaveCount(1);
-
-    // clicking it again removes the filter and restores the count
-    await firstTagChip.click();
-    await expect(headerCount).toHaveText(initialCountText, { timeout: 10000 });
-    await expect(page.locator("#activeFilters .filter-chip")).toHaveCount(0);
-  });
-
   test("a poem-length preset sets the min/max batch inputs", async ({ page }) => {
     const presets = page.locator("#poemLengthPresets .length-pill");
     const presetCount = await presets.count();
@@ -153,23 +133,6 @@ test.describe("filters", () => {
 
     await page.locator("#firstBatchOnly").uncheck();
     await expect(headerCount).toHaveText(initialCountText, { timeout: 10000 });
-  });
-
-  test("an axis confidence range narrows results", async ({ page }) => {
-    const headerCount = page.locator("#headerCount");
-    const initialCountText = await headerCount.textContent();
-    const initialCount = parseInt(initialCountText.replace(/,/g, ""), 10);
-
-    // Scope to the first axis block (mood) so this doesn't depend on which
-    // axis renders first if the AXES order ever changes.
-    const firstAxisBlock = page.locator(".axis-block").first();
-    await firstAxisBlock.locator(".conf-min-input").fill("0");
-    await firstAxisBlock.locator(".conf-max-input").fill("1");
-
-    await expect(headerCount).not.toHaveText(initialCountText, { timeout: 10000 });
-    const filteredCount = parseInt((await headerCount.textContent()).replace(/,/g, ""), 10);
-    expect(filteredCount).toBeLessThan(initialCount);
-    expect(filteredCount).toBeGreaterThan(0);
   });
 
   test("selecting a hijri century filters results and adds a removable chip", async ({ page }) => {

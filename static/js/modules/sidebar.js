@@ -1,8 +1,7 @@
 /* ============================================================================
-   Sidebar construction — poet list, meter pills, axis blocks, length presets
+   Sidebar construction — poet list, meter pills, length presets, era lists
    ========================================================================= */
 
-import { AXES, AXIS_META, tagColor } from "./constants.js";
 import { state } from "./state.js";
 import { toggleSetValue, debounce, escapeHtml } from "./utils.js";
 
@@ -50,87 +49,6 @@ export function buildMeterList(meters, refresh) {
       refresh();
     });
     container.appendChild(btn);
-  });
-}
-
-export function buildAxisBlocks(meta, refresh) {
-  const container = document.getElementById("axisFilters");
-  const template = document.getElementById("axisBlockTemplate");
-  const tagField = { mood: "mood_tags", genre: "genre_tags", energy: "energy_tags", aesthetic: "aesthetic_tags" };
-
-  AXES.forEach(axis => {
-    const node = template.content.cloneNode(true);
-    const block = node.querySelector(".axis-block");
-    const title = node.querySelector(".axis-title");
-    title.textContent = AXIS_META[axis].label;
-    title.style.color = AXIS_META[axis].accent;
-
-    const tagContainer = node.querySelector(".tag-options");
-    meta[tagField[axis]].forEach(({ tag, count }) => {
-      const chip = document.createElement("button");
-      chip.className = "tag-chip";
-      chip.textContent = `${tag} (${count})`;
-
-      const isActive = state.axis[axis].tags.has(tag);
-      chip.style.borderColor = tagColor(axis, tag) + "55";
-      if (isActive) {
-        chip.classList.add("active");
-        chip.style.background = tagColor(axis, tag);
-        chip.style.borderColor = tagColor(axis, tag);
-      }
-
-      chip.addEventListener("click", () => {
-        const active = chip.classList.toggle("active");
-        chip.style.background = active ? tagColor(axis, tag) : "";
-        chip.style.borderColor = active ? tagColor(axis, tag) : tagColor(axis, tag) + "55";
-        toggleSetValue(state.axis[axis].tags, tag, active);
-        state.page = 1;
-        refresh();
-      });
-      tagContainer.appendChild(chip);
-    });
-
-    node.querySelectorAll(".mode-btn").forEach(btn => {
-      const isCurrentMode = state.axis[axis].mode === btn.dataset.mode;
-      btn.classList.remove("active");
-      if (isCurrentMode) btn.classList.add("active");
-
-      btn.addEventListener("click", () => {
-        block.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        state.axis[axis].mode = btn.dataset.mode;
-        state.page = 1;
-        refresh();
-      });
-    });
-
-    const select = node.querySelector(".confidence-select");
-    select.value = state.axis[axis].confidence;
-    select.addEventListener("change", (e) => {
-      state.axis[axis].confidence = e.target.value;
-      state.page = 1;
-      refresh();
-    });
-
-    const confMin = node.querySelector(".conf-min-input");
-    const confMax = node.querySelector(".conf-max-input");
-
-    if (state.axis[axis].confidenceMin != null) confMin.value = state.axis[axis].confidenceMin;
-    if (state.axis[axis].confidenceMax != null) confMax.value = state.axis[axis].confidenceMax;
-
-    confMin.addEventListener("input", debounce((e) => {
-      state.axis[axis].confidenceMin = e.target.value === "" ? null : parseFloat(e.target.value);
-      state.page = 1;
-      refresh();
-    }, 350));
-
-    confMax.addEventListener("input", debounce((e) => {
-      state.axis[axis].confidenceMax = e.target.value === "" ? null : parseFloat(e.target.value);
-      state.page = 1;
-      refresh();
-    }, 350));
-
-    container.appendChild(node);
   });
 }
 

@@ -64,6 +64,9 @@ graphify-out/
 cache/
 *.log
 
+# Pre-removal backup of the mood-labeled dataset (Phase 0 safety net)
+data/_backup_STAGE_02_mood_labeled.pkl
+
 # ---------------------------------------------------------------------------
 # Editors / OS
 # ---------------------------------------------------------------------------

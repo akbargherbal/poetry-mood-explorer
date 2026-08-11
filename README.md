@@ -1,12 +1,11 @@
-# ديوان الأمزجة — Arabic Poetry Mood Explorer
+# ديوان الشعر العربي — Arabic Poetry Explorer
 
-A small Flask app for browsing the **~24,000 mood-labeled verse-batches** from
-the `TOP_100_ARABIC_POETS_OF_ALL_TIME` dataset (batches of 1–12 adjacent
-verses, each scored across four axes: **mood**, **genre**, **energy**, and
-**aesthetic**).
+A small Flask app for browsing the **~22,000 verse-batches** from the
+`TOP_100_ARABIC_POETS_OF_ALL_TIME` dataset (batches of 1–12 adjacent
+verses).
 
 The backend does all the heavy lifting with `pandas` (boolean masks, `.isin()`,
-`.apply()`, `.explode()`, `.groupby()`, vectorized string search); the
+`.apply()`, `.groupby()`, vectorized string search); the
 frontend is plain HTML/CSS/JS with Tailwind pulled in via CDN — no build
 step, no npm.
 
@@ -34,7 +33,7 @@ The `.pkl` file was left out of this download to keep it small. Copy your
 copy of the dataset into `data/`, with **exactly** this filename:
 
 ```
-data/TOP_100_ARABIC_POETS_OF_ALL_TIME_STAGE_02_mood_labeled.pkl
+data/TOP_100_ARABIC_POETS_OF_ALL_TIME_STAGE_02_core.pkl
 ```
 
 (See `data/PLACEHOLDER_README.txt`. Source: the
@@ -58,7 +57,7 @@ poetry-mood-explorer/
 ├── requirements.txt
 ├── pytest.ini
 ├── data/
-│   └── TOP_100_ARABIC_POETS_OF_ALL_TIME_STAGE_02_mood_labeled.pkl
+│   └── TOP_100_ARABIC_POETS_OF_ALL_TIME_STAGE_02_core.pkl
 ├── templates/
 │   └── index.html          # Page layout + Tailwind config
 ├── static/
@@ -92,21 +91,19 @@ poetry-mood-explorer/
   min/max inputs
 - **Exclusions** — drop a specific poem (by number) or an entire poet rank
   from the results, independent of the positive filters above
-- **Mood / Genre / Energy / Aesthetic tags** — each with an "any" vs "all"
-  match mode, since every batch can carry multiple tags per axis
-- **Confidence** per axis — either the coarse `low_confidence` flag (only
-  ambiguous vs. only clean labels), or a precise min/max confidence-score
-  range
+- **Era / century** — filter by hijri and/or gregorian century, using each
+  poet's birth–death lifespan (inclusive on both ends)
 - **One card per poem** — collapse results down to a single representative
   batch (the poem's first) per poem, for browsing by poem rather than by
   batch
 
-Results can be sorted by poet rank, batch size, or any of the four
-confidence scores, and are paginated (10/20/50 per page). A stats panel
-above the results shows the live tag distribution for whatever is currently
-filtered — not the whole dataset — so it updates as you narrow things down.
-An active-filters bar lists every filter currently applied, each removable
-individually, with a "Reset all" shortcut when more than one is active.
+Results can be sorted by poet rank, batch size, or poem length (batches or
+verses), and are paginated (10/20/50 per page). A stats panel
+above the results shows the live count and top poets for whatever is
+currently filtered — not the whole dataset — so it updates as you narrow
+things down. An active-filters bar lists every filter currently applied,
+each removable individually, with a "Reset all" shortcut when more than one
+is active.
 
 ## Testing
 
@@ -141,7 +138,7 @@ one spec), start it separately and run:
 PW_SKIP_WEBSERVER=1 npx playwright test
 ```
 
-Note: the e2e suite hits the real ~24k-row dataset through a non-threaded
+Note: the e2e suite hits the real ~22k-row dataset through a non-threaded
 Flask dev server, so responses can take a few seconds on a slow machine.
 If a test times out intermittently rather than failing consistently, that's
 most likely backend latency, not a regression — the specs already wait for
@@ -151,9 +148,13 @@ may still need to rerun a flaky test.
 ## Notes on the data
 
 Each row is one **batch**: a contiguous run of 1–12 verses from one poem.
-The four scoring axes (`mood_scores`, `genre_scores`, `energy_scores`,
-`aesthetic_scores`) are the raw model confidence per tag; `*_tags` are the
-tags that cleared the model's threshold; `*_low_confidence` flags batches
-where the top two tags were close enough that the label is uncertain. See
-the original dataset repo for how these labels were generated:
-https://github.com/akbargherbal/arabic-poetry-mood-labeling
+The kept columns are `POET_NAME`, `poem_no`, `batch_no`, `POET_RANK`,
+`meter`, `DATA`, and `BATCH_SIZE`.
+
+The mood/genre/energy/aesthetic labeling system (`*_tags`, `*_scores`,
+`*_scores_z`, `*_confidence`, `*_top2_gap`, `*_low_confidence`, plus
+`flagged_axes` and `suno_tags`) was removed from the dataset, backend, and
+frontend because the labeling model proved unreliable. See
+`mood-system-removal-plan.md` for the full removal plan. The original
+mood-labeled file is preserved as `data/_backup_STAGE_02_mood_labeled.pkl`
+(not tracked in git).

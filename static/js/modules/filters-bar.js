@@ -2,9 +2,7 @@
    Rendering: Active Filters Bar
    ========================================================================= */
 
-import { AXES } from "./constants.js";
 import { state } from "./state.js";
-import { tagColor } from "./constants.js";
 import { escapeHtml } from "./utils.js";
 
 export function renderActiveFilters(refresh) {
@@ -14,8 +12,8 @@ export function renderActiveFilters(refresh) {
 
   const activeChips = [];
 
-  const addChip = (axis, value, removeCallback) => {
-    activeChips.push({ axis, value, removeCallback });
+  const addChip = (category, value, removeCallback) => {
+    activeChips.push({ category, value, removeCallback });
   };
 
   // 1. Text Search Filter
@@ -153,35 +151,6 @@ export function renderActiveFilters(refresh) {
     });
   });
 
-  // 10. Categorical tags & confidence ranges
-  AXES.forEach(axis => {
-    state.axis[axis].tags.forEach(tag => {
-      addChip(axis, tag, () => {
-        state.axis[axis].tags.delete(tag);
-        document.querySelectorAll(`#axisFilters .tag-chip`).forEach(chip => {
-          if (chip.textContent.startsWith(tag)) {
-            chip.classList.remove("active");
-            chip.style.background = "";
-            chip.style.borderColor = tagColor(axis, tag) + "55";
-          }
-        });
-        state.page = 1;
-        refresh();
-      });
-    });
-
-    if (state.axis[axis].confidenceMin != null || state.axis[axis].confidenceMax != null) {
-      const cMin = state.axis[axis].confidenceMin != null ? state.axis[axis].confidenceMin : 0;
-      const cMax = state.axis[axis].confidenceMax != null ? state.axis[axis].confidenceMax : 1;
-      addChip(`${axis} conf`, `${cMin} – ${cMax}`, () => {
-        state.axis[axis].confidenceMin = null;
-        state.axis[axis].confidenceMax = null;
-        state.page = 1;
-        refresh();
-      });
-    }
-  });
-
   if (activeChips.length === 0) {
     container.classList.add("hidden");
     container.classList.remove("flex");
@@ -200,7 +169,7 @@ export function renderActiveFilters(refresh) {
     const tagNode = document.createElement("div");
     tagNode.className = "filter-chip";
     tagNode.innerHTML = `
-      <span class="chip-axis uppercase tracking-wide text-[9px]">${escapeHtml(c.axis)}:</span>
+      <span class="chip-axis uppercase tracking-wide text-[9px]">${escapeHtml(c.category)}:</span>
       <span class="text-parchment font-medium">${escapeHtml(c.value)}</span>
       <button class="hover:bg-red-900 transition-colors" title="Remove filter">✕</button>
     `;

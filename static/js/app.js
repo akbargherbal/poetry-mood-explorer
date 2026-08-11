@@ -1,13 +1,12 @@
 /* ============================================================================
-   Arabic Poetry Mood Explorer — main entry point (ES module)
+   Arabic Poetry Explorer — main entry point (ES module)
    ========================================================================= */
 
 import { fetchJSON } from "./modules/api.js";
 import { state } from "./modules/state.js";
-import { tagColor } from "./modules/constants.js";
 import { toggleSetValue, debounce, escapeHtml } from "./modules/utils.js";
 import { buildParams, loadStateFromURL } from "./modules/url.js";
-import { buildPoetList, buildMeterList, buildAxisBlocks, buildPoemLengthPresets, buildEraLists } from "./modules/sidebar.js";
+import { buildPoetList, buildMeterList, buildPoemLengthPresets, buildEraLists } from "./modules/sidebar.js";
 import { wireStaticControls } from "./modules/controls.js";
 import { openSharedBatchFromURL } from "./modules/sharing.js";
 import { renderResults, renderCard } from "./modules/cards.js";
@@ -15,7 +14,7 @@ import { renderStats } from "./modules/stats.js";
 import { renderActiveFilters } from "./modules/filters-bar.js";
 
 // Re-export names required by unit tests in frontend/tests/unit/
-export { tagColor, state, toggleSetValue, debounce, escapeHtml, buildParams };
+export { state, toggleSetValue, debounce, escapeHtml, buildParams };
 
 let META = null;
 
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   buildPoetList(META.poets, refresh);
   buildMeterList(META.meters, refresh);
   buildEraLists(META.century_options, refresh);
-  buildAxisBlocks(META, refresh);
   buildPoemLengthPresets(META.poem_length, refresh);
   wireStaticControls(refresh);
   refresh();

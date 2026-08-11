@@ -1,8 +1,8 @@
 """
-Arabic Poetry Mood Explorer
-----------------------------
-A small Flask app for browsing the ~24k mood-labeled verse-batches from
-the TOP_100_ARABIC_POETS_OF_ALL_TIME dataset. All filtering/sorting/search
+Arabic Poetry Explorer
+-----------------------
+A small Flask app for browsing the ~22k verse-batches from the
+TOP_100_ARABIC_POETS_OF_ALL_TIME dataset. All filtering/sorting/search
 logic lives in data_loader.py and is built on top of pandas.
 
 Run:
