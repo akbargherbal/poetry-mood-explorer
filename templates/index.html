@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ديوان الأمزجة — Arabic Poetry Mood Explorer</title>
+<title>ديوان الشعر العربي — Arabic Poetry Explorer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,8 +41,8 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
       <div>
-        <h1 class="font-arabic text-2xl sm:text-3xl text-gold-bright leading-tight">ديوان الأمزجة</h1>
-        <p class="text-[11px] sm:text-xs text-parchment-dim tracking-wide uppercase mt-0.5">Arabic Poetry Mood Explorer &mdash; Top 100 Poets, mood-labeled</p>
+        <h1 class="font-arabic text-2xl sm:text-3xl text-gold-bright leading-tight">ديوان الشعر العربي</h1>
+        <p class="text-[11px] sm:text-xs text-parchment-dim tracking-wide uppercase mt-0.5">Arabic Poetry Explorer &mdash; Top 100 Poets</p>
       </div>
     </div>
     <div class="hidden sm:flex items-center gap-2 font-mono text-xs text-parchment-muted">
@@ -169,11 +169,6 @@
         </div>
       </div>
 
-      <hr class="border-ink-border">
-
-      <!-- Tag axes: mood / genre / energy / aesthetic -->
-      <div id="axisFilters" class="space-y-5"></div>
-
     </div>
   </aside>
 
@@ -205,10 +200,6 @@
           <option value="BATCH_SIZE">Batch size</option>
           <option value="poem_n_batches">Poem length (batches)</option>
           <option value="poem_n_verses">Poem length (verses)</option>
-          <option value="mood_confidence">Mood confidence</option>
-          <option value="genre_confidence">Genre confidence</option>
-          <option value="energy_confidence">Energy confidence</option>
-          <option value="aesthetic_confidence">Aesthetic confidence</option>
         </select>
         <button id="sortDir" data-dir="asc" class="border border-ink-border rounded-md px-2 py-1.5 hover:border-gold" title="Toggle direction">↑</button>
         <select id="pageSize" class="bg-ink border border-ink-border rounded-md px-2 py-1.5 focus:outline-none focus:ring-1 focus:ring-gold">
@@ -230,30 +221,6 @@
 
   </main>
 </div>
-
-<template id="axisBlockTemplate">
-  <div class="axis-block">
-    <div class="flex items-center justify-between mb-1.5">
-      <label class="text-xs text-parchment-muted axis-title"></label>
-      <div class="flex items-center gap-1 text-[10px]">
-        <button data-mode="any" class="mode-btn px-1.5 py-0.5 rounded border border-ink-border">any</button>
-        <button data-mode="all" class="mode-btn px-1.5 py-0.5 rounded border border-ink-border">all</button>
-      </div>
-    </div>
-    <div class="tag-options flex flex-wrap gap-1.5 mb-2"></div>
-    <select class="confidence-select w-full bg-ink border border-ink-border rounded-md px-2 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-gold mb-1.5">
-      <option value="">Any confidence flag</option>
-      <option value="true">Low-confidence only (ambiguous)</option>
-      <option value="false">High-confidence only</option>
-    </select>
-    <div class="flex items-center gap-1.5">
-      <span class="text-[10px] text-parchment-dim shrink-0">Conf range:</span>
-      <input type="number" step="0.05" min="0" max="1" placeholder="min" class="conf-min-input w-full bg-ink border border-ink-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
-      <span class="text-parchment-dim text-xs">–</span>
-      <input type="number" step="0.05" min="0" max="1" placeholder="max" class="conf-max-input w-full bg-ink border border-ink-border rounded px-2 py-1 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-gold">
-    </div>
-  </div>
-</template>
 
 <script type="module" src="/static/js/app.js"></script>
 </body>

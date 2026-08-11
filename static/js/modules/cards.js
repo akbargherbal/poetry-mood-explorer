@@ -2,7 +2,6 @@
    Rendering: result cards + pagination
    ========================================================================= */
 
-import { AXES, AXIS_META, tagColor } from "./constants.js";
 import { state, expandedCards } from "./state.js";
 import { escapeHtml } from "./utils.js";
 import { copyBatchVerses } from "./sharing.js";
@@ -23,8 +22,7 @@ export function renderResults(data, refresh) {
 export function renderCard(batch, refresh) {
   const card = document.createElement("article");
   card.className = "batch-card";
-  const dominant = batch.mood.tags[0] ? tagColor("mood", batch.mood.tags[0]) : "#B8912F";
-  card.style.setProperty("--dominant-color", dominant);
+  card.style.setProperty("--dominant-color", "#B8912F");
 
   const expanded = expandedCards.has(batch.row_id);
   const visibleVerses = expanded ? batch.verses : batch.verses.slice(0, 4);
@@ -33,21 +31,6 @@ export function renderCard(batch, refresh) {
   const versesHtml = visibleVerses.map(v => `
     <div class="verse-line"><span class="sadr">${escapeHtml(v.sadr)}</span><span class="ajuz">${escapeHtml(v.ajuz)}</span></div>
   `).join("");
-
-  const axisFooter = AXES.map(axis => {
-    const a = batch[axis];
-    const chips = a.tags.map(t => `<span class="axis-tag" style="background:${tagColor(axis, t)}22; color:${tagColor(axis, t)}; border:1px solid ${tagColor(axis, t)}55;">${escapeHtml(t)}</span>`).join(" ");
-    const pct = Math.max(0, Math.min(100, Math.round(a.confidence * 100)));
-    return `
-      <div class="flex-1 min-w-[150px]">
-        <div class="flex items-center justify-between mb-1">
-          <span class="text-[10px] uppercase tracking-wide" style="color:${AXIS_META[axis].accent}">${axis}</span>
-          <span class="text-[10px] font-mono text-parchment-dim">${pct}%${a.low_confidence ? " ⚠" : ""}</span>
-        </div>
-        <div class="flex flex-wrap gap-1 mb-1.5">${chips}</div>
-        <div class="conf-bar-track"><div class="conf-bar-fill" style="width:${pct}%; background:${AXIS_META[axis].accent}"></div></div>
-      </div>`;
-  }).join("");
 
   const batchDisplay = `batch ${batch.batch_no + 1} of ${batch.poem_num_batches}`;
   const totalVersesDisplay = `${batch.poem_total_verses} verses total`;
@@ -77,8 +60,6 @@ export function renderCard(batch, refresh) {
 
     <div class="space-y-0.5 mb-3 pr-2">${versesHtml}</div>
     ${hasMore ? `<button class="expand-btn text-xs text-teal-bright hover:underline mb-3">${expanded ? "Show fewer verses ▲" : `Show all ${batch.verses.length} verses ▼`}</button>` : ""}
-
-    <div class="flex flex-wrap gap-4 pt-3 border-t border-ink-border pr-2">${axisFooter}</div>
   `;
 
   card.querySelector(".poet-link").addEventListener("click", () => {

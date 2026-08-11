@@ -20,8 +20,7 @@ class TestMetaRoute:
         assert resp.content_type.startswith("application/json")
         data = resp.get_json()
         expected_keys = {
-            "poets", "meters", "mood_tags", "genre_tags", "energy_tags",
-            "aesthetic_tags", "batch_size", "poet_rank", "total_batches",
+            "poets", "meters", "batch_size", "poet_rank", "total_batches",
         }
         assert expected_keys.issubset(data.keys())
         assert "century_options" in data

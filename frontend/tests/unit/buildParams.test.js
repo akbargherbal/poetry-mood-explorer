@@ -18,12 +18,6 @@ function resetState() {
   state.firstBatchOnly = false;
   state.centuryHijri = new Set();
   state.centuryGregorian = new Set();
-  state.axis = {
-    mood: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
-    genre: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
-    energy: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
-    aesthetic: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
-  };
   state.sortBy = "row_id";
   state.sortDir = "asc";
   state.page = 1;
@@ -103,41 +97,6 @@ describe("buildParams", () => {
     state.firstBatchOnly = true;
     p = buildParams(false);
     expect(p.get("first_batch_only")).toBe("1");
-  });
-
-  it("maps axis tags and their mode, omitting mode when no tags selected", () => {
-    let p = buildParams(false);
-    expect(p.has("mood_mode")).toBe(false);
-
-    state.axis.mood.tags.add("sad");
-    state.axis.mood.mode = "all";
-    p = buildParams(false);
-    expect(p.getAll("mood_tags")).toEqual(["sad"]);
-    expect(p.get("mood_mode")).toBe("all");
-  });
-
-  it("includes axis low-confidence flag only when set to a non-empty string", () => {
-    let p = buildParams(false);
-    expect(p.has("mood_low_confidence")).toBe(false);
-
-    state.axis.mood.confidence = "true";
-    p = buildParams(false);
-    expect(p.get("mood_low_confidence")).toBe("true");
-  });
-
-  it("includes axis confidence min/max only when set, independently per axis", () => {
-    let p = buildParams(false);
-    expect(p.has("mood_confidence_min")).toBe(false);
-    expect(p.has("mood_confidence_max")).toBe(false);
-    expect(p.has("genre_confidence_min")).toBe(false);
-
-    state.axis.mood.confidenceMin = -1.5;
-    state.axis.mood.confidenceMax = 2.5;
-    p = buildParams(false);
-    expect(p.get("mood_confidence_min")).toBe("-1.5");
-    expect(p.get("mood_confidence_max")).toBe("2.5");
-    expect(p.has("genre_confidence_min")).toBe(false);
-    expect(p.has("genre_confidence_max")).toBe(false);
   });
 
   it("maps century_hijri and century_gregorian sets onto repeated params", () => {

@@ -2,7 +2,6 @@
    URL — query building from state, and hydrating state from the URL
    ========================================================================= */
 
-import { AXES } from "./constants.js";
 import { state } from "./state.js";
 
 export function buildParams(includePagination) {
@@ -24,16 +23,6 @@ export function buildParams(includePagination) {
 
   state.centuryHijri.forEach(c => p.append("century_hijri", String(c)));
   state.centuryGregorian.forEach(c => p.append("century_gregorian", String(c)));
-
-  AXES.forEach(axis => {
-    state.axis[axis].tags.forEach(t => p.append(`${axis}_tags`, t));
-    if (state.axis[axis].tags.size > 0) {
-      p.set(`${axis}_mode`, state.axis[axis].mode);
-    }
-    if (state.axis[axis].confidence !== "") p.set(`${axis}_low_confidence`, state.axis[axis].confidence);
-    if (state.axis[axis].confidenceMin != null) p.set(`${axis}_confidence_min`, state.axis[axis].confidenceMin);
-    if (state.axis[axis].confidenceMax != null) p.set(`${axis}_confidence_max`, state.axis[axis].confidenceMax);
-  });
 
   if (includePagination) {
     p.set("sort_by", state.sortBy);
@@ -65,14 +54,6 @@ export function loadStateFromURL() {
 
   params.getAll("century_hijri").forEach(c => state.centuryHijri.add(parseInt(c, 10)));
   params.getAll("century_gregorian").forEach(c => state.centuryGregorian.add(parseInt(c, 10)));
-
-  AXES.forEach(axis => {
-    params.getAll(`${axis}_tags`).forEach(t => state.axis[axis].tags.add(t));
-    if (params.has(`${axis}_mode`)) state.axis[axis].mode = params.get(`${axis}_mode`);
-    if (params.has(`${axis}_low_confidence`)) state.axis[axis].confidence = params.get(`${axis}_low_confidence`);
-    if (params.has(`${axis}_confidence_min`)) state.axis[axis].confidenceMin = parseFloat(params.get(`${axis}_confidence_min`));
-    if (params.has(`${axis}_confidence_max`)) state.axis[axis].confidenceMax = parseFloat(params.get(`${axis}_confidence_max`));
-  });
 
   if (params.has("sort_by")) state.sortBy = params.get("sort_by");
   if (params.has("sort_dir")) state.sortDir = params.get("sort_dir");

@@ -7,7 +7,7 @@
 .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: #B8912F; }
 
 /* ---------------------------------------------------------------------
-   Checkbox rows in the sidebar (poet list, tag lists)
+   Checkbox rows in the sidebar (poet list)
 --------------------------------------------------------------------- */
 .check-row {
   display: flex;
@@ -40,23 +40,6 @@
   font-weight: 600;
 }
 
-/* Tag toggle chips inside axis blocks */
-.tag-chip {
-  font-size: 0.7rem;
-  padding: 0.22rem 0.55rem;
-  border-radius: 999px;
-  border: 1px solid #3A322A;
-  cursor: pointer;
-  color: #A8977F;
-  white-space: nowrap;
-  transition: border-color .15s, color .15s;
-}
-.tag-chip.active { color: #14110F; font-weight: 600; }
-
-/* Mode button state */
-.mode-btn { color: #766A57; }
-.mode-btn.active { color: #14110F; background: #A8977F; border-color: #A8977F; }
-
 /* ---------------------------------------------------------------------
    Result cards
 --------------------------------------------------------------------- */
@@ -87,18 +70,6 @@
   content: "  …  ";
   color: #766A57;
   font-size: 0.9rem;
-}
-
-/* small confidence bar */
-.conf-bar-track { background: #14110F; border-radius: 999px; height: 4px; overflow: hidden; }
-.conf-bar-fill { height: 100%; border-radius: 999px; }
-
-/* axis label chips in card footer */
-.axis-tag {
-  font-size: 0.68rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: 0.3rem;
-  white-space: nowrap;
 }
 
 /* stats bar chart rows */
