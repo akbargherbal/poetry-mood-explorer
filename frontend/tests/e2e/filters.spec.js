@@ -171,4 +171,40 @@ test.describe("filters", () => {
     expect(filteredCount).toBeLessThan(initialCount);
     expect(filteredCount).toBeGreaterThan(0);
   });
+
+  test("selecting a hijri century filters results and adds a removable chip", async ({ page }) => {
+    const headerCount = page.locator("#headerCount");
+    const initialCountText = await headerCount.textContent();
+    const initialCount = parseInt(initialCountText.replace(/,/g, ""), 10);
+
+    const firstCenturyPill = page.locator("#hijriCenturyList .meter-pill").first();
+    await expect(firstCenturyPill).toBeVisible();
+    await firstCenturyPill.click();
+
+    await expect(headerCount).not.toHaveText(initialCountText, { timeout: 10000 });
+    const filteredCount = parseInt((await headerCount.textContent()).replace(/,/g, ""), 10);
+    expect(filteredCount).toBeLessThan(initialCount);
+    expect(filteredCount).toBeGreaterThan(0);
+    await expect(firstCenturyPill).toHaveClass(/active/);
+
+    const chip = page.locator("#activeFilters .filter-chip", { hasText: "Hijri century" });
+    await expect(chip).toBeVisible();
+
+    // removing via the chip's ✕ button restores the count and un-activates the pill
+    await chip.locator("button").click();
+    await expect(headerCount).toHaveText(initialCountText, { timeout: 10000 });
+    await expect(firstCenturyPill).not.toHaveClass(/active/);
+  });
+
+  test("data-clear='century' clears both hijri and gregorian selections", async ({ page }) => {
+    const headerCount = page.locator("#headerCount");
+    const initialCountText = await headerCount.textContent();
+
+    await page.locator("#hijriCenturyList .meter-pill").first().click();
+    await expect(headerCount).not.toHaveText(initialCountText, { timeout: 10000 });
+
+    await page.locator("[data-clear='century']").click();
+    await expect(headerCount).toHaveText(initialCountText, { timeout: 10000 });
+    await expect(page.locator("#hijriCenturyList .meter-pill.active")).toHaveCount(0);
+  });
 });

@@ -134,6 +134,32 @@ export function buildAxisBlocks(meta, refresh) {
   });
 }
 
+export function buildEraLists(centuryOptions, refresh) {
+  if (!centuryOptions) return;
+
+  const buildOne = (containerId, centuries, stateSet, suffix) => {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    container.innerHTML = "";
+    (centuries || []).forEach(c => {
+      const btn = document.createElement("button");
+      btn.className = "meter-pill";
+      btn.textContent = `${c}${suffix}`;
+      if (stateSet.has(c)) btn.classList.add("active");
+      btn.addEventListener("click", () => {
+        const active = btn.classList.toggle("active");
+        toggleSetValue(stateSet, c, active);
+        state.page = 1;
+        refresh();
+      });
+      container.appendChild(btn);
+    });
+  };
+
+  buildOne("hijriCenturyList", centuryOptions.hijri, state.centuryHijri, " هـ");
+  buildOne("gregorianCenturyList", centuryOptions.gregorian, state.centuryGregorian, "م");
+}
+
 export function buildPoemLengthPresets(poemLengthMeta, refresh) {
   const container = document.getElementById("poemLengthPresets");
   if (!container) return;

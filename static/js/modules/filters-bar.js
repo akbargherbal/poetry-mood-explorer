@@ -130,6 +130,29 @@ export function renderActiveFilters(refresh) {
     });
   }
 
+  // 9b. Era / Century filters
+  state.centuryHijri.forEach(c => {
+    addChip("Hijri century", `${c} هـ`, () => {
+      state.centuryHijri.delete(c);
+      document.querySelectorAll("#hijriCenturyList .meter-pill").forEach(btn => {
+        if (btn.textContent === `${c} هـ`) btn.classList.remove("active");
+      });
+      state.page = 1;
+      refresh();
+    });
+  });
+
+  state.centuryGregorian.forEach(c => {
+    addChip("Gregorian century", `${c}م`, () => {
+      state.centuryGregorian.delete(c);
+      document.querySelectorAll("#gregorianCenturyList .meter-pill").forEach(btn => {
+        if (btn.textContent === `${c}م`) btn.classList.remove("active");
+      });
+      state.page = 1;
+      refresh();
+    });
+  });
+
   // 10. Categorical tags & confidence ranges
   AXES.forEach(axis => {
     state.axis[axis].tags.forEach(tag => {

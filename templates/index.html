@@ -98,6 +98,24 @@
 
       <hr class="border-ink-border">
 
+      <!-- Era / Century (هجري / ميلادي) -->
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-xs text-parchment-muted font-medium">Era — العصر</label>
+          <button data-clear="century" class="text-[10px] text-parchment-dim hover:text-gold">clear</button>
+        </div>
+        <div class="mb-2.5">
+          <span class="text-[10px] text-parchment-dim block mb-1">Hijri century — القرن الهجري</span>
+          <div id="hijriCenturyList" class="flex flex-wrap gap-1.5"></div>
+        </div>
+        <div>
+          <span class="text-[10px] text-parchment-dim block mb-1">Gregorian century — القرن الميلادي</span>
+          <div id="gregorianCenturyList" class="flex flex-wrap gap-1.5"></div>
+        </div>
+      </div>
+
+      <hr class="border-ink-border">
+
       <!-- Exclusions (Excluding poems or ranks) -->
       <div>
         <div class="flex items-center justify-between mb-1.5">

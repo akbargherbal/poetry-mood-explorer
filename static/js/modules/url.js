@@ -22,6 +22,9 @@ export function buildParams(includePagination) {
   if (state.poemVersesMax != null) p.set("poem_verses_max", state.poemVersesMax);
   if (state.firstBatchOnly) p.set("first_batch_only", "1");
 
+  state.centuryHijri.forEach(c => p.append("century_hijri", String(c)));
+  state.centuryGregorian.forEach(c => p.append("century_gregorian", String(c)));
+
   AXES.forEach(axis => {
     state.axis[axis].tags.forEach(t => p.append(`${axis}_tags`, t));
     if (state.axis[axis].tags.size > 0) {
@@ -59,6 +62,9 @@ export function loadStateFromURL() {
   if (params.has("poem_verses_min")) state.poemVersesMin = parseInt(params.get("poem_verses_min"), 10);
   if (params.has("poem_verses_max")) state.poemVersesMax = parseInt(params.get("poem_verses_max"), 10);
   if (params.has("first_batch_only")) state.firstBatchOnly = params.get("first_batch_only") === "1";
+
+  params.getAll("century_hijri").forEach(c => state.centuryHijri.add(parseInt(c, 10)));
+  params.getAll("century_gregorian").forEach(c => state.centuryGregorian.add(parseInt(c, 10)));
 
   AXES.forEach(axis => {
     params.getAll(`${axis}_tags`).forEach(t => state.axis[axis].tags.add(t));

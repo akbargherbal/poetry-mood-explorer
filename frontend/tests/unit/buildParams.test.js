@@ -16,6 +16,8 @@ function resetState() {
   state.poemVersesMin = null;
   state.poemVersesMax = null;
   state.firstBatchOnly = false;
+  state.centuryHijri = new Set();
+  state.centuryGregorian = new Set();
   state.axis = {
     mood: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
     genre: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
@@ -136,6 +138,19 @@ describe("buildParams", () => {
     expect(p.get("mood_confidence_max")).toBe("2.5");
     expect(p.has("genre_confidence_min")).toBe(false);
     expect(p.has("genre_confidence_max")).toBe(false);
+  });
+
+  it("maps century_hijri and century_gregorian sets onto repeated params", () => {
+    let p = buildParams(false);
+    expect(p.has("century_hijri")).toBe(false);
+    expect(p.has("century_gregorian")).toBe(false);
+
+    state.centuryHijri.add(13);
+    state.centuryHijri.add(14);
+    state.centuryGregorian.add(19);
+    p = buildParams(false);
+    expect(p.getAll("century_hijri").sort()).toEqual(["13", "14"]);
+    expect(p.getAll("century_gregorian")).toEqual(["19"]);
   });
 
   describe("includePagination flag", () => {

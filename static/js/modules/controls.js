@@ -150,6 +150,17 @@ export function wireStaticControls(refresh) {
     });
   });
 
+  document.querySelectorAll("[data-clear='century']").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.centuryHijri.clear();
+      state.centuryGregorian.clear();
+      document.querySelectorAll("#hijriCenturyList .meter-pill, #gregorianCenturyList .meter-pill")
+        .forEach(b => b.classList.remove("active"));
+      state.page = 1;
+      refresh();
+    });
+  });
+
   // Mobile sidebar
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("sidebarOverlay");

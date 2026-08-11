@@ -12,6 +12,8 @@ export const state = {
   poemBatchesMin: null, poemBatchesMax: null,
   poemVersesMin: null, poemVersesMax: null,
   firstBatchOnly: false,
+  centuryHijri: new Set(),
+  centuryGregorian: new Set(),
   axis: {
     mood: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
     genre: { tags: new Set(), mode: "any", confidence: "", confidenceMin: null, confidenceMax: null },
